@@ -260,73 +260,1228 @@ const YT={
 function ytUrl(l){return YT[l]||('https://www.youtube.com/results?search_query=visao+geral+'+encodeURIComponent(l).toLowerCase()+'+bibleproject+portugues');}
 
 const RESUMOS={
-'Mateus':'O Evangelho de Mateus apresenta Jesus como o Messias prometido ao povo judeu, o Rei que cumpre todas as profecias do Antigo Testamento. Cinco grandes discursos estruturam o livro, com destaque para o Sermão do Monte (caps. 5–7), onde Jesus redefine o verdadeiro significado da lei. A mensagem central é que o Reino de Deus chegou em Jesus, e seus discípulos são chamados a viver sob esse reino com justiça, misericórdia e humildade.',
-'Marcos':'O Evangelho mais curto e dinâmico, Marcos retrata Jesus como o Servo poderoso de Deus. A palavra "imediatamente" aparece mais de 40 vezes, criando um ritmo acelerado de milagres e confrontos. Jesus serve, cura e entrega sua vida como resgate por muitos (10:45). A fé e a urgência do discipulado são temas centrais.',
-'Lucas':'Lucas apresenta Jesus como o Salvador universal, com atenção especial aos pobres, mulheres, estrangeiros e pecadores. O livro é cheio de parábolas únicas — o Filho Pródigo, o Bom Samaritano, a Ovelha Perdida — que revelam o coração de Deus por quem está à margem. A missão de Jesus é "buscar e salvar o que estava perdido" (19:10).',
-'Joao':'O Evangelho de João é o mais teológico dos quatro. Com sete sinais milagrosos e sete declarações "Eu Sou", João demonstra que Jesus é o Filho de Deus encarnado. O versículo 20:31 resume o propósito do livro: que você creia que Jesus é o Cristo, o Filho de Deus, e que crendo tenha vida em seu nome.',
-'Atos':'Atos narra o nascimento e expansão da Igreja pelo poder do Espírito Santo. De Jerusalém até Roma, os apóstolos proclamam a ressurreição de Jesus apesar de perseguição intensa. O livro mostra que o Evangelho é para todos os povos e culturas, e que a Igreja avança quando os crentes são cheios do Espírito.',
-'Genesis':'Gênesis é o livro das origens — do universo, da humanidade, do pecado e da redenção. Deus cria um mundo bom, a humanidade se rebela, e Deus inicia um plano de restauração através de Abraão. As histórias de Adão, Noé, Abraão, Isaque, Jacó e José mostram como Deus é fiel às suas promessas mesmo diante da falha humana.',
-'Exodo':'Êxodo narra a libertação miraculosa de Israel da escravidão no Egito. Deus revela seu nome — YHWH — e seu caráter através das dez pragas, da Páscoa e da travessia do Mar Vermelho. No Sinai, Deus estabelece sua aliança com Israel e dá a Lei. A mensagem central: Deus liberta seu povo para que o adore e viva em comunidade justa.',
-'Levitico':'Levítico é o manual de santidade de Israel. Com detalhes sobre sacrifícios, pureza e festas, o livro comunica que um Deus santo habita no meio de um povo e exige santidade: "Sede santos, porque eu sou santo" (19:2). Cada ritual aponta para a necessidade de expiação — algo que Cristo cumpriria definitivamente.',
-'Numeros':'Números registra a jornada de Israel pelo deserto — com fé, rebelião, julgamento e graça. A geração que saiu do Egito falha em confiar em Deus e perambula por 40 anos. Mas Deus nunca abandona seu povo. O livro ensina que a descrença tem consequências, mas a fidelidade de Deus permanece para a próxima geração.',
-'Deuteronomio':'Deuteronômio são os discursos finais de Moisés às portas da Terra Prometida. Ele recapitula a Lei e chama Israel a amar a Deus com todo o coração, alma e força (6:4-5). O livro é um contrato de aliança: obediência traz bênção, desobediência traz consequências. Jesus citou Deuteronômio três vezes ao enfrentar as tentações.',
-'Josue':'Josué narra a conquista e distribuição da Terra Prometida. Deus cumpre sua promessa a Abraão gerações depois. A queda de Jericó mostra que as vitórias de Israel dependem da obediência a Deus, não da força militar. O livro termina com o famoso desafio: "Quanto a mim e à minha casa, serviremos ao Senhor" (24:15).',
-'Juizes':'Juízes descreve um ciclo trágico repetido: Israel abandona Deus, cai em opressão, clama por ajuda, Deus levanta um juiz libertador — e o povo recai no pecado. Líderes como Débora, Gideão e Sansão mostram que até os heróis imperfeitos podem ser usados por Deus. A mensagem sombria: sem um rei (e sem Deus), cada um faz o que bem entende.',
-'Rute':'Rute é uma história de lealdade, bondade (hesed) e redenção. Uma moabita viúva segue sua sogra israelita e encontra graça nos olhos de Boaz, o "redentor" que a acolhe. O livro mostra que o amor fiel e a bondade generosa são o coração da aliança de Deus — e que estrangeiros também têm lugar na família de Deus.',
-'1 Samuel':'1 Samuel conta a transição de Israel para a monarquia. Samuel, o último juiz, unge primeiro Saul e depois Davi. Saul começa bem mas falha em confiar e obedecer a Deus. Davi surge como o homem segundo o coração de Deus. A lição principal: Deus vê o coração, não as aparências (16:7).',
-'2 Samuel':'2 Samuel narra o reinado de Davi — seus triunfos e suas falhas. Deus estabelece com Davi uma aliança eterna: um de seus descendentes reinará para sempre. Mas o pecado com Bate-Seba e Urias desencadeia sofrimento sobre sua casa. O livro mostra que mesmo o maior rei humano precisa de graça e que as consequências do pecado são reais.',
-'1 Reis':'1 Reis cobre a glória de Salomão, a construção do Templo e a divisão do reino. Salomão começa com sabedoria divina mas termina com o coração dividido por muitas mulheres e deuses estrangeiros. Após sua morte, o reino se divide em Israel (Norte) e Judá (Sul). O profeta Elias desafia os profetas de Baal e defende a exclusividade de Deus.',
-'2 Reis':'2 Reis registra o declínio e a queda dos dois reinos. Israel é destruído pela Assíria (722 a.C.) e Judá pela Babilônia (586 a.C.). O Templo é demolido e o povo levado ao exílio. A mensagem é direta: a idolatria e a injustiça têm consequências históricas severas. Mas há lampejo de esperança — a promessa davídica ainda está viva.',
-'1 Cronicas':'1 Crônicas reapresenta a história de Israel com foco no legado de Davi e na adoração. Escrito após o exílio, relembra o povo de sua identidade e sua vocação. A preparação de Davi para o Templo que Salomão construiria mostra que a adoração correta a Deus é central para a vida da nação.',
-'2 Cronicas':'2 Crônicas cobre o reinado de Salomão e os reis de Judá até o exílio. Os reis são avaliados pela fidelidade ao Templo e à aliança. Reformas como as de Josafá, Ezequias e Josias mostram que o retorno a Deus sempre traz renovação. O livro termina com Ciro autorizando o retorno dos exilados — um sinal de esperança.',
-'Esdras':'Esdras narra o retorno dos exilados à terra prometida e a reconstrução do Templo. Lideranças como Zorobabel e Esdras enfrentam oposição mas perseveram. Esdras chora e ora pelos pecados do povo, especialmente os casamentos mistos que ameaçavam a identidade de Israel. O livro celebra que Deus cumpre sua palavra de restaurar seu povo.',
-'Neemias':'Neemias retorna de Babilônia para reconstruir os muros de Jerusalém em 52 dias — um feito extraordinário diante de forte oposição. O livro combina liderança prática, oração fervorosa e compromisso com a Palavra de Deus. Esdras lê a Lei publicamente e o povo renova a aliança. Mensagem central: oração e ação andam juntas.',
-'Ester':'Ester conta como uma jovem judia se torna rainha da Pérsia e arrisca a vida para salvar seu povo de um genocídio. Deus não é mencionado explicitamente, mas sua providência permeia cada cena. Mordecai desafia Ester: "Quem sabe se não foi para um momento como este que chegaste ao reino?" (4:14). Coragem e providência são os grandes temas.',
-'Jo':'Jó enfrenta um sofrimento inexplicável — perde tudo sem ter feito nada de errado. Seus amigos insistem que o pecado causa sofrimento, mas estão errados. Deus finalmente aparece e responde com perguntas que revelam a vastidão da criação e os limites do entendimento humano. A conclusão: confiar em Deus mesmo sem entender é a verdadeira fé.',
-'Salmos':'Os 150 Salmos são o livro de oração e adoração de Israel — e da Igreja. Há salmos de louvor, lamento, gratidão, arrependimento e confiança. Eles nos ensinam a ser honestos com Deus em todas as emoções. O Salmo 22 profetiza a crucificação; o 23 celebra o Deus pastor; o 119 exalta a Palavra de Deus. Os Salmos são a escola de oração da Bíblia.',
-'Proverbios':'Provérbios é o manual de sabedoria prática de Israel. A sabedoria começa com o temor a Deus (1:7) e se aplica a cada área da vida: trabalho, família, palavras, amizades, dinheiro e caráter. O livro não promete que tudo vai bem se você fizer o certo — promete que o caminho sábio é o melhor caminho disponível numa mundo quebrado.',
-'Eclesiastes':'Eclesiastes é uma meditação filosófica sobre o sentido da vida "debaixo do sol". O Pregador observa que riqueza, prazer, trabalho e sabedoria — quando buscados em si mesmos — são "vaidade". A conclusão: teme a Deus e guarda os seus mandamentos, pois isso é o dever de todo ser humano (12:13). A vida tem sentido quando conectada ao Criador.',
-'Canticos':'Cantares de Salomão é um poema de amor entre um homem e uma mulher. Celebra a beleza do amor humano como dom de Deus — desejo, intimidade, saudade e entrega. Muitos teólogos veem também uma metáfora do amor de Deus pela sua Igreja. O livro afirma que o amor é forte como a morte e suas brasas têm a chama do próprio Senhor (8:6).',
-'Isaias':'Isaías é o profeta mais citado no Novo Testamento. A primeira metade (caps. 1–39) anuncia julgamento sobre Israel e as nações. A segunda (caps. 40–66) traz consolo: Deus vai restaurar seu povo. Os quatro "Cantos do Servo" descrevem alguém que sofreria pelos pecados do povo — cumpridos em Jesus. "Pela sua ferida fomos sarados" (53:5).',
-'Jeremias':'Jeremias é o "profeta lacrimoso" que anuncia durante 40 anos o julgamento inevitável sobre Judá — e é ignorado. Ele sofre profundamente por seu chamado. Mas também profetiza uma "Nova Aliança" (cap. 31): Deus escreverá sua lei nos corações, não em pedras. Jesus institui essa Nova Aliança na Última Ceia.',
-'Lamentacoes':'Lamentações é um choro poético sobre a destruição de Jerusalém pela Babilônia. É uma das obras mais honestas da Bíblia sobre o sofrimento coletivo. No meio do lamento, surge um versículo de esperança inabalável: "As misericórdias do Senhor são novas a cada manhã; grande é a tua fidelidade" (3:22-23). A dor e a esperança coexistem.',
-'Ezequiel':'Ezequiel recebe visões dramáticas de Deus durante o exílio na Babilônia. Deus mostra por que o julgamento veio — a idolatria e a injustiça de Israel — mas também promete restauração. O Vale dos Ossos Secos (cap. 37) profetiza a ressurreição espiritual do povo. Ezequiel vê um Templo glorioso futuro onde Deus voltará a habitar com seu povo.',
-'Daniel':'Daniel e seus amigos vivem com integridade na corte babilônica sem comprometer sua fé. Shadraque, Mesaque e Abednego na fornalha; Daniel na cova dos leões — histórias de coragem e fidelidade. A segunda metade traz visões apocalípticas que revelam que Deus governa a história e que seu reino eterno superará todos os reinos humanos.',
-'Oseias':'Oseias usa seu casamento doloroso com uma mulher infiel como metáfora do relacionamento de Deus com Israel. Israel abandonou Deus por ídolos, mas Deus continua amando e buscando seu povo. "Quero misericórdia e não sacrifício, conhecimento de Deus mais do que holocaustos" (6:6). Jesus citou esse versículo duas vezes.',
-'Joel':'Joel descreve uma devastadora praga de gafanhotos como prefiguração do "Dia do Senhor" — o julgamento divino. Mas quem se arrepende será salvo. A promessa central do livro: Deus derramará seu Espírito sobre toda carne — filhos e filhas profetizarão (2:28). Pedro cita Joel no dia de Pentecostes (Atos 2) como cumprimento.',
-'Amos':'Amós, um pastor de Tecoa, proclama duro julgamento contra as nações e especialmente contra Israel, que oprimia os pobres enquanto mantinha ritos religiosos vazios. "Que role o juízo como água, e a justiça como ribeiro perene" (5:24). Deus não aceita adoração de quem explora os vulneráveis. Justiça social e fé estão inseparáveis.',
-'Obadias':'O livro mais curto do Antigo Testamento anuncia julgamento sobre Edom — nação descendente de Esaú que se alegrou com a queda de Jerusalém e colaborou com os invasores. A mensagem: nenhuma nação que trata o povo de Deus com crueldade ficará impune. O orgulho antecede a queda. E o Senhor reinará.',
-'Jonas':'Jonas é chamado para pregar em Nínive, capital inimiga, mas foge. Depois do peixe, vai — e a cidade toda se arrepende. Jonas fica com raiva da misericórdia de Deus. O livro confronta o leitor: você se importa mais com sua comodidade do que com pessoas que estão se perdendo? A graça de Deus não tem fronteiras nacionais.',
-'Miqueias':'Miquéias profetiza contra a injustiça social e a corrupção religiosa de Israel e Judá. Mas também anuncia restauração. A pergunta e resposta mais famosas do livro: "O que o Senhor pede de ti? Somente que pratiques a justiça, ames a misericórdia e andes humildemente com o teu Deus" (6:8). E profetiza que o Messias nascerá em Belém (5:2).',
-'Naum':'Naum anuncia o julgamento final sobre Nínive — a mesma cidade que se arrependeu em Jonás, mas voltou à crueldade. O livro afirma que Deus é paciente, mas não isenta o culpado eternamente. O Senhor é bom, é refúgio nos dias de angústia — mas os que perseveram no mal enfrentarão as consequências.',
-'Habacuque':'Habacuque dialoga diretamente com Deus com perguntas difíceis: "Por que o mal prospera? Por que você usa uma nação ainda mais perversa para punir Israel?" Deus responde que os justos viverão pela fé. O livro termina com um dos maiores hinos de confiança da Bíblia: "Ainda que a figueira não floresça... eu me alegrerei no Senhor" (3:17-18).',
-'Sofonias':'Sofonias anuncia o "Dia do Senhor" como julgamento total sobre Judá e as nações. Mas o livro termina com uma promessa belíssima: Deus restaurará um povo humilde e fiel, e se alegrará sobre eles com cânticos (3:17). Deus não apenas ama seu povo — Ele canta sobre eles.',
-'Ageu':'Ageu exorta o povo retornado do exílio que parou de construir o Templo para se ocupar com suas próprias casas. "Considerai os vossos caminhos" (1:5,7). Quando o povo obedece, Deus promete que a glória do novo Templo será maior que a do antigo — uma promessa que apontava para Cristo, a habitação de Deus entre os homens.',
-'Zacarias':'Zacarias tem as mais ricas profecias messiânicas fora de Isaías. Ele profetiza o Rei entrando em Jerusalém montado num jumentinho (9:9), os trinta siclos de prata (11:12-13), o lado traspassado (12:10) e o Pastor ferido (13:7) — todos cumpridos no ministério e morte de Jesus. O livro termina com a esperança do reino universal de Deus.',
-'Malaquias':'Malaquias é o último profeta do Antigo Testamento, escrito cerca de 400 anos antes de Cristo. Ele confronta um povo que cumpre rituais sem devoção genuína e questiona a justiça de Deus. O livro promete a vinda de Elias antes do grande Dia do Senhor (4:5) — cumprida em João Batista. Termina o AT em expectativa do que virá.',
-'Romanos':'A carta mais sistemática de Paulo expõe o Evangelho: toda a humanidade está sob o pecado, mas Deus oferece justificação pela fé em Jesus (caps. 1–8). Israel e os gentios têm lugar no plano de Deus (caps. 9–11). A vida transformada pelo Evangelho resulta em amor, serviço e obediência (caps. 12–16). "Não me envergonho do Evangelho" (1:16).',
-'1 Corintios':'Paulo escreve a uma igreja dividida e imatura. Aborda divisões, imoralidade, processos judiciais, casamento, liberdade cristã, dons espirituais e a ressurreição. O capítulo 13 define o amor verdadeiro e o 15 é o texto mais completo sobre a ressurreição de Cristo na Bíblia. Mensagem central: o Evangelho deve transformar cada área da vida comunitária.',
-'2 Corintios':'A carta mais pessoal de Paulo, escrita em meio a críticas e dor. Paulo defende seu apostolado, fala do ministério da reconciliação e exorta a generosidade. A frase central: "O meu poder se aperfeiçoa na fraqueza" (12:9). O Evangelho se manifesta especialmente através de vassos de barro frágeis que carregam um tesouro incomparável.',
-'Galatas':'Paulo defende com urgência que a justificação é pela fé em Cristo, não pelas obras da Lei. Cristãos não precisam se tornar judeus para ser salvos. "Já não sou eu que vivo, mas Cristo vive em mim" (2:20). O fruto do Espírito — amor, alegria, paz — é a evidência de uma vida transformada pela graça, não pelo esforço religioso.',
-'Efesios':'Efésios é uma visão panorâmica do plano eterno de Deus: reunir todas as coisas em Cristo (1:10). Os primeiros três capítulos celebram as riquezas espirituais do crente em Cristo. Os últimos três aplicam essas verdades ao casamento, família, trabalho e à armadura espiritual. A Igreja é o corpo de Cristo, chamada a manifestar sua sabedoria ao mundo.',
-'Filipenses':'A carta mais alegre de Paulo, escrita da prisão. "Alegrai-vos sempre no Senhor; outra vez digo: alegrai-vos" (4:4). O hino de Cristo (2:5-11) revela o caminho da exaltação através da humildade. Paulo aprendeu a estar contente em qualquer situação. A paz de Deus que excede todo entendimento guarda os corações dos que oram em tudo.',
-'Colossenses':'Paulo escreve contra falsos ensinamentos que diminuíam Cristo. Em resposta, exalta a supremacia absoluta de Cristo: "Nele habita corporalmente toda a plenitude da divindade" (2:9). Cristo é suficiente — não há necessidade de rituais, filosofias ou seres espirituais intermediários. A vida escondida em Cristo se manifesta em relacionamentos transformados.',
-'1 Tessalonicenses':'Paulo encoraja uma jovem igreja que sofre perseguição. Ele celebra a fé, amor e esperança deles, e responde dúvidas sobre os cristãos que morreram antes da volta de Cristo. A segunda vinda de Jesus é o grande tema — não causa de medo, mas de consolação. "O próprio Deus da paz vos santifique em tudo" (5:23).',
-'2 Tessalonicenses':'Paulo corrige um mal-entendido: a volta de Cristo ainda não aconteceu, e certos eventos devem preceder. Enquanto esperam, os crentes devem trabalhar, não ser ociosos. Aqueles que se recusam a trabalhar não devem comer. A expectativa da volta de Cristo deve motivar responsabilidade presente, não passividade.',
-'1 Timoteo':'Paulo orienta Timóteo, jovem pastor em Éfeso, sobre como liderar a Igreja. Aborda adoração ordenada, qualificações de líderes, trato dos diferentes grupos na comunidade e o perigo do amor ao dinheiro. "A raiz de todos os males é o amor ao dinheiro" (6:10). A sã doutrina e a vida piedosa andam juntas.',
-'2 Timoteo':'A última carta de Paulo, escrita pouco antes de sua morte. É uma carta de despedida cheia de urgência e ternura. Paulo exorta Timóteo a permanecer fiel ao Evangelho apesar de oposição e abandono. "Combati o bom combate, terminei a corrida, guardei a fé" (4:7). Uma das passagens mais comoventes sobre perseverança na fé.',
-'Tito':'Paulo instrui Tito na ilha de Creta sobre como organizar igrejas e nomear líderes. O livro enfatiza que a sã doutrina produz boa conduta. A salvação pela graça (2:11-14) é a motivação para viver com integridade. Crentes devem ser reconhecidos pela boa conduta e pelo amor — especialmente no ambiente desafiador de Creta.',
-'Filemom':'A carta mais curta de Paulo é sobre um escravo chamado Onésimo que fugiu de seu dono Filemom. Paulo, que levou ambos a Cristo, pede que Filemom receba Onésimo não mais como escravo, mas como irmão amado. A carta é uma aplicação prática de como o Evangelho desfaz hierarquias sociais e transforma relacionamentos.',
-'Hebreus':'Hebreus demonstra a superioridade de Jesus sobre tudo no Antigo Testamento: sobre os anjos, Moisés, os sacerdotes e o sistema de sacrifícios. Jesus é o Sumo Sacerdote perfeito que se ofereceu a si mesmo de uma vez por todas. O capítulo 11 celebra a "nuvem de testemunhas" da fé. Mensagem central: não abandone Cristo — ele é incomparável.',
-'Tiago':'Tiago é prático e direto: a fé sem obras está morta (2:17). O livro aborda o controle da língua, a riqueza e a pobreza, a oração pelos enfermos e o perigo da parcialidade. Tiago não contradiz Paulo — fala sobre evidências da fé genuína, não sobre a fonte da salvação. Uma fé viva transforma comportamentos concretos.',
-'1 Pedro':'Pedro escreve a cristãos espalhados pelo Império Romano sofrendo perseguição. Ele os chama de "estrangeiros e peregrinos" cujo verdadeiro lar é o reino de Deus. Sofrimento não é sinal de abandono divino — é participação no sofrimento de Cristo que leva à glória. "Lançai sobre ele toda a vossa ansiedade, pois ele tem cuidado de vós" (5:7).',
-'2 Pedro':'Pedro adverte contra falsos professores que negam a volta de Cristo e introduzem erros morais. Ele apela para as Escrituras como fundamento confiável e lembra que Deus não é lento em suas promessas — ele é paciente, querendo que todos se arrependam. A volta de Cristo é certa; a questão é como devemos viver enquanto esperamos.',
-'1 Joao':'João escreve para confirmar que Jesus realmente veio em carne — contra gnósticos que negavam isso. O livro gira em torno de três testes da vida cristã autêntica: crer na doutrina correta, obedecer a Deus e amar os irmãos. "Deus é amor" (4:8,16) — quem conhece Deus ama. Quem diz que conhece Deus e odeia o irmão é mentiroso.',
-'2 Joao':'Uma carta curta de João a uma "senhora eleita" (provavelmente uma igreja local) advertindo contra receber em casa quem nega que Jesus veio em carne. O amor cristão não é ingênuo — anda segundo os mandamentos e discerne o erro doutrinário. Amor e verdade são inseparáveis.',
-'3 Joao':'João escreve a Gaio, elogiando sua hospitalidade com missionários itinerantes. Contrasta Gaio com Diótrefes, que gosta de ser o primeiro e rejeita os servos de João. Também elogia Demétrio. A carta celebra o valor da hospitalidade fiel e critica o autoritarismo eclesiástico.',
-'Judas':'Judas urge os cristãos a "batalhar pela fé que foi entregue aos santos de uma vez por todas". Falsos professores se infiltraram na Igreja, pervertendo a graça em libertinagem. Judas usa exemplos do AT para mostrar que Deus julga os que se afastam. Termina com uma das mais belas doxologias da Bíblia (vv. 24-25).',
-'Apocalipse':'O livro final da Bíblia revela Jesus como o Senhor da história — o Leão que é o Cordeiro. Escrito para cristãos perseguidos sob Roma, Apocalipse usa imagens simbólicas para dizer: Deus vence, o mal será destruído e todas as coisas serão renovadas. A visão final é uma cidade-jardim onde Deus habita com seu povo para sempre. "Eis que faço novas todas as coisas" (21:5).'
-};
+'Mateus':`📖 MENSAGEM CENTRAL: Jesus é o Messias prometido, o Rei do Reino de Deus que veio cumprir toda a Lei e os Profetas.
+
+🔑 EVENTOS MARCANTES:
+• Nascimento via Espírito Santo — José quase a abandonou; Herodes mata crianças de Belém (caps. 1–2)
+• Batismo no Jordão — o céu se abre, pomba desce, Pai fala: "Este é meu Filho amado" (cap. 3)
+• As 3 tentações no deserto — Jesus cita Deuteronômio para cada uma delas (cap. 4)
+• O Sermão do Monte (caps. 5–7): Bem-aventuranças, amai os inimigos, Pai-Nosso, "não acumuleis tesouros na terra", a regra de ouro
+• Alimentação dos 5.000 com 5 pães e 2 peixes — sobraram 12 cestos (cap. 14)
+• Pedro anda sobre as águas mas afunda por duvidar (cap. 14)
+• A Transfiguração: Jesus brilha como o sol; Moisés e Elias aparecem (cap. 17)
+• Entrada triunfal em Jerusalém num jumentinho — cumprindo Zacarias 9:9 (cap. 21)
+• Expulsão dos vendilhões do Templo (cap. 21)
+• A Última Ceia e a instituição da Eucaristia (cap. 26)
+• Agonia em Getsêmani: "Pai, se possível, passe de mim este cálice" (cap. 26)
+• Traição de Judas por 30 moedas; Pedro nega três vezes antes do galo cantar (cap. 26)
+• Crucificação — o véu do Templo se rasga ao meio (cap. 27)
+• Ressurreição e a Grande Comissão: "Ide e fazei discípulos de todas as nações" (cap. 28)
+
+💡 VERSÍCULO CHAVE: "Buscai primeiro o Reino de Deus e a sua justiça, e todas estas coisas vos serão acrescentadas." (6:33)`,
+
+'Marcos':`📖 MENSAGEM CENTRAL: Jesus é o Servo poderoso de Deus — ação imediata, milagres, autoridade. Menos discursos, mais atos.
+
+🔑 EVENTOS MARCANTES:
+• Início sem genealogia nem infância — direto ao batismo e ao chamado dos discípulos (cap. 1)
+• Expulsão de demônio na sinagoga: "Com autoridade manda até nos espíritos impuros!" (cap. 1)
+• Paralítico descido pelo telhado pelos amigos — Jesus perdoa pecados, escandalizando os fariseus (cap. 2)
+• A tempestade acalmada: discípulos apavorados, Jesus dormia; "Paz, aquieta-te!" (cap. 4)
+• Endemoniado de Gerasa com legião de demônios — expulsos para porcos que se afogam (cap. 5)
+• A mulher com hemorragia de 12 anos toca a barra do manto e é curada instantaneamente (cap. 5)
+• Ressurreição da filha de Jairo: "Talitá cumi — menina, levanta-te" (cap. 5)
+• João Batista decapitado por causa da dança de Salomé a pedido de Herodíades (cap. 6)
+• Pedro reconhece Jesus como o Cristo — e logo o repreende; Jesus o chama de Satanás (cap. 8)
+• A Transfiguração (cap. 9); o jovem rico que vai embora triste por ter muitas posses (cap. 10)
+• "O Filho do Homem veio para servir e dar a sua vida em resgate por muitos" (10:45) — coração do livro
+• A viúva e as duas moedas — ela deu tudo o que tinha para viver (cap. 12)
+• Getsêmani, traição, julgamento, flagelação, crucificação (caps. 14–15)
+• "Não está aqui; ressuscitou" — a tumba vazia, o anjo com a mensagem (cap. 16)
+
+💡 VERSÍCULO CHAVE: "O Filho do Homem não veio para ser servido, mas para servir e dar a sua vida em resgate por muitos." (10:45)`,
+
+'Lucas':`📖 MENSAGEM CENTRAL: Jesus é o Salvador universal — dos pobres, excluídos, mulheres e pecadores. Veio buscar e salvar o perdido.
+
+🔑 EVENTOS MARCANTES:
+• O anjo Gabriel anuncia a Maria; o Magnificat: "Engrandece a minha alma ao Senhor" (cap. 1)
+• Nascimento em Belém, em manjedoura — anunciado a pastores pelos anjos que cantam (cap. 2)
+• Simeão no Templo: "Agora, Senhor, deixas o teu servo partir em paz" (cap. 2)
+• Jesus aos 12 anos ensinando no Templo — os pais o procuram três dias (cap. 2)
+• Genealogia vai até Adão — universalidade: Jesus é Salvador de toda a humanidade (cap. 3)
+• Primeira pregação em Nazaré lendo Isaías 61 — quase o atiram do penhasco (cap. 4)
+• A pesca milagrosa — Pedro: "Afasta-te de mim, que sou homem pecador!" (cap. 5)
+• Ressurreição do filho da viúva de Naim — Jesus o devolve à mãe (cap. 7)
+• A mulher pecadora que lava os pés de Jesus com lágrimas e os seca com os cabelos (cap. 7)
+• PARÁBOLAS EXCLUSIVAS DE LUCAS: Bom Samaritano (10), Filho Pródigo (15), Rico e Lázaro (16), Fariseu e Publicano (18), Ovelha Perdida (15)
+• Maria e Marta — "Maria escolheu a boa parte, que não lhe será tirada" (cap. 10)
+• Zaqueu sobe na árvore; Jesus vai jantar em sua casa; ele devolve 4 vezes o roubado (cap. 19)
+• Na cruz: "Pai, perdoa-lhes, porque não sabem o que fazem" e ao ladrão: "Hoje estarás comigo no Paraíso" (cap. 23)
+• Caminho de Emaús — Jesus ressurreto reconhecido ao partir o pão (cap. 24)
+• A Ascensão — único evangelho que a narra detalhadamente (cap. 24)
+
+💡 VERSÍCULO CHAVE: "O Filho do Homem veio buscar e salvar o que estava perdido." (19:10)`,
+
+'Joao':`📖 MENSAGEM CENTRAL: Jesus é o Filho de Deus encarnado. Crer nele é ter vida eterna. O Evangelho mais teológico dos quatro.
+
+🔑 EVENTOS MARCANTES:
+• O Prólogo: "No princípio era o Verbo... e o Verbo se fez carne e habitou entre nós" (cap. 1)
+• João Batista: "Eis o Cordeiro de Deus que tira o pecado do mundo" (cap. 1)
+• Bodas de Caná — água em vinho, o primeiro milagre de Jesus (cap. 2)
+• Nicodemos: "É necessário nascer de novo"; João 3:16 — o versículo mais famoso da Bíblia (cap. 3)
+• A mulher samaritana no poço com cinco maridos — Jesus oferece "água viva" (cap. 4)
+• Cura do cego de nascença no sábado — Jesus faz lama com saliva e manda lavar em Siloé (cap. 9)
+• Ressurreição de Lázaro — 4 dias morto; Jesus chora; "Lázaro, vem para fora!" (cap. 11)
+• As 7 declarações EU SOU: Pão da Vida, Luz do Mundo, Porta, Bom Pastor, Ressurreição e Vida, Caminho Verdade e Vida, Videira Verdadeira
+• O Lava-pés antes da Última Ceia (cap. 13)
+• Discurso do Adeus (caps. 14–17): "Não se turbe o vosso coração"; a promessa do Espírito Consolador
+• A Oração Sacerdotal de João 17: "que todos sejam um"
+• "Está consumado" — última palavra de Jesus na cruz em João (cap. 19)
+• Maria Madalena no jardim — Jesus ressurreto a chama pelo nome (cap. 20)
+• Tomé duvida — "Põe o teu dedo aqui e vê as minhas mãos" (cap. 20)
+• Jesus restaura Pedro três vezes junto ao fogo: "Amas-me?" (cap. 21)
+
+💡 VERSÍCULO CHAVE: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna." (3:16)`,
+
+'Atos':`📖 MENSAGEM CENTRAL: O Espírito Santo continua a obra de Jesus através da Igreja — de Jerusalém até os confins da terra.
+
+🔑 EVENTOS MARCANTES:
+• Ascensão — "Recebereis poder ao descer o Espírito... e sereis minhas testemunhas até os confins da terra" (cap. 1)
+• Pentecostes: línguas de fogo, Espírito sobre 120, Pedro prega e 3.000 se convertem num dia (cap. 2)
+• Primeira comunidade: partilha de bens, oração, partir do pão, milagres (cap. 2)
+• Pedro cura o coxo à porta do Templo: "Ouro e prata não tenho; o que tenho te dou" (cap. 3)
+• Ananias e Safira mentem ao Espírito Santo sobre a oferta — morrem na hora (cap. 5)
+• Estêvão, primeiro mártir — vê os céus abertos; Saulo guarda as roupas dos que o apedrejam (cap. 7)
+• Simão Mago tenta comprar o poder do Espírito com dinheiro (cap. 8)
+• A conversão de Saulo: luz cegante, cai no chão; "Saulo, por que me persegues?" (cap. 9)
+• Pedro recebe visão do lençol com animais impuros — Deus não faz acepção de pessoas (cap. 10)
+• Cornélio, o centurião romano, é o primeiro gentio batizado (cap. 10)
+• Pedro libertado da prisão por anjo enquanto a igreja orava (cap. 12)
+• Concílio de Jerusalém — decisão histórica: salvação pela graça, não pela circuncisão (cap. 15)
+• Paulo e Silas na prisão de Filipos: cantam hinos, terremoto, carcereiro se converte (cap. 16)
+• Paulo no Areópago de Atenas: prega sobre "o Deus desconhecido" (cap. 17)
+• Naufrágio a caminho de Roma — 276 sobreviventes (cap. 27)
+• Paulo prega em Roma livremente por dois anos (cap. 28)
+
+💡 VERSÍCULO CHAVE: "Recebereis poder ao descer sobre vós o Espírito Santo, e sereis minhas testemunhas... até aos confins da terra." (1:8)`,
+
+'Genesis':`📖 MENSAGEM CENTRAL: Deus criou tudo muito bom, a humanidade se rebelou, e Deus iniciou seu plano de redenção através de Abraão.
+
+🔑 EVENTOS MARCANTES:
+• Criação em 6 dias e o descanso do 7º — o fundamento da semana e do sábado (caps. 1–2)
+• O Éden, a serpente, a tentação: "Deus sabe que sereis como Deus" — o primeiro pecado (cap. 3)
+• A Queda: vergonha, culpa, expulsão; "Do pó vieste e ao pó voltarás" (cap. 3)
+• Caim mata Abel por inveja — "Onde está o teu irmão? O sangue dele clama da terra" (cap. 4)
+• Noé e a arca — dilúvio de 40 dias; o arco-íris como sinal da aliança (caps. 6–9)
+• A Torre de Babel — línguas confundidas e povos dispersos (cap. 11)
+• Chamado de Abraão: "Sai da tua terra..." — promessa de uma grande nação (cap. 12)
+• Aliança com Abraão: descendência como estrelas e areia do mar (cap. 15)
+• Sodoma e Gomorra destruídas com fogo e enxofre; a mulher de Ló vira estátua de sal (cap. 19)
+• Nascimento miraculoso de Isaque — Sara ri (cap. 21)
+• O sacrifício de Isaque no Monte Moriá — Deus provê um carneiro no último segundo (cap. 22)
+• Jacó rouba a bênção de Esaú com pele de cabra nas mãos (cap. 27)
+• Visão da escada celestial em Betel — anjos subindo e descendo (cap. 28)
+• Jacó luta com Deus a noite toda — nome mudado para Israel (cap. 32)
+• José vendido pelos 10 irmãos invejosos por 20 moedas de prata (cap. 37)
+• José interpreta sonhos no Egito, sobe ao poder, salva o mundo da fome (caps. 39–41)
+• Reencontro com os irmãos — José chora e perdoa: "Não fostes vós que me vendestes... foi Deus" (cap. 45)
+
+💡 VERSÍCULO CHAVE: "Vós pensastes o mal contra mim, porém Deus o tornou em bem." (50:20)`,
+
+'Exodo':`📖 MENSAGEM CENTRAL: Deus liberta seu povo da escravidão com mão poderosa e estabelece sua aliança com Israel no Sinai.
+
+🔑 EVENTOS MARCANTES:
+• Israel escravizado; Faraó manda matar todos os bebês hebreus (cap. 1)
+• Moisés colocado num cesto no Nilo — salvo pela filha do próprio Faraó (cap. 2)
+• A sarça ardente que não se consome — Deus revela seu nome: "EU SOU O QUE SOU" (cap. 3)
+• Moisés reluta: "Quem sou eu?" / "Não sou homem de palavra" / "Envia outra pessoa" (caps. 3–4)
+• As 10 pragas: sangue, rãs, piolhos, moscas, morte do gado, úlceras, granizo, gafanhotos, trevas, morte dos primogênitos (caps. 7–12)
+• A primeira Páscoa — sangue do cordeiro nas ombreiras; o anjo da morte passa por cima (cap. 12)
+• A travessia do Mar Vermelho — o povo a pé, as águas como muros; Faraó e exército se afogam (cap. 14)
+• Miriã lidera o cântico de celebração na margem (cap. 15)
+• O maná cai toda manhã no deserto — pão do céu por 40 anos (cap. 16)
+• Água brotando da rocha em Horebe quando Moisés a golpeia (cap. 17)
+• Deus desce no Sinai em fogo, trovões e fumaça densa — o povo treme ao longe (cap. 19)
+• Os Dez Mandamentos escritos pelo próprio dedo de Deus em pedra (cap. 20)
+• O bezerro de ouro enquanto Moisés estava no monte — Moisés intercede e salva o povo (cap. 32)
+• Moisés pede ver a glória de Deus — escondido na fenda da rocha; vê as costas de Deus (caps. 33–34)
+• A construção do Tabernáculo — a glória de Deus o enche ao final (caps. 35–40)
+
+💡 VERSÍCULO CHAVE: "Eu sou o Senhor teu Deus, que te tirei da terra do Egito, da casa da servidão." (20:2)`,
+
+'Levitico':`📖 MENSAGEM CENTRAL: Um Deus santo habita no meio de um povo — e isso exige santidade em cada área da vida.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Os 5 tipos de ofertas: holocausto, manjares, pacífica, pelo pecado e pela culpa — cada com propósito específico (caps. 1–7)
+• Consagração de Arão e filhos como sacerdotes — cerimônia de 7 dias (caps. 8–9)
+• Nadabe e Abiú, filhos de Arão, oferecem fogo estranho diante do Senhor e morrem instantaneamente (cap. 10)
+• Leis sobre animais puros e impuros — a base da dieta judaica (cap. 11)
+• O Grande Dia da Expiação (Yom Kippur): o sumo sacerdote entra no Santo dos Santos uma vez por ano com sangue (cap. 16)
+• O bode expiatório: os pecados do povo são simbolicamente colocados sobre um bode enviado ao deserto (cap. 16)
+• "Amarás o teu próximo como a ti mesmo" — citado por Jesus como o segundo maior mandamento (19:18)
+• O Ano do Jubileu: a cada 50 anos dívidas perdoadas, escravos libertados, terras devolvidas (cap. 25)
+• Bênçãos por obediência e maldições por desobediência (cap. 26)
+• Cada ritual de sacrifício apontava para a necessidade de expiação — cumprida definitivamente em Cristo
+
+💡 VERSÍCULO CHAVE: "Sede santos, porque eu, o Senhor vosso Deus, sou santo." (19:2)`,
+
+'Numeros':`📖 MENSAGEM CENTRAL: A incredulidade tem consequências — toda uma geração morreu no deserto por não confiar em Deus.
+
+🔑 EVENTOS MARCANTES:
+• O censo dos homens aptos para a guerra — 603.550 homens (cap. 1)
+• As reclamações do povo sobre o maná: "Quem nos dará carne? Lembramos do peixe do Egito!" (cap. 11)
+• Miriã e Arão criticam Moisés por causa de sua esposa cusita — Miriã fica leprosa por 7 dias (cap. 12)
+• Os 12 espias exploram Canaã por 40 dias: 10 dão relatório de medo; só Calebe e Josué confiam (cap. 13)
+• O povo chora a noite toda recusando entrar — Deus decreta: essa geração morrerá no deserto (cap. 14)
+• A rebelião de Coré contra Moisés — a terra se abre e os engole vivos junto com as famílias (cap. 16)
+• A vara de Arão que brotou, floresceu e produziu amêndoas numa noite — confirmando seu sacerdócio (cap. 17)
+• Moisés golpeia a rocha duas vezes em vez de falar com ela — perde o direito de entrar em Canaã (cap. 20)
+• Serpentes ardentes no deserto; Moisés levanta serpente de bronze — quem olha é curado (cap. 21) — Jesus cita em João 3:14
+• Balaão e sua jumenta que fala — contratado para amaldiçoar Israel, acaba abençoando três vezes (caps. 22–24)
+• O censo final após 40 anos — nenhum nome coincide com o primeiro censo (cap. 26)
+
+💡 VERSÍCULO CHAVE: "O Senhor te abençoe e te guarde; o Senhor faça resplandecer o seu rosto sobre ti." (6:24-25)`,
+
+'Deuteronomio':`📖 MENSAGEM CENTRAL: Ame a Deus com tudo e transmita essa fé às próximas gerações. Os discursos finais de Moisés às portas da Terra Prometida.
+
+🔑 EVENTOS MARCANTES:
+• Moisés recapitula toda a jornada do deserto em três grandes discursos (caps. 1–30)
+• O Shemá: "Ouve, ó Israel: o Senhor nosso Deus é o único Senhor. Amarás o Senhor com todo o coração, alma e força" (6:4-5) — a oração central do judaísmo; citada por Jesus como o maior mandamento
+• Instrução para educar os filhos: "Ensinarás... em casa, no caminho, ao deitar e ao levantar" (6:7)
+• A promessa de um profeta como Moisés que viria no futuro — cumprida em Jesus (18:15)
+• A lei do Rei: não deve acumular cavalos, mulheres nem ouro; deve ler a Lei todos os dias (cap. 17)
+• Os capítulos das bênçãos e maldições — obediência traz vida; desobediência traz consequências (caps. 27–28)
+• A Canção de Moisés — testemunho poético da fidelidade de Deus (cap. 32)
+• A bênção final de Moisés sobre as 12 tribos (cap. 33)
+• Moisés sobe ao Monte Nebo, vê Canaã de longe com os olhos ainda firmes — e morre lá com 120 anos (cap. 34)
+• Jesus citou Deuteronômio três vezes ao enfrentar as tentações no deserto
+
+💡 VERSÍCULO CHAVE: "Amarás o Senhor teu Deus de todo o teu coração, de toda a tua alma e de todas as tuas forças." (6:5)`,
+
+'Josue':`📖 MENSAGEM CENTRAL: Deus cumpre suas promessas — mesmo décadas depois. A Terra Prometida é herança de quem confia e obedece.
+
+🔑 EVENTOS MARCANTES:
+• "Sê forte e corajoso... não temas nem te espantes, porque o Senhor teu Deus estará contigo" (cap. 1)
+• As duas espias se escondem na casa de Raabe — o cordão escarlate na janela como sinal de proteção (cap. 2)
+• Travessia do Rio Jordão: os sacerdotes entram na água com a arca e o rio se divide (cap. 3)
+• 12 pedras tiradas do leito do rio como memorial eterno (cap. 4)
+• O encontro com o Comandante do exército do Senhor — Josué tira as sandálias (cap. 5)
+• Queda de Jericó: o povo marcha 7 dias, tocam as trombetas, gritam — os muros desabam (cap. 6)
+• Acã esconde objetos proibidos — Israel é derrotado em Ai; Acã e a família são julgados (cap. 7)
+• O sol e a lua param durante a batalha de Gibeão para Israel vencer (cap. 10)
+• Distribuição da terra entre as 12 tribos (caps. 13–21)
+• Calebe com 85 anos ainda pede a região montanhosa para conquistar: "Ainda estou tão forte como no dia que Moisés me enviou" (cap. 14)
+• O discurso de despedida: "Quanto a mim e à minha casa, serviremos ao Senhor" (cap. 24)
+
+💡 VERSÍCULO CHAVE: "Sê forte e corajoso! Não te atemorizes nem te espantes, porque o Senhor teu Deus estará contigo por onde quer que andares." (1:9)`,
+
+'Juizes':`📖 MENSAGEM CENTRAL: Sem liderança fiel, o povo cai em ciclos de pecado, opressão, clamor e libertação — até a deterioração total.
+
+🔑 EVENTOS MARCANTES:
+• O ciclo trágico: Israel peca → opressão → clama → Deus levanta um juiz → libertação → Israel peca (cap. 2)
+• Débora, profetisa e juíza, lidera Israel à vitória; Jael mata o general Sísera com estaca de tenda no templo (caps. 4–5)
+• Gideão se esconde com medo, recebe o chamado, pede confirmação do orvalho no velo — duas noites (cap. 6)
+• Gideão derrota os midianitas com apenas 300 homens, tochas escondidas em potes e trombetas (cap. 7)
+• Abimeleque mata 70 irmãos sobre uma pedra para ser rei; é morto por uma mulher que joga uma mó (cap. 9)
+• Jefté faz voto imprudente: oferecerá o que primeiro sair de casa — sua filha sai dançando (cap. 11)
+• Sansão: força sobrenatural ligada ao voto de nazireus — mata um leão com as mãos, mata 30 em Ascalom (caps. 14–15)
+• Dalila pergunta o segredo da força três vezes e o entrega aos filisteus (cap. 16)
+• Sansão cego e acorrentado empurra as colunas do templo de Dagom — mata mais na morte do que em vida (cap. 16)
+• Os últimos capítulos mostram depravação extrema: idolatria, violência, guerra civil — "Cada um fazia o que bem lhe parecia"
+
+💡 VERSÍCULO CHAVE: "Naqueles dias não havia rei em Israel; cada um fazia o que lhe parecia reto." (21:25)`,
+
+'Rute':`📖 MENSAGEM CENTRAL: A lealdade fiel (hesed) e a bondade generosa são o coração da aliança de Deus — e estrangeiros têm lugar na família de Deus.
+
+🔑 EVENTOS MARCANTES:
+• Naomi perde marido e dois filhos em Moabe — fica desolada; pede para ser chamada "Mara" (amarga) (cap. 1)
+• Orpá volta para seus deuses; Rute insiste em ficar: "Para onde tu fores, irei eu... o teu Deus será o meu Deus" (cap. 1)
+• Rute vai espigar nos campos — lei israelita da misericórdia para os pobres e estrangeiros (cap. 2)
+• O campo pertence a Boaz, parente de Naomi, que ordena deixar espigas de propósito para Rute (cap. 2)
+• Naomi instrui Rute como abordar Boaz à noite na eira como parente redentor (cap. 3)
+• Rute se deita aos pés de Boaz: "Estende a tua aba sobre tua serva, pois és parente redentor" (cap. 3)
+• Boaz confronta o parente mais próximo nas portas da cidade — ele desiste; Boaz casa com Rute (cap. 4)
+• Rute e Boaz têm Obede — avô do rei Davi e ancestral de Jesus Cristo (cap. 4)
+• Naomi, que pediu para ser chamada de "amarga", recebe alegria de volta por meio de Rute e Boaz
+
+💡 VERSÍCULO CHAVE: "Onde tu morreres, morrerei eu, e ali serei sepultada. Assim me faça o Senhor, se outra coisa que não seja a morte me separar de ti." (1:17)`,
+
+'1 Samuel':`📖 MENSAGEM CENTRAL: Deus vê o coração — não as aparências. Israel rejeita Deus como Rei ao pedir um rei humano como as outras nações.
+
+🔑 EVENTOS MARCANTES:
+• Ana chora no Templo por esterilidade — Eli pensa que está bêbada; ela ora e Deus a ouve (cap. 1)
+• O nascimento de Samuel e sua dedicação ao Templo: "Por este menino eu orava" (cap. 1)
+• A voz de Deus chama Samuel à noite três vezes; Eli o instrui: "Fala, Senhor, que o teu servo ouve" (cap. 3)
+• O povo pede um rei como as outras nações — Samuel avisa todas as consequências; Deus concede (cap. 8)
+• Saul, o mais alto de Israel, ungido rei — estava escondido entre a bagagem durante a cerimônia (cap. 10)
+• Saul desobedece sacrificando sem esperar Samuel: "Obedecer é melhor do que sacrificar" (cap. 15)
+• Saul poupa o rei Agague contra a ordem de Deus — perde o reino (cap. 15)
+• Samuel enviado a Jessé — passa por 7 filhos até chamar Davi, o menor, que cuidava das ovelhas (cap. 16)
+• "O Senhor não vê como vê o homem; o homem vê o exterior, mas o Senhor vê o coração" (16:7)
+• Davi enfrenta Golias com 5 pedras e uma funda: "Tu vens com espada... eu venho em nome do Senhor" (cap. 17)
+• A amizade profunda entre Davi e Jônatas — a alma de Jônatas estava ligada à alma de Davi (cap. 18)
+• Saul persegue Davi com inveja; Davi recusa duas vezes matar Saul: "Não estenderei a mão contra o ungido do Senhor" (caps. 24, 26)
+• Saul consulta a feiticeira de Endor — o espírito de Samuel o avisa da derrota (cap. 28)
+• Saul e Jônatas morrem na batalha do Monte Gilboa (cap. 31)
+
+💡 VERSÍCULO CHAVE: "O Senhor não vê como vê o homem; o homem vê o exterior, mas o Senhor vê o coração." (16:7)`,
+
+'2 Samuel':`📖 MENSAGEM CENTRAL: Deus estabelece sua aliança eterna com Davi — mas o pecado tem consequências reais, mesmo para os favoritos de Deus.
+
+🔑 EVENTOS MARCANTES:
+• Davi chora profundamente pela morte de Saul e Jônatas — compõe um lamento belíssimo (cap. 1)
+• Davi ungido rei sobre todo Israel em Hebrom após 7 anos de guerra civil (cap. 5)
+• Davi conquista Jerusalém e a estabelece como sua capital (cap. 5)
+• A arca de Deus trazida a Jerusalém — Davi dança com todas as forças; Mical o despreza (cap. 6)
+• A morte de Uzá ao tocar a arca — Deus leva a adoração a sério (cap. 6)
+• A Aliança Davídica: um descendente de Davi reinará para sempre (cap. 7)
+• Davi cuida de Mefibosete, filho coxo de Jônatas, pelo amor que tinha pelo amigo morto (cap. 9)
+• O pecado com Bate-Seba: a vê do terraço, comete adultério, manda Urias para a morte (cap. 11)
+• O profeta Natã confronta Davi com a parábola da ovelha: "Tu és esse homem!" (cap. 12)
+• Davi confessa: "Pequei contra o Senhor" — o bebê morre; o Salmo 51 nasce desse momento
+• A rebelião de Absalão — o próprio filho o expulsa do trono e dorme com suas concubinas (caps. 15–17)
+• Davi foge de Jerusalém descalço e em chanto (cap. 15)
+• Absalão pendurado pelos cabelos na árvore e morto por Joabe (cap. 18)
+• "Meu filho Absalão, meu filho Absalão!" — o choro mais devastador da vida de Davi (cap. 18)
+
+💡 VERSÍCULO CHAVE: "A tua casa e o teu reino serão firmes para sempre... o teu trono será estabelecido perpetuamente." (7:16)`,
+
+'1 Reis':`📖 MENSAGEM CENTRAL: A glória de Salomão e sua queda mostram que a idolatria destrói até os mais sábios. O reino se divide.
+
+🔑 EVENTOS MARCANTES:
+• Davi em seu leito de morte ordena a unção de Salomão como rei (cap. 1)
+• Salomão pede sabedoria a Deus em vez de riqueza ou vitórias — Deus lhe dá tudo (cap. 3)
+• O julgamento das duas mães disputando o bebê: "Dividam o bebê ao meio" — a mãe verdadeira desiste (cap. 3)
+• A Rainha de Sabá visita Salomão e fica sem fôlego com sua sabedoria e riqueza (cap. 10)
+• O Templo de Jerusalém construído em 7 anos — a glória de Deus o enche na dedicação (caps. 6–8)
+• A oração de Salomão na dedicação do Templo — uma das maiores da Bíblia (cap. 8)
+• Salomão acumula 700 esposas e 300 concubinas — seu coração se desvia para outros deuses (cap. 11)
+• O reino se divide: Israel (Norte) com Jeroboão x Judá (Sul) com Roboão (cap. 12)
+• Jeroboão cria bezerros de ouro em Betel e Dã para evitar que o povo vá a Jerusalém (cap. 12)
+• Elias declara seca de 3 anos e meio por causa da idolatria de Acabe e Jezabel (cap. 17)
+• A viúva de Sarepta — o pote de farinha nunca esgota; seu filho ressuscitado (cap. 17)
+• O confronto no Monte Carmelo: Elias x 450 profetas de Baal — fogo desce do céu (cap. 18)
+• Elias deprimido sob a árvore: "Já basta, Senhor" — o anjo o alimenta duas vezes (cap. 19)
+• Deus na voz mansa e delicada — não no vento, terremoto nem fogo (cap. 19)
+• Acabe toma à força a vinha de Nabote; Jezabel manda matá-lo; Elias pronuncia o juízo (cap. 21)
+
+💡 VERSÍCULO CHAVE: "Se o meu povo se humilhar e orar e buscar a minha face... então ouvirei e sararei a sua terra." (2Cr 7:14)`,
+
+'2 Reis':`📖 MENSAGEM CENTRAL: A idolatria persistente leva ao julgamento final — o exílio. Mas a linhagem davídica sobrevive para cumprir a promessa.
+
+🔑 EVENTOS MARCANTES:
+• Elias arrebatado ao céu num carro de fogo com cavalos de fogo — Eliseu pega o manto e recebe dobra do Espírito (cap. 2)
+• Eliseu purifica as águas amargas de Jericó com sal (cap. 2)
+• Eliseu amaldiçoa jovens que zombam de "cabeça-careca" — duas ursas saem do mato (cap. 2)
+• A viúva com dívidas — o azeite não para de fluir até não haver mais potes (cap. 4)
+• Eliseu ressuscita o filho da sunamita hospedeira (cap. 4)
+• Naamã, general sírio leproso, mergulha 7 vezes no Jordão por ordem de Eliseu e é curado (cap. 5)
+• Giezi mente para receber a recompensa de Naamã — fica leproso como castigo (cap. 5)
+• Eliseu vê os exércitos angelicais de cavalos e carros de fogo; seu servo tem os olhos abertos (cap. 6)
+• Jezabel cai da janela por ordem de Jeú — os cachorros a comem, cumprindo a profecia de Elias (cap. 9)
+• Ezequias destrói a serpente de bronze (Neustã) que Israel havia começado a adorar (cap. 18)
+• Assíria cerca Jerusalém; Ezequias ora; o anjo do Senhor mata 185.000 soldados numa noite (cap. 19)
+• Ezequias morre, ora chorando e recebe mais 15 anos de vida; o sol retrocede 10 graus (cap. 20)
+• Josias encontra o Livro da Lei perdido no Templo e chora — promove a maior reforma da história (caps. 22–23)
+• Queda de Samaria — Israel do Norte levado cativo pela Assíria (722 a.C.) (cap. 17)
+• Queda de Jerusalém — Nabucodonosor destrói o Templo; povo levado para a Babilônia (586 a.C.) (caps. 24–25)
+
+💡 VERSÍCULO CHAVE: "Isto se deu porque os filhos de Israel pecaram contra o Senhor seu Deus." (17:7)`,
+
+'1 Cronicas':`📖 MENSAGEM CENTRAL: A identidade de Israel está enraizada em Davi e na adoração — uma mensagem de esperança para o povo que voltou do exílio.
+
+🔑 EVENTOS MARCANTES:
+• Nove capítulos de genealogias — de Adão até os retornados do exílio; identidade e continuidade do povo (caps. 1–9)
+• A morte de Saul por infidelidade — contraste intencional com Davi (cap. 10)
+• Davi conquista Jerusalém com seus "valentes" — lista heroica dos 37 guerreiros (caps. 11–12)
+• A morte de Uzá ao tocar a arca — Deus leva a adoração a sério (cap. 13)
+• A arca finalmente chegando a Jerusalém com adoração correta; Davi dança diante do Senhor (cap. 15)
+• O Salmo de ação de graças de Davi diante da arca (cap. 16)
+• A Aliança Davídica: um descendente de Davi reinará para sempre (cap. 17)
+• Davi prepara materiais em quantidade extraordinária: ouro, prata, bronze, madeira para o Templo (caps. 22, 28–29)
+• Davi organiza levitas, sacerdotes, músicos e porteiros — a adoração estruturada (caps. 23–26)
+• A oração de Davi sobre a oferta do povo: "Tudo vem de ti e do que é teu te damos" (29:14)
+• Morte de Davi com 40 anos de reinado, "cheio de dias, riquezas e glória" (cap. 29)
+
+💡 VERSÍCULO CHAVE: "Tudo vem de ti, e do que é teu, to-damos." (29:14)`,
+
+'2 Cronicas':`📖 MENSAGEM CENTRAL: Fidelidade ao Templo e à aliança determina o destino dos reis — o arrependimento sempre encontra misericórdia.
+
+🔑 EVENTOS MARCANTES:
+• Salomão pede sabedoria em Gibeão — Deus aparece de noite e lhe dá tudo (cap. 1)
+• A glória de Deus enche o Templo na dedicação — os sacerdotes não conseguem ficar em pé (caps. 5–7)
+• Deus aparece a Salomão: "Se o meu povo se humilhar e orar... sararei a sua terra" (7:14)
+• A visita da Rainha de Sabá: "Nem a metade me havia sido dita da tua sabedoria" (cap. 9)
+• Divisão do reino por arrogância de Roboão (cap. 10)
+• Asa remove os ídolos e depõe a própria avó do cargo de rainha-mãe por idolatria (cap. 15)
+• Josafá envia cantores à frente do exército louvando — o inimigo se destrói sozinho (cap. 20)
+• O bebê Joás escondido no Templo por 6 anos enquanto a malvada Atalia reinava (cap. 22)
+• Ezequias reforma, reabre o Templo, celebra a Páscoa com alegria sem precedentes em séculos (caps. 29–30)
+• Invasão de Senaqueribe — oração de Ezequias e destruição miraculosa dos 185.000 assírios (cap. 32)
+• Manassés, o rei mais perverso, se arrepende no cativeiro e é restaurado (cap. 33)
+• Josias encontra o Livro da Lei, rasga as vestes, chora — promove a maior reforma (caps. 34–35)
+• A destruição de Jerusalém e do Templo — o exílio na Babilônia (cap. 36)
+• Esperança final: decreto de Ciro autorizando o retorno dos exilados (cap. 36)
+
+💡 VERSÍCULO CHAVE: "Se o meu povo... se humilhar, orar e buscar a minha face... ouvirei dos céus, perdoarei os seus pecados e sararei a sua terra." (7:14)`,
+
+'Esdras':`📖 MENSAGEM CENTRAL: Deus cumpre sua palavra — o exílio termina, o povo retorna e o Templo é reconstruído apesar de toda oposição.
+
+🔑 EVENTOS MARCANTES:
+• O decreto de Ciro da Pérsia: "O Senhor, o Deus do céu, me encarregou de edificar uma casa para ele" (cap. 1)
+• Retorno de quase 50.000 pessoas para Judá com ouro e prata (cap. 2)
+• Os fundamentos do Templo são lançados — os velhos que viram o primeiro Templo choram; os jovens gritam de alegria (cap. 3)
+• Os adversários oferecem ajuda para sabotar — depois escrevem ao rei para parar a construção (cap. 4)
+• Os profetas Ageu e Zacarias encorajam o povo a continuar a obra (cap. 5)
+• O Templo finalmente concluído e dedicado com grande alegria — 70 anos após a destruição (cap. 6)
+• Esdras, escriba e sacerdote, chega décadas depois com mais exilados, autorizado por Artaxerxes (cap. 7)
+• Esdras jejua e ora pedindo proteção para a viagem sem escolta militar — ele teve vergonha de pedir tropas ao rei (cap. 8)
+• Esdras descobre que sacerdotes e povo casaram com nações proibidas (cap. 9)
+• Esdras chora, rasga as vestes e prostra-se em oração de confissão pública (cap. 9)
+• O povo chora com Esdras e decide tomar providências (cap. 10)
+
+💡 VERSÍCULO CHAVE: "Esdras tinha preparado o seu coração para buscar a Lei do Senhor, praticá-la e ensinar os seus estatutos em Israel." (7:10)`,
+
+'Neemias':`📖 MENSAGEM CENTRAL: Oração e ação andam juntas — Neemias reconstruiu os muros de Jerusalém em 52 dias com coragem, fé e liderança prática.
+
+🔑 EVENTOS MARCANTES:
+• Neemias, copeiro do rei persa, ouve que Jerusalém está em ruínas e chora por dias (cap. 1)
+• A oração de confissão dos pecados de Israel e pedido de graça diante do rei (cap. 1)
+• O rei Artaxerxes percebe a tristeza de Neemias — Neemias ora silenciosamente e faz o pedido (cap. 2)
+• Neemias inspeciona os muros à noite em segredo antes de anunciar o plano (cap. 2)
+• "O Deus do céu nos prosperará; nós nos levantaremos e edificaremos" (2:20)
+• Cada família reconstrói a parte do muro em frente à sua própria casa (cap. 3)
+• Oposição intensa de Sambalay e Tobias — ridicularizam e conspiram; Neemias ora e dobra a guarda (caps. 4–6)
+• Os trabalhadores constroem com uma mão e seguram a espada com a outra (cap. 4)
+• Neemias denuncia a exploração dos pobres pelos ricos — e os nobres cedem (cap. 5)
+• O muro concluído em apenas 52 dias — os inimigos reconhecem que foi feito com auxílio de Deus (cap. 6)
+• Esdras lê a Lei publicamente por horas — o povo chora de emoção ao ouvi-la (cap. 8)
+• "A alegria do Senhor é a vossa força" — dito a um povo em lágrimas (8:10)
+• A festa das Cabanas celebrada pela primeira vez em séculos (cap. 8)
+• Grande confissão pública de pecados e renovação da aliança (caps. 9–10)
+
+💡 VERSÍCULO CHAVE: "A alegria do Senhor é a vossa força." (8:10)`,
+
+'Ester':`📖 MENSAGEM CENTRAL: A providência de Deus age nos bastidores — seu nome não é mencionado no livro, mas sua mão está em cada detalhe.
+
+🔑 EVENTOS MARCANTES:
+• A rainha Vasti recusa comparecer ao banquete do rei Assuero e é deposta (cap. 1)
+• Ester, judia órfã criada por seu primo Mordecai, é escolhida rainha após concurso de beleza (cap. 2)
+• Mordecai descobre uma conspiração de assassinato contra o rei e denuncia — registrado nos anais (cap. 2)
+• Hamã, primeiro-ministro, fica furioso porque Mordecai recusa se curvar diante dele (cap. 3)
+• Hamã convence o rei a decretar a morte de todos os judeus do imenso Império Persa (cap. 3)
+• Hamã manda erguer uma forca de 23 metros de altura para enforcar Mordecai especificamente (cap. 5)
+• Mordecai desafia Ester: "Quem sabe se não foi para um momento como este que chegaste ao reino?" (4:14)
+• Ester decide arriscar a vida indo ao rei sem ser convidada: "Se perecer, que pereça" (cap. 4)
+• Ester jejua 3 dias com todo o povo judeu antes de agir (cap. 4)
+• Na noite antes do momento decisivo, o rei tem insônia e manda ler os anais — descobre que Mordecai salvou sua vida (cap. 6)
+• Hamã é humilhado ao ter que liderar o próprio Mordecai pelo cavalo pelas ruas (cap. 6)
+• Ester revela sua identidade no banquete e denuncia Hamã ao rei (cap. 7)
+• Hamã é enforcado na mesma forca que mandou construir para Mordecai (cap. 7)
+• O decreto é revertido — os judeus se defendem e vencem (cap. 8)
+• A festa de Purim é instituída para comemorar a libertação a cada ano (cap. 9)
+
+💡 VERSÍCULO CHAVE: "Quem sabe se não foi para um momento como este que chegaste ao reino?" (4:14)`,
+
+'Jo':`📖 MENSAGEM CENTRAL: Por que o justo sofre? A resposta não é simples — mas Deus é suficiente mesmo quando não entendemos suas razões.
+
+🔑 EVENTOS MARCANTES:
+• Jó é apresentado como o homem mais íntegro da terra — rico, piedoso, pai exemplar (cap. 1)
+• O conselho celestial: Satanás acusa Jó de ser fiel apenas pelos benefícios que recebe (cap. 1)
+• Em um único dia, Jó perde todos os filhos, todas as riquezas e todos os servos — e ainda assim adora a Deus (cap. 1)
+• "O Senhor o deu, o Senhor o tomou; bendito seja o nome do Senhor" (1:21)
+• Jó é atingido por úlceras horríveis da cabeça aos pés; raspa-se com um caco de barro (cap. 2)
+• A esposa de Jó diz: "Amaldiçoa a Deus e morre" — Jó a recusa (cap. 2)
+• Os três amigos ficam sentados em silêncio com Jó por 7 dias sem dizer uma palavra (cap. 2)
+• Os amigos insistem com argumentos diferentes que Jó está sofrendo por algum pecado oculto (caps. 3–31)
+• Jó contesta e grita sua inocência para Deus com honestidade brutal — a Bíblia permite esse tipo de oração (caps. 6–7, 9–10, 13, 16, 19, 23)
+• A confissão de fé inabalável no meio do sofrimento: "Eu sei que o meu Redentor vive... em minha carne verei a Deus" (19:25-26)
+• O jovem Eliú aparece e corrige os três amigos — mais próximo da verdade (caps. 32–37)
+• Deus responde de dentro de um redemoinho com perguntas sobre a criação (caps. 38–41)
+• "Onde estavas quando lancei os fundamentos da terra?" — revelando a vastidão além da compreensão humana
+• Jó se humilha: "Eu te conhecia só de ouvir, mas agora os meus olhos te veem" (42:5)
+• Deus repreende os três amigos por não terem falado corretamente — Jó ora por eles
+• Jó restaurado com o dobro do que tinha; vive mais 140 anos vendo quatro gerações (cap. 42)
+
+💡 VERSÍCULO CHAVE: "Eu sei que o meu Redentor vive, e por último se levantará sobre o pó." (19:25)`,
+
+'Salmos':`📖 MENSAGEM CENTRAL: Os Salmos são a escola de oração da Bíblia — ensinam a ser honestos com Deus em toda emoção humana: alegria, medo, fúria, desespero e louvor.
+
+🔑 SALMOS MARCANTES:
+• Salmo 1 — O caminho do justo e do ímpio; a árvore plantada junto às correntes de água
+• Salmo 22 — Profecia da crucificação: "Deus meu, por que me abandonaste?" — citado por Jesus na cruz
+• Salmo 23 — "O Senhor é o meu Pastor; nada me faltará... Ainda que eu ande pelo vale da sombra da morte"
+• Salmo 27 — "O Senhor é a minha luz e a minha salvação; a quem temerei?"
+• Salmo 46 — "Deus é o nosso refúgio e fortaleza, socorro bem-presente nas tribulações"
+• Salmo 51 — O arrependimento de Davi após Bate-Seba: "Cria em mim, ó Deus, um coração puro"
+• Salmo 91 — "Aquele que habita no esconderijo do Altíssimo... à sombra do Todo-Poderoso descansará"
+• Salmo 103 — "Bendize, ó minha alma, ao Senhor... que perdoa todas as tuas iniquidades, que sara todas as tuas doenças"
+• Salmo 119 — O mais longo (176 versos) — celebração da Palavra de Deus em cada aspecto da vida
+• Salmo 121 — "Levanto os olhos para os montes; de onde me virá o socorro? O meu socorro vem do Senhor"
+• Salmo 137 — Lamento no exílio: "À beira dos rios da Babilônia nos sentamos e choramos"
+• Salmo 139 — "Senhor, tu me sondas e me conheces... onde me afastarei do teu Espírito? Para onde fugirei da tua presença?"
+• Salmo 150 — Aleluia final: "Tudo que respira, louve ao Senhor!"
+• A maioria dos Salmos são Lamentos — a Bíblia ensina que reclamar honestamente para Deus é um ato de fé
+
+💡 VERSÍCULO CHAVE: "O Senhor é o meu Pastor; nada me faltará." (23:1)`,
+
+'Proverbios':`📖 MENSAGEM CENTRAL: A sabedoria começa com o temor de Deus e se aplica a cada detalhe da vida cotidiana — família, trabalho, palavras, amizades e dinheiro.
+
+🔑 ENSINAMENTOS MARCANTES:
+• "O temor do Senhor é o princípio da sabedoria" (1:7; 9:10) — o fundamento de todo o livro
+• A Sabedoria personificada como mulher que clama nas ruas: "Até quando amareis a simplicidade?" (caps. 1, 8)
+• "Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento; reconhece-o em todos os teus caminhos, e ele endireitará as tuas veredas" (3:5-6)
+• "Honra ao Senhor com os teus bens e com as primícias... e os teus celeiros se encherão fartamente" (3:9-10)
+• A Sabedoria estava na criação com Deus: "Eu estava junto dele como arquiteta" (cap. 8)
+• Proibição severa do adultério — a mulher estranha como armadilha de morte (caps. 5–7)
+• O preguiçoso e a formiga: "Vai ter com a formiga, ó preguiçoso; considera os seus caminhos" (6:6)
+• As 7 coisas que Deus odeia: olhos altivos, língua mentirosa, mãos que derramam sangue inocente... (6:16-19)
+• "O orgulho vem antes da destruição, e o espírito altivo antes da queda" (16:18)
+• "Resposta branda desvia o furor, mas a palavra áspera faz subir a ira" (15:1)
+• "A esperança adiada enfraquece o coração, mas o desejo cumprido é árvore de vida" (13:12)
+• A Mulher Virtuosa do cap. 31: empreendedora, generosa, sábia e temente a Deus — o maior elogio do livro
+
+💡 VERSÍCULO CHAVE: "Confia no Senhor de todo o teu coração... reconhece-o em todos os teus caminhos, e ele endireitará as tuas veredas." (3:5-6)`,
+
+'Eclesiastes':`📖 MENSAGEM CENTRAL: Buscar sentido em coisas passageiras sem Deus é vaidade — a vida tem sentido real somente quando conectada ao Criador.
+
+🔑 ENSINAMENTOS MARCANTES:
+• "Vaidade de vaidades, diz o pregador; tudo é vaidade" — abre e fecha o livro (1:2; 12:8)
+• Tudo se repete gerações após gerações: sol nasce e se põe, rios correm ao mar, nada é novo (cap. 1)
+• O Pregador testou tudo pessoalmente: sabedoria, prazer, vinho, grandes obras, riqueza — e tudo foi vaidade (caps. 1–2)
+• "Para tudo há uma estação certa, um tempo para todo propósito debaixo do céu" (3:1)
+• O poema dos tempos: tempo de nascer e de morrer, de plantar e de arrancar, de chorar e de rir... (cap. 3)
+• "Deus pôs a eternidade no coração do homem" — por isso nada temporário nos satisfaz completamente (3:11)
+• Dois são melhores que um — o amigo que levanta o que caiu (4:9-12)
+• Cuidado ao fazer votos a Deus — melhor não fazer do que fazer e não cumprir (cap. 5)
+• "Quem ama o dinheiro nunca se farta de dinheiro; quem ama a abundância não se satisfaz" (5:10)
+• "Lança o teu pão sobre as águas, pois depois de muitos dias o acharás" (11:1)
+• "Lembra-te do teu Criador nos dias da tua mocidade, antes que venham os dias maus" (12:1)
+• A conclusão após toda a investigação: "Teme a Deus e guarda os seus mandamentos; isto é o dever de todo homem" (12:13)
+
+💡 VERSÍCULO CHAVE: "Teme a Deus e guarda os seus mandamentos; porque isto é o dever de todo homem." (12:13)`,
+
+'Canticos':`📖 MENSAGEM CENTRAL: O amor humano entre homem e mulher é um dom sagrado de Deus — e metáfora do amor apaixonado de Deus pelo seu povo.
+
+🔑 IMAGENS MARCANTES:
+• Um diálogo poético entre dois amantes — o Amado e a Sulamita — cheio de metáforas da natureza
+• "Sou morena, porém formosa, ó filhas de Jerusalém" — beleza afirmada com confiança (1:5)
+• "Ele me levou à adega, e o seu estandarte sobre mim é o amor" (2:4)
+• "A minha amada é minha e eu sou dela; ele apascenta entre os lírios" (2:16)
+• A busca da amada pela cidade à noite — o desejo, a saudade, a entrega (caps. 3, 5)
+• Descrição poética da beleza de cada um — poesia sensorial rica (caps. 4–7)
+• "Conjuro-vos, ó filhas de Jerusalém... não desperteis nem acordeis o amor antes do tempo" — repetido três vezes (2:7; 3:5; 8:4)
+• A declaração mais profunda: "O amor é forte como a morte... suas brasas são brasas de fogo, chama do próprio Senhor" (8:6)
+• "As muitas águas não podem apagar o amor; nem os rios o submergirão" (8:7)
+• O amor não pode ser comprado: "Se alguém oferecer toda a sua fortuna pelo amor, seria completamente desprezado" (8:7)
+
+💡 VERSÍCULO CHAVE: "O amor é forte como a morte... suas brasas são brasas de fogo, a própria chama do Senhor." (8:6)`,
+
+'Isaias':`📖 MENSAGEM CENTRAL: Deus julga mas também restaura — e enviará um Servo que sofreria pelos pecados de toda a humanidade.
+
+🔑 PROFECIAS E EVENTOS MARCANTES:
+• A visão inaugural: Isaías vê o Senhor no trono, serafins clamam "Santo, Santo, Santo" — seus lábios purificados com brasa ardente (cap. 6)
+• "Eis-me aqui, envia-me" — a resposta de Isaías ao chamado de Deus (6:8)
+• Profecia da Virgem: "Uma virgem conceberá e dará à luz um filho, e chamará o seu nome Emanuel" (7:14)
+• "Porque um menino nos nasceu... e o seu nome será: Maravilhoso Conselheiro, Deus Forte, Pai da Eternidade, Príncipe da Paz" (9:6)
+• O Ramo de Jessé — o Messias cheio do Espírito; lobo e cordeiro habitarão juntos (cap. 11)
+• "Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus; eu te fortaleço" (41:10)
+• "Os que esperam no Senhor renovam as suas forças; voam com asas como águias; correm e não se cansam; andam e não se fatigam" (40:31)
+• "Consolai, consolai o meu povo" — começa a grande seção de consolo (caps. 40–66)
+• Os 4 Cantos do Servo Sofredor — profecias impressionantes sobre Jesus (caps. 42, 49, 50, 52–53)
+• Isaías 53 inteiro: "Ele foi desprezado e rejeitado... era homem de dores... carregou as nossas dores... pela sua ferida fomos sarados"
+• "Ainda que os vossos pecados sejam como a escarlate, tornar-se-ão brancos como a neve" (1:18)
+• Isaías 61 — o texto que Jesus leu em Nazaré: "O Espírito do Senhor está sobre mim, porque ele me ungiu para pregar as boas novas"
+• "Eis que crio novos céus e nova terra; as coisas anteriores não serão lembradas" (65:17)
+
+💡 VERSÍCULO CHAVE: "Pela sua ferida fomos sarados." (53:5)`,
+
+'Jeremias':`📖 MENSAGEM CENTRAL: Deus faz uma Nova Aliança escrita no coração — e chama seu povo ao arrependimento genuíno durante 40 anos de pregação ignorada.
+
+🔑 EVENTOS MARCANTES:
+• Chamado de Jeremias: "Antes de te formar no ventre te conheci... te constituí profeta às nações" — ele alega ser jovem e não saber falar (cap. 1)
+• Jeremias pregou fiel por 40 anos sendo constantemente ignorado, ridicularizado, preso e jogado numa cisterna
+• "Pois eu sei os planos que tenho para vós, planos de paz e não de mal, para vos dar um futuro e uma esperança" (29:11)
+• A carta aos exilados: "Edificai casas... plantai jardins... buscai a paz da cidade... orai por ela" (cap. 29)
+• O campo comprado em Anatote enquanto Jerusalém estava sendo cercada pelos babilônios — ato profético de fé (cap. 32)
+• A Nova Aliança (cap. 31): "Farei nova aliança... porei a minha lei no interior, a escreverei no coração... nunca mais lembrarei dos seus pecados"
+• Jeremias proibido de se casar como sinal do julgamento que viria sobre as famílias (cap. 16)
+• Jeremias jogado numa cisterna enlameada e afundando; resgatado pelo etíope Ebede-Meleque (cap. 38)
+• Os lamentos pessoais de Jeremias — momentos em que maldiz o dia de seu nascimento (caps. 15, 20)
+• "O coração humano é mais enganoso do que qualquer coisa, e perverso; quem pode conhecê-lo?" (17:9)
+• O rei Zedequias capturado; seus filhos morrem na sua frente; depois seus olhos são vazados (cap. 39)
+• Jeremias permanece entre as ruínas de Jerusalém recusando ir para a Babilônia (cap. 40)
+
+💡 VERSÍCULO CHAVE: "Pois eu sei os planos que tenho para vós, planos de paz e não de mal, para vos dar um futuro e uma esperança." (29:11)`,
+
+'Lamentacoes':`📖 MENSAGEM CENTRAL: A dor mais profunda e a esperança mais firme coexistem — mesmo no pior momento, as misericórdias de Deus são novas cada manhã.
+
+🔑 MOMENTOS MARCANTES:
+• Cinco poemas lamentando a destruição de Jerusalém — escritos por testemunha ocular (possivelmente Jeremias)
+• Estrutura em acróstico hebraico — poesia elaborada mesmo no meio da dor (caps. 1, 2, 4)
+• Jerusalém personificada como mulher abandonada chorando sozinha na noite: "Chora amargamente" (1:2)
+• O sofrimento descrito com crueza extrema: "Mãos de mulheres compassivas cozinharam seus próprios filhos" (4:10)
+• A confissão honesta: "O Senhor é justo, porque eu me rebelei contra os seus mandamentos" (1:18)
+• O ponto de virada no meio do maior lamento: "Isto me vem à mente, portanto esperarei" (3:21)
+• A passagem mais famosa: "As misericórdias do Senhor não têm fim, as suas compaixões não se esgotam; renovam-se cada manhã. Grande é a tua fidelidade!" (3:22-23)
+• "Bom é esperar em silêncio a salvação do Senhor" (3:26)
+• O clamor final: "Faze-nos voltar a ti, ó Senhor, e nós voltaremos; renova os nossos dias como dantes!" (5:21)
+
+💡 VERSÍCULO CHAVE: "As misericórdias do Senhor não têm fim... renovam-se cada manhã. Grande é a tua fidelidade!" (3:22-23)`,
+
+'Ezequiel':`📖 MENSAGEM CENTRAL: Deus não está preso a Jerusalém — está presente no exílio — e promete restaurar seu povo com coração novo e Espírito novo.
+
+🔑 VISÕES E EVENTOS MARCANTES:
+• A visão inaugural aterrorizante: quatro seres viventes, rodas dentro de rodas cheias de olhos, o trono de safira — a glória de Deus em movimento (cap. 1)
+• Ezequiel come um rolo de livro com sabor de mel, mas amargo no estômago (cap. 3)
+• As encenações proféticas: deita-se de lado 390 dias por Israel, depois 40 por Judá; cozinha em excremento (cap. 4)
+• A glória de Deus abandona o Templo progressivamente — passo a passo, hesitando (caps. 8–11)
+• Idolatria dentro do próprio Templo: anciãos incensando ídolos na escuridão; mulheres chorando pelo deus Tamuz (cap. 8)
+• "A alma que pecar, essa morrerá — não o filho pelo pai" — responsabilidade individual (cap. 18)
+• O Vale dos Ossos Secos: ossos ganham tendões e carne; o sopro de Deus entra — ressurreição espiritual de Israel (cap. 37)
+• Gogue e Magogue — batalha apocalíptica final das nações contra Israel (caps. 38–39)
+• A visão do Templo futuro glorioso — detalhes arquitetônicos precisos (caps. 40–48)
+• O rio que flui do Templo — fica cada vez mais fundo; traz vida onde vai, até curar o Mar Morto (cap. 47)
+• A nova cidade se chamará para sempre "O SENHOR ESTÁ LÁ" (cap. 48)
+
+💡 VERSÍCULO CHAVE: "Darei a vós um coração novo e porei dentro de vós um espírito novo; tirarei o coração de pedra e vos darei um coração de carne." (36:26)`,
+
+'Daniel':`📖 MENSAGEM CENTRAL: Deus controla a história — todos os reinos humanos passam, mas o reino de Deus permanece para sempre.
+
+🔑 EVENTOS MARCANTES:
+• Daniel e amigos recusam a comida e o vinho do rei — ficam mais saudáveis que todos os outros (cap. 1)
+• O sonho de Nabucodonosor: a estátua de ouro, prata, bronze, ferro e argila — reinos que se sucedem (cap. 2)
+• A pedra não cortada por mão humana que esmaga tudo e enche a terra (cap. 2)
+• Shadraque, Mesaque e Abednego se recusam a adorar a estátua de ouro — jogados na fornalha 7 vezes mais quente (cap. 3)
+• "Ainda que não nos livre, fica sabendo que não serviremos aos teus deuses" (3:18)
+• O quarto homem na fornalha — "parece filho dos deuses" (cap. 3)
+• Nabucodonosor come capim como boi por 7 anos até reconhecer a soberania de Deus (cap. 4)
+• A escrita na parede no banquete de Belsazar: "Mene, Mene, Tequel, Parsim" — o reino dividido naquela noite (cap. 5)
+• Daniel na cova dos leões — boca fechada pelos anjos; os acusadores jogados com as famílias (cap. 6)
+• A visão dos quatro animais — Babilônia, Média-Pérsia, Grécia, Roma (cap. 7)
+• O Ancião de Dias no trono e o "Filho do Homem" que recebe um reino eterno — Jesus usa esse título para si mesmo
+• A oração de Daniel de confissão — o anjo Gabriel vem voando; o príncipe de Pérsia o reteve 21 dias (cap. 10)
+• "Os que forem sábios resplandecerão como o fulgor do firmamento... como as estrelas eternamente" (12:3)
+
+💡 VERSÍCULO CHAVE: "O Deus do céu levantará um reino que não será jamais destruído." (2:44)`,
+
+'Oseias':`📖 MENSAGEM CENTRAL: Deus ama seu povo com amor de esposo — mesmo sendo traído repetidamente. Ele busca, chama de volta e restaura.
+
+🔑 EVENTOS MARCANTES:
+• Deus manda Oseias casar com Gômer, uma prostituta — o casamento como metáfora do amor de Deus por Israel infiel (cap. 1)
+• Os filhos com nomes proféticos: Jezreel (dispersão), Lo-Ruama (sem misericórdia), Lo-Ami (não meu povo) (cap. 1)
+• Gômer abandona Oseias e volta à prostituição; Deus manda buscar e comprar a esposa infiel de volta (cap. 3)
+• "Portanto, eis que vou atraí-la, levá-la ao deserto, e falarei ao seu coração" (2:14) — Deus seduzindo seu povo de volta
+• Restauração dos nomes: Lo-Ruama será "Misericórdia" e Lo-Ami será "Meu povo" (cap. 2)
+• "Quero misericórdia e não sacrifício, conhecimento de Deus mais do que holocaustos" (6:6) — citado por Jesus duas vezes nos Evangelhos
+• "Eles semeiam ventos e colhem tempestades" (8:7) — sobre as escolhas de Israel
+• Deus como pai ensinando Israel a andar: "Ensinei Efraim a caminhar, tomando-o pelos braços" (11:3)
+• "Meu coração está perturbado... Não executarei o ardor da minha ira, pois sou Deus e não homem" (11:8-9)
+• "Ó Israel, volta ao Senhor teu Deus, pois tropeçaste na tua iniquidade" (14:1)
+• "Serei como orvalho para Israel; ele florescerá como o lírio" (14:5)
+
+💡 VERSÍCULO CHAVE: "Quero misericórdia e não sacrifício, o conhecimento de Deus mais do que holocaustos." (6:6)`,
+
+'Joel':`📖 MENSAGEM CENTRAL: O Dia do Senhor é terrível — mas quem se arrepende será salvo, e Deus derramará seu Espírito sobre toda carne.
+
+🔑 EVENTOS MARCANTES:
+• Uma devastadora invasão de gafanhotos destrói toda a colheita de Judá (cap. 1)
+• O lamento: vinho, grão e azeite destruídos; até os sacerdotes choram; os animais gemem (cap. 1)
+• O chamado ao arrependimento nacional com jejum, choro e luto: "Rasgai o vosso coração e não as vossas vestes" (2:13)
+• A segunda praga de gafanhotos como exército do Senhor — escurece o sol na sua passagem (cap. 2)
+• A promessa de restauração: Deus promete restituir os anos que os gafanhotos comeram (2:25)
+• A maior profecia de Joel: "Depois disto derramarei o meu Espírito sobre toda carne; filhos e filhas profetizarão, velhos terão sonhos, jovens terão visões" (2:28-29)
+• Pedro cita essa profecia em Atos 2 — cumprida no dia de Pentecostes
+• O Dia do Senhor: sol escurecido e lua em sangue antes do grande e terrível dia
+• O Vale de Jeosafá: onde Deus julgará todas as nações (cap. 3)
+• "Forjai das vossas relhas espadas" (3:10) — inversão profética de Isaías 2:4
+
+💡 VERSÍCULO CHAVE: "Derramarei o meu Espírito sobre toda carne; os vossos filhos e filhas profetizarão." (2:28)`,
+
+'Amos':`📖 MENSAGEM CENTRAL: Deus não aceita adoração de quem explora os pobres. Justiça social e fé verdadeira são completamente inseparáveis.
+
+🔑 EVENTOS MARCANTES:
+• Amós era pastor de ovelhas e cultivador de figueiras — chamado diretamente do campo sem preparação religiosa (7:14-15)
+• Julgamentos sucessivos sobre as nações vizinhas — o povo israelita aplaudia cada um (caps. 1–2)
+• O golpe: julgamento sobre Israel que vendia o justo por dinheiro e o pobre por um par de sandálias (2:6)
+• "Esmago o chão sobre a cabeça dos pobres... pai e filho vão à mesma moça" — Deus não fecha os olhos (2:7)
+• As festas e assembleias religiosas de Israel são detestáveis a Deus enquanto o povo oprime os pobres (5:21-24)
+• "Que role o juízo como água, e a justiça como ribeiro perene" (5:24) — versículo mais famoso do livro
+• A visão do prumo: Israel está completamente torto em relação ao padrão de Deus (cap. 7)
+• Amasias, sacerdote de Betel, manda Amós embora; Amós profetiza contra ele especificamente (cap. 7)
+• "Enviarei fome à terra — não fome de pão, mas de ouvir a Palavra do Senhor" (8:11)
+• A promessa final de restauração: Israel plantado em sua terra nunca mais será arrancado (9:14-15)
+
+💡 VERSÍCULO CHAVE: "Que o juízo corra como as águas, e a justiça como ribeiro perene." (5:24)`,
+
+'Obadias':`📖 MENSAGEM CENTRAL: Nenhuma nação que se alegra com a queda do povo de Deus ficará sem resposta — o orgulho antecede a queda.
+
+🔑 EVENTOS MARCANTES:
+• O livro mais curto do Antigo Testamento — apenas 21 versículos
+• Edom (descendente de Esaú, irmão de Jacó) condenado por sua crueldade histórica contra Israel
+• Edom habitava nas rochas de Petra, inacessível, e se achava completamente intocável: "Quem me fará descer?" (v.3)
+• "Embora te elevasses como águia e colocasses o teu ninho entre as estrelas, dali te farei descer, diz o Senhor" (v.4)
+• Os crimes documentados de Edom: ficou de longe enquanto Jerusalém era saqueada; entrou para participar do saque; capturou os fugitivos israelitas e os entregou ao inimigo (vv.11-14)
+• "Como fizeste, assim se fará contigo; a tua recompensa recairá sobre a tua própria cabeça" (v.15)
+• O Dia do Senhor virá sobre todas as nações que agiram assim (v.15)
+• A promessa final de restauração de Israel e do Reino de Deus (vv.17-21)
+
+💡 VERSÍCULO CHAVE: "O orgulho do teu coração te enganou... Embora te elevasses como águia, dali te farei descer." (vv.3-4)`,
+
+'Jonas':`📖 MENSAGEM CENTRAL: A graça de Deus não tem fronteiras nacionais — e o maior problema de Jonas não era o peixe, mas seu coração fechado para os inimigos.
+
+🔑 EVENTOS MARCANTES:
+• Deus manda Jonas pregar em Nínive — a cruel capital inimiga da Assíria
+• Jonas foge para Társis — direção completamente oposta — e embarca num navio (cap. 1)
+• Tempestade violenta enviada por Deus; os marinheiros pagãos oram desesperados; Jonas está dormindo no porão (cap. 1)
+• O sorteio aponta para Jonas; ele confessa ter fugido; pede para ser jogado ao mar (cap. 1)
+• Os marinheiros pagãos hesitam e remam contra o vento antes de jogá-lo — mais escrúpulo que o profeta (cap. 1)
+• Jonas engolido por um grande peixe — 3 dias e 3 noites; Jesus cita isso como sinal da ressurreição (Mt 12:40)
+• A oração de louvor de Jonas dentro do ventre do peixe — no lugar mais impossível (cap. 2)
+• "A salvação pertence ao Senhor" — o peixe vomita Jonas na praia (cap. 2)
+• Jonas prega a mensagem mais curta da Bíblia: "Ainda 40 dias e Nínive será destruída"
+• A cidade inteira se arrepende — do rei aos animais; o rei decreta jejum até para os animais (cap. 3)
+• Deus se arrepende do mal que ia fazer e não o executa (cap. 3)
+• Jonas fica com raiva que Deus perdoou Nínive — seu verdadeiro coração revelado (cap. 4)
+• Jonas senta-se ao leste da cidade esperando sua destruição (cap. 4)
+• A cabaça que cresce e o verme que a destrói — Jonas chora pela planta
+• "Tens pena desta planta... e eu não terei pena de Nínive com 120.000 pessoas?" (4:10-11)
+• O livro termina com uma pergunta sem resposta — que fica para o leitor responder
+
+💡 VERSÍCULO CHAVE: "Tens pena desta planta... e eu não terei pena de Nínive, com mais de 120.000 pessoas?" (4:10-11)`,
+
+'Miqueias':`📖 MENSAGEM CENTRAL: Deus exige justiça e misericórdia — não apenas rituais. E o Messias nascerá em Belém.
+
+🔑 EVENTOS MARCANTES:
+• Miquéias denuncia os líderes que "comem a carne" do povo — juízes e sacerdotes totalmente corrompidos (cap. 3)
+• Os falsos profetas pregam por dinheiro e dizem apenas o que as pessoas querem ouvir (cap. 3)
+• "Sião será lavrada como campo, Jerusalém será um montão de ruínas" — profecia 100 anos antes (3:12)
+• A visão do tempo final: as nações fluirão para o monte do Senhor; espadas serão transformadas em relhas (4:1-3)
+• "Cada um se assentará debaixo da sua videira... e não haverá ninguém que os atemorize" (4:4)
+• A profecia de Belém: "De ti, Belém Efrata... me sairá o que deve reinar em Israel, cujas origens são desde os tempos antigos" (5:2) — os magos e Herodes usaram esse versículo (Mt 2)
+• A grande pergunta e a resposta definitiva: "O que o Senhor pede de ti? Somente que pratiques a justiça, ames a misericórdia e andes humildemente com o teu Deus" (6:6-8)
+• Miquéias lamenta não encontrar pessoas íntegras em toda a sociedade (cap. 7)
+• A confiança final: "Mas quanto a mim, olharei para o Senhor, esperarei no Deus da minha salvação" (7:7)
+• "Qual Deus como tu, que perdoas a iniquidade... que se compraz em misericórdia?" (7:18)
+
+💡 VERSÍCULO CHAVE: "Praticar a justiça, amar a misericórdia e andar humildemente com o teu Deus." (6:8)`,
+
+'Naum':`📖 MENSAGEM CENTRAL: Deus é justo e sua paciência tem limites. Nínive voltou ao mal após o arrependimento em Jonas — e é destruída completamente.
+
+🔑 EVENTOS MARCANTES:
+• O livro abre com a natureza dual de Deus: zeloso e vingador — mas bom como refúgio para quem confia (cap. 1)
+• "O Senhor é bom, é uma fortaleza no dia da angústia, e conhece os que nele se refugiam" (1:7)
+• A destruição de Nínive descrita com detalhes vívidos de uma batalha real — cavalaria, carros, mortos nas ruas (caps. 2–3)
+• Nínive era a maior e mais poderosa cidade do mundo conhecido — Naum anuncia sua queda total
+• As causas da condenação: crueldade extrema com os vencidos, prostituição, feitiçaria, exploração de nações (cap. 3)
+• "Ai da cidade sanguinária! Toda ela cheia de mentira e rapina; não cessa a violência" (3:1)
+• Comparação com Tebas (No-Amom) que também caiu apesar do poder — a mesma sorte aguarda Nínive (cap. 3)
+• A profecia cumprida historicamente: Nínive foi destruída em 612 a.C. por medos e babilônios — tão completamente que sua localização foi esquecida por séculos
+
+💡 VERSÍCULO CHAVE: "O Senhor é bom, é uma fortaleza no dia da angústia, e conhece os que nele se refugiam." (1:7)`,
+
+'Habacuque':`📖 MENSAGEM CENTRAL: Quando Deus parece silencioso diante do mal, a resposta é a fé — "O justo viverá pela sua fé."
+
+🔑 EVENTOS MARCANTES:
+• Habacuque é o único profeta que debate abertamente com Deus — o livro é um diálogo honesto de perguntas e respostas
+• Primeira queixa: "Por que me fazes ver a iniquidade?... A violência está diante de mim; por que me deixas ver isso?" (1:3)
+• Resposta de Deus: estou levantando os caldeus para punir — Habacuque fica ainda mais perplexo
+• Segunda queixa: "Tu és puro demais para olhar para o mal... por que ficarás em silêncio enquanto o ímpio devora o mais justo que ele?" (1:13)
+• Habacuque sobe ao seu posto de sentinela como vigia e espera pacientemente a resposta de Deus (cap. 2)
+• A resposta de Deus: "Escreve a visão e grava-a em tábuas... ainda que tarde, espera-a; certamente virá" (2:2-3)
+• "O justo viverá pela sua fé" (2:4) — citado três vezes no Novo Testamento: Romanos 1:17, Gálatas 3:11, Hebreus 10:38
+• Os cinco ais sobre os opressores que acumularam por violência (cap. 2)
+• "O Senhor está no seu santo Templo; cale-se diante dele toda a terra" (2:20)
+• A oração final — um hino de tremor, espanto e confiança absoluta (cap. 3)
+• "Ainda que a figueira não floresça... ainda que o produto da oliveira falhe... ainda assim me alegrarei no Senhor, me regozijarei no Deus da minha salvação" (3:17-18)
+
+💡 VERSÍCULO CHAVE: "Ainda que a figueira não floresça... ainda assim me alegrarei no Senhor, me regozijarei no Deus da minha salvação." (3:17-18)`,
+
+'Sofonias':`📖 MENSAGEM CENTRAL: O Dia do Senhor traz julgamento sobre todos — mas os humildes que buscam a Deus serão protegidos e celebrados com cânticos.
+
+🔑 EVENTOS MARCANTES:
+• Sofonias é bisneto do rei Ezequias — um profeta de sangue real (1:1)
+• A ameaça de varredura total da terra por causa da idolatria e indiferença espiritual (1:2-3)
+• O Dia do Senhor descrito com intensidade: "dia de ira, dia de angústia e aflição, dia de desolação e destruição" (1:14-16)
+• A condenação da indiferença religiosa: "aqueles que dizem no seu coração: o Senhor não fará nem bem nem mal" (1:12)
+• O chamado urgente à humildade antes que o julgamento chegue: "Buscai o Senhor... buscai a justiça, buscai a humildade" (2:3)
+• Julgamentos sobre Filístia, Moabe, Amom, Etiópia e Assíria (cap. 2)
+• Condenação de Jerusalém: "Seus príncipes no meio dela são como leões que rugem; seus juízes são como lobos noturnos" (3:3)
+• A promessa mais belíssima: "O Senhor, teu Deus, está no meio de ti, poderoso para salvar; ele se deliciará em ti com alegria, renovará o seu amor, e se alegrará sobre ti com cânticos" (3:17) — Deus CANTA sobre seu povo
+• "Naquele tempo eu os trarei de volta e recolherei os cativos" (3:20)
+
+💡 VERSÍCULO CHAVE: "O Senhor teu Deus está no meio de ti, poderoso para salvar; ele se alegrará sobre ti com cânticos." (3:17)`,
+
+'Ageu':`📖 MENSAGEM CENTRAL: Prioridades importam — o povo parou de construir o Templo para cuidar das próprias casas e colhia pouco do muito que semeava.
+
+🔑 EVENTOS MARCANTES:
+• O contexto: o povo voltou do exílio e começou a reconstruir o Templo, mas parou há 16 anos (cap. 1)
+• "Este povo diz que ainda não chegou o tempo de edificar a Casa do Senhor" (1:2)
+• "É tempo para vós habitardes em casas revestidas de madeira, enquanto esta Casa está em ruínas?" (1:4)
+• O diagnóstico de Deus sobre as consequências: "Semeais muito e colheis pouco; comeis mas não vos fartais; bebeis mas não saciais a sede... o que ganhastes, meteis em bolsas rotas" (1:6)
+• O povo obedece — após apenas 23 dias do primeiro sermão retoma a obra do Templo (1:14-15)
+• O segundo sermão consola: os velhos choram lembrando do glorioso primeiro Templo (2:3)
+• "A glória desta última Casa será maior que a da primeira, diz o Senhor dos Exércitos" — apontando para Jesus (2:9)
+• O terceiro sermão: a impureza contamina; a santidade não é automática (2:10-14)
+• Um recado pessoal e cheio de promessas para Zorobabel: "Eu te escolherei como sinete" (2:23)
+
+💡 VERSÍCULO CHAVE: "Considerai os vossos caminhos!" (1:5,7)`,
+
+'Zacarias':`📖 MENSAGEM CENTRAL: O Messias virá como Rei humilde e Pastor traído — mas Deus vencerá e reinará sobre toda a terra.
+
+🔑 EVENTOS MARCANTES:
+• Oito visões noturnas recebidas numa única noite: cavaleiros, chifres e ferreiros, cordel de medir, Josué o sumo sacerdote, o candeeiro, o rolo voador, a mulher no efa, os quatro carros (caps. 1–6)
+• A coroa colocada na cabeça do sumo sacerdote Josué — símbolo do "Ramo" que construirá o verdadeiro Templo (cap. 6)
+• Profecias messiânicas únicas que não aparecem em nenhum outro livro:
+  — "Eis que vem o teu rei... humilde, montado sobre um jumentinho" (9:9) — cumprida na entrada em Jerusalém (Mt 21)
+  — Os 30 siclos de prata jogados na casa do Senhor (11:12-13) — cumprida com Judas (Mt 27)
+  — "Olharão para mim, a quem traspassaram" (12:10) — cumprida na cruz (João 19:37)
+  — "Fere o pastor e as ovelhas se dispersarão" (13:7) — citada por Jesus em Getsêmani (Mt 26:31)
+• O Monte das Oliveiras se divide ao meio quando os pés do Senhor pousam sobre ele (cap. 14)
+• "O Senhor será rei sobre toda a terra; naquele dia, o Senhor será o único Senhor" (14:9)
+
+💡 VERSÍCULO CHAVE: "Não por força nem por poder, mas pelo meu Espírito, diz o Senhor dos Exércitos." (4:6)`,
+
+'Malaquias':`📖 MENSAGEM CENTRAL: Deus ama seu povo mas está cansado da adoração sem coração — e promete enviar Elias antes do Grande Dia do Senhor.
+
+🔑 EVENTOS MARCANTES:
+• "Eu vos amei, diz o Senhor" — o povo imediatamente responde: "Em que nos amaste?" (1:2)
+• Os sacerdotes oferecem animais cegos, coxos e doentes: "Ofereça isso ao vosso governador; será que ele ficará satisfeito?" (1:8)
+• "Fechai as portas do Templo! Não tenho prazer em vós... pois não aceito de vossas mãos" (1:10)
+• Deus será adorado pelos gentios de leste a oeste — o que Israel rejeitava, os povos farão (1:11)
+• Os sacerdotes ensinam de forma errada e fazem o povo tropeçar — corromperam a aliança de Levi (cap. 2)
+• Condenação do divórcio: "Pois eu odeio o divórcio, diz o Senhor Deus de Israel... acautela-te no teu espírito" (2:16)
+• O mensageiro que preparará o caminho — cumprido em João Batista (3:1)
+• "O Senhor a quem buscais virá de repente ao seu Templo" (3:1)
+• O desafio único do dízimo: "Trazei todos os dízimos... provai-me nisto, diz o Senhor, se não abrir as janelas dos céus e derramar sobre vós bênção sem medida" (3:10)
+• Os que temem a Deus conversam uns com os outros — um livro de memórias é escrito diante do Senhor (3:16)
+• "Eles serão meus, diz o Senhor dos Exércitos... poupá-los-ei como um homem poupa o filho que lhe serve" (3:17)
+• A promessa final — a última do Antigo Testamento: "Eis que eu enviarei o profeta Elias antes que venha o grande e temível Dia do Senhor" (4:5) — cumprida em João Batista
+• O Antigo Testamento termina com a palavra "maldição" — e 400 anos de silêncio antes de João Batista
+
+💡 VERSÍCULO CHAVE: "Eu sou o Senhor e não mudo; por isso vós, filhos de Jacó, não sois consumidos." (3:6)`,
+
+'Romanos':`📖 MENSAGEM CENTRAL: O Evangelho é o poder de Deus para a salvação — toda a humanidade está sob o pecado, mas a justificação é pela fé em Cristo.
+
+🔑 ENSINAMENTOS MARCANTES:
+• "Não me envergonho do Evangelho, porque é o poder de Deus para a salvação de todo aquele que crê" (1:16)
+• Toda a humanidade está sob o pecado — judeus e gentios igualmente, sem exceção (caps. 1–3)
+• "Todos pecaram e estão destituídos da glória de Deus" (3:23)
+• A justificação pela fé — não pelas obras da Lei (caps. 3–4)
+• Abraão foi justificado pela fé antes mesmo de ser circuncidado — exemplo para todos (cap. 4)
+• "Deus prova o seu amor para conosco em que Cristo morreu por nós, sendo ainda pecadores" (5:8)
+• Adão trouxe morte para todos; Cristo trouxe vida para muito mais (5:12-21)
+• "O salário do pecado é a morte, mas o dom gratuito de Deus é a vida eterna em Cristo Jesus" (6:23)
+• A luta interna: "O bem que quero, não o faço; e o mal que não quero, esse pratico... Miserável homem que sou!" (cap. 7)
+• "Não há, pois, agora nenhuma condenação para os que estão em Cristo Jesus" (8:1)
+• O Espírito Santo ora por nós com gemidos inexprimíveis quando não sabemos o que pedir (8:26)
+• "Sabemos que todas as coisas cooperam para o bem daqueles que amam a Deus" (8:28)
+• "Quem nos separará do amor de Cristo?... Nem morte, nem vida, nem anjos, nem principados, nem coisas presentes, nem futuras..." (8:35-39)
+• Israel no plano de Deus — o mistério das raízes e os ramos (caps. 9–11)
+• "Apresentai os vossos corpos como sacrifício vivo, santo e agradável a Deus, que é o vosso culto racional" (12:1)
+• "Não vos conformeis com este século, mas transformai-vos pela renovação da vossa mente" (12:2)
+• "Não te deixes vencer pelo mal, mas vence o mal com o bem" (12:21)
+
+💡 VERSÍCULO CHAVE: "Não há agora nenhuma condenação para os que estão em Cristo Jesus." (8:1)`,
+
+'1 Corintios':`📖 MENSAGEM CENTRAL: O Evangelho deve transformar a vida comunitária — divisões, imoralidade e arrogância são incompatíveis com a cruz de Cristo.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Divisões na igreja: "Eu sou de Paulo / de Apolo / de Cefas / de Cristo" — Paulo repreende com vigor (cap. 1)
+• "A palavra da cruz é loucura para os que se perdem, mas para nós que somos salvos é o poder de Deus" (1:18)
+• Deus escolhe o fraco, o louco e o desprezível do mundo para envergonhar o poderoso (1:27-28)
+• Paulo pregou apenas Cristo crucificado, em fraqueza, temor e tremor (cap. 2)
+• "Vós sois o corpo de Cristo, e membros em particular" (12:27)
+• "O corpo é templo do Espírito Santo... glorificai a Deus no vosso corpo" (6:19-20)
+• "Tudo é lícito, mas nem tudo convém; tudo é lícito, mas nem tudo edifica" (10:23)
+• O exame de si mesmo antes de participar dignamente da Ceia do Senhor (cap. 11)
+• Os dons espirituais são para edificar o corpo — não para exibição ou status pessoal (caps. 12–14)
+• O corpo tem muitos membros — "o olho não pode dizer à mão: não preciso de ti" (12:21)
+• O Hino do Amor — Capítulo 13: "Ainda que eu falasse línguas dos homens e dos anjos, e não tivesse amor, seria como metal que soa ou sino que tine"
+• "O amor é sofredor, é benigno; o amor não tem inveja; o amor não se vangloria, não se ensoberbece" (13:4-7)
+• "O amor nunca perece... mas o maior destes é o amor" (13:8,13)
+• A ressurreição: "Se Cristo não ressuscitou, então é vã a nossa pregação e vã também a vossa fé" (15:14)
+• "O último inimigo a ser destruído é a morte" (15:26)
+• "A morte foi tragada em vitória. Onde está, ó morte, o teu aguilhão?" (15:54-55)
+
+💡 VERSÍCULO CHAVE: "O amor nunca perece... Agora permanecem a fé, a esperança e o amor — estes três; mas o maior é o amor." (13:8,13)`,
+
+'2 Corintios':`📖 MENSAGEM CENTRAL: A fraqueza é o lugar onde o poder de Cristo se manifesta — o ministério autêntico é marcado pela vulnerabilidade, não pelo glamour.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Paulo passa por tribulações a ponto de desesperar da própria vida — mas isso o ensina a confiar em Deus que ressuscita (1:8-10)
+• "Somos consolados para que possamos consolar os que estão em qualquer tribulação, com a consolação com que nós mesmos somos consolados" (1:4)
+• A nova aliança: não de letra que mata, mas de Espírito que vivifica (3:6)
+• "O Senhor é o Espírito; e onde está o Espírito do Senhor, aí há liberdade" (3:17)
+• "Somos vasos de barro para que a excelência do poder seja de Deus e não de nós" (4:7)
+• "Atribulados em tudo, mas não angustiados; perplexos, mas não desesperados; perseguidos, mas não abandonados; abatidos, mas não destruídos" (4:8-9)
+• "As coisas que se veem são temporais, mas as que não se veem são eternas" (4:18)
+• "Andamos por fé e não por vista" (5:7)
+• "Se alguém está em Cristo, é nova criatura; as coisas velhas já passaram; eis que tudo se fez novo" (5:17)
+• "Deus estava em Cristo reconciliando o mundo consigo mesmo" (5:19)
+• "Aquele que não conheceu pecado, Deus o fez pecado por nós" (5:21)
+• A generosidade como graça: "Quem semeia com parcimônia, com parcimônia também ceifará" (9:6)
+• "Deus ama o que dá com alegria" (9:7)
+• A visão do terceiro céu — coisas que não é lícito ao homem falar (12:2-4)
+• O espinho na carne pedido três vezes para ser removido — e a resposta de Deus: "A minha graça te é suficiente, porque o meu poder se aperfeiçoa na fraqueza" (12:9)
+• A lista de sofrimentos de Paulo no ministério: naufrágio, chicotadas, pedradas, fome, frio, perigos constantes (11:23-28)
+
+💡 VERSÍCULO CHAVE: "O meu poder se aperfeiçoa na fraqueza... quando sou fraco, então sou forte." (12:9-10)`,
+
+'Galatas':`📖 MENSAGEM CENTRAL: O Evangelho é pela fé em Cristo — não pelas obras da Lei. Qualquer adição ao Evangelho é uma distorção do Evangelho.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Paulo fica chocado que os gálatas estejam abandonando o Evangelho tão rapidamente (1:6)
+• "Ainda que nós mesmos ou um anjo do céu vos anuncie outro evangelho... seja anátema" (1:8) — declaração radical
+• Paulo não recebeu o Evangelho de nenhum homem — foi por revelação direta de Jesus Cristo (1:11-12)
+• O confronto com Pedro em Antioquia: Paulo o repreende publicamente diante de todos por hipocrisia (2:11-14)
+• "Já estou crucificado com Cristo; e eu já não vivo, mas Cristo vive em mim; e a vida que agora vivo na carne, vivo pela fé no Filho de Deus" (2:20)
+• Abraão foi justificado pela fé — as promessas foram feitas a ele e a sua "Semente" (singular) — Cristo (3:16)
+• A Lei era um aio (pedagogo) para nos levar a Cristo — agora que veio a fé, não estamos mais sob aio (3:24-25)
+• "Não há judeu nem grego, não há escravo nem livre, não há homem nem mulher, porque todos vós sois um em Cristo Jesus" (3:28)
+• "Na plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido sob a Lei, para remir os que estavam debaixo da Lei" (4:4-5)
+• "Vós, irmãos, fostes chamados à liberdade; não useis porém a liberdade para dar ocasião à carne, mas servi-vos uns aos outros pelo amor" (5:13)
+• O fruto do Espírito: amor, alegria, paz, longanimidade, benignidade, bondade, fidelidade, mansidão, domínio próprio (5:22-23)
+• "Não vos enganeis: Deus não se deixa escarnecer; porque tudo o que o homem semear isso também ceifará" (6:7)
+
+💡 VERSÍCULO CHAVE: "Já estou crucificado com Cristo; e eu já não vivo, mas Cristo vive em mim." (2:20)`,
+
+'Efesios':`📖 MENSAGEM CENTRAL: Em Cristo somos abençoados com toda bênção espiritual — e chamados a viver como membros do seu corpo para glória dele.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Deus nos escolheu, predestinou, adotou e abençoou em Cristo antes da fundação do mundo (cap. 1)
+• O plano eterno de Deus: "Reunir sob um só chefe, Cristo, todas as coisas — tanto as do céu como as da terra" (1:10)
+• Estávamos mortos em delitos e pecados — mas Deus nos vivificou por misericórdia (2:1-5)
+• "Porque pela graça sois salvos, mediante a fé; e isso não vem de vós, é dom de Deus. Não vem das obras, para que ninguém se glorie" (2:8-9)
+• "Somos feitura de Deus, criados em Cristo Jesus para as boas obras que Deus preparou" (2:10)
+• Judeus e gentios — dois povos tornados um em Cristo; o muro de separação derrubado (2:14-16)
+• A oração de Paulo: que sejam fortalecidos no homem interior, que Cristo habite no coração... para conhecer o amor que excede o conhecimento (3:16-19)
+• "A Deus que pode fazer muito mais do que tudo o que pedimos ou pensamos, segundo o poder que opera em nós" (3:20)
+• Os dons de Cristo para a Igreja: apóstolos, profetas, evangelistas, pastores e mestres (4:11)
+• "Não peques: não se ponha o sol sobre a vossa ira" (4:26)
+• "Não deis lugar ao diabo" (4:27) e "Não entristeçais o Espírito Santo de Deus" (4:30)
+• Maridos amem suas esposas como Cristo amou a Igreja; esposas se submetam aos maridos (5:22-28)
+• A Armadura Completa de Deus: cinto da verdade, couraça da justiça, calçado do Evangelho, escudo da fé, capacete da salvação, espada do Espírito (6:13-17)
+• "Não temos que lutar contra o sangue e a carne, mas contra os principados, contra as potestades, contra os príncipes das trevas" (6:12)
+
+💡 VERSÍCULO CHAVE: "Pela graça sois salvos, mediante a fé; e isso não vem de vós, é dom de Deus — não vem das obras, para que ninguém se glorie." (2:8-9)`,
+
+'Filipenses':`📖 MENSAGEM CENTRAL: A alegria em Cristo não depende das circunstâncias — e a humildade de Jesus é o modelo para toda a vida cristã.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Paulo escreve da prisão — e produz a carta mais alegre do Novo Testamento (cap. 1)
+• "Para mim o viver é Cristo e o morrer é lucro" — declaração de vida totalmente rendida (1:21)
+• "Tenho o desejo de partir e estar com Cristo, o que é muito melhor; mas é mais necessário permanecer" (1:23-24)
+• O grande Hino de Cristo (2:5-11): "Ele, sendo em forma de Deus... esvaziou-se a si mesmo, tomando a forma de servo... tornando-se obediente até a morte, e morte de cruz"
+• "Cada joelho se dobrará e cada língua confessará que Jesus Cristo é Senhor" (2:10-11)
+• "Operai a vossa salvação com temor e tremor, pois Deus é quem opera em vós o querer e o realizar" (2:12-13)
+• Paulo considera todas as suas credenciais religiosas como "lixo" em comparação com Cristo (3:7-8)
+• "Esqueço-me das coisas que ficam para trás e me estendo para as que estão adiante, prosseguindo para o alvo" (3:13-14)
+• "Alegrai-vos sempre no Senhor; outra vez digo: alegrai-vos" (4:4) — dito de dentro da prisão
+• "Em nada sejais ansiosos; antes em tudo sejam conhecidas diante de Deus as vossas petições" (4:6)
+• A paz de Deus que excede todo entendimento guardará os vossos corações (4:7)
+• "Tudo o que é verdadeiro... honesto... justo... puro... amável... nisso pensai" (4:8)
+• "Aprendi a estar contente em qualquer estado em que me encontre... sei passar necessidade e sei ter abundância" (4:11-12)
+• "Tudo posso naquele que me fortalece" (4:13)
+
+💡 VERSÍCULO CHAVE: "Alegrai-vos sempre no Senhor; outra vez digo: alegrai-vos." (4:4)`,
+
+'Colossenses':`📖 MENSAGEM CENTRAL: Cristo é supremo sobre toda a criação — não há necessidade de nenhum intermediário, filosofia ou ritual adicional.
+
+🔑 ENSINAMENTOS MARCANTES:
+• O hino da supremacia de Cristo: "Imagem do Deus invisível, primogênito de toda criação... nele foram criadas todas as coisas... ele é antes de todas as coisas, e nele tudo subsiste" (1:15-17)
+• "Nele habita corporalmente toda a plenitude da divindade" (2:9)
+• "Em Cristo estão escondidos todos os tesouros da sabedoria e do conhecimento" (2:3)
+• Advertência contra filosofias e tradições humanas que substituem Cristo (2:8)
+• Advertência contra falsos ascetismos, práticas ritualísticas e adoração de anjos (2:18-23)
+• "Foram sepultados com ele no batismo e nele ressuscitastes pela fé no poder de Deus" (2:12)
+• "Portanto, se fostes ressuscitados com Cristo, buscai as coisas que são de cima, onde Cristo está" (3:1)
+• "Morrestes e a vossa vida está escondida com Cristo em Deus" (3:3)
+• Mortificar o velho homem: imoralidade, impureza, cobiça, ira, malícia, palavras torpes (3:5-9)
+• Revestir o novo homem: misericórdia, benignidade, humildade, mansidão, longanimidade (3:12)
+• "Sobre todas estas coisas, porém, revesti-vos do amor, que é o vínculo da perfeição" (3:14)
+• "Fazei tudo em nome do Senhor Jesus, dando por meio dele graças a Deus Pai" (3:17)
+• "Perseverai em oração, vigilantes nela com ação de graças" (4:2)
+
+💡 VERSÍCULO CHAVE: "Nele habita corporalmente toda a plenitude da divindade, e em Cristo tendes a plenitude." (2:9-10)`,
+
+'1 Tessalonicenses':`📖 MENSAGEM CENTRAL: Vivam de forma digna do Deus que os chamou — e aguardem com esperança genuína a volta de Cristo.
+
+🔑 ENSINAMENTOS MARCANTES:
+• A jovem igreja de Tessalônica foi fundada em apenas 3 semanas antes de Paulo ser expulso da cidade (At 17)
+• Paulo celebra a fé, o amor e a esperança dos tessalonicenses — modelo para toda a Macedônia (1:2-10)
+• "Vós vos convertestes dos ídolos para Deus, para servirdes ao Deus vivo e verdadeiro, e esperardes dos céus o seu Filho" (1:9-10)
+• Paulo defende sua integridade no ministério: sem adulação, sem cobiça, como pai e mãe carinhosos (cap. 2)
+• "Sendo privados de vós por algum tempo... muitas vezes quisemos ir ter convosco... mas Satanás nos impediu" (2:17-18)
+• A resposta sobre os cristãos que morreram antes da volta de Cristo — não ficam de fora (4:13-14)
+• A volta de Cristo: "O Senhor descerá do céu com grande brado, com voz de arcanjo e com trombeta de Deus" (4:16)
+• "Assim estaremos sempre com o Senhor. Portanto, consolai-vos uns aos outros com estas palavras" (4:17-18)
+• "O dia do Senhor virá como ladrão na noite... vós, porém, irmãos, não estais em trevas" (5:2-4)
+• "Sede sempre alegres. Orai sem cessar. Em tudo dai graças, porque esta é a vontade de Deus" (5:16-18)
+• "Não apagueis o Espírito. Não desprezeis as profecias" (5:19-20)
+• "O próprio Deus da paz vos santifique em tudo; e o vosso espírito, alma e corpo sejam conservados íntegros" (5:23)
+
+💡 VERSÍCULO CHAVE: "Sede sempre alegres. Orai sem cessar. Em tudo dai graças, porque esta é a vontade de Deus em Cristo Jesus para convosco." (5:16-18)`,
+
+'2 Tessalonicenses':`📖 MENSAGEM CENTRAL: Não abandone o trabalho nem se deixe enganar — a volta de Cristo ainda não aconteceu e isso exige responsabilidade presente.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Paulo encoraja os que sofrem perseguição — Deus é justo e dará descanso e retribuição (1:5-10)
+• Uma carta falsa circulava dizendo que o dia do Senhor já havia chegado — Paulo corrige com urgência (2:1-3)
+• Antes da volta de Cristo: a apostasia e o homem da iniquidade ("filho da perdição") devem vir primeiro (2:3-4)
+• O "homem da iniquidade" se sentará no Templo de Deus proclamando ser Deus (2:4)
+• Algo ou alguém "retém" por enquanto a revelação do homem da iniquidade (2:6-7)
+• "Jesus o consumirá com o sopro da sua boca e o destruirá com o fulgor da sua vinda" (2:8)
+• Os que perecem é porque "não receberam o amor da verdade para serem salvos" (2:10)
+• Paulo ora que Deus os conforte e fortaleça em toda boa palavra e boa obra (2:16-17)
+• A questão prática dos ociosos: alguns pararam de trabalhar "esperando a volta de Cristo" (3:6-10)
+• "Quem não quiser trabalhar, também não coma" — um dos versículos mais diretos do NT (3:10)
+• "Vós, porém, irmãos, não vos canseis de fazer o bem" (3:13)
+
+💡 VERSÍCULO CHAVE: "Quem não quiser trabalhar, também não coma." (3:10)`,
+
+'1 Timoteo':`📖 MENSAGEM CENTRAL: Como liderar a Igreja com sã doutrina, ordem e vida piedosa — carta de instruções pastorais para um jovem líder em formação.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Paulo alerta Timóteo sobre falsos mestres que ensinam mitos e genealogias sem fim, gerando controvérsias (1:3-4)
+• "O fim do mandamento é o amor, proveniente de coração puro, boa consciência e fé não fingida" (1:5)
+• Paulo se apresenta como o maior dos pecadores — salvo como exemplo da paciência de Cristo para todos (1:15-16)
+• "Esta palavra é fiel e digna de toda aceitação: Cristo Jesus veio ao mundo para salvar os pecadores" (1:15)
+• A oração por todos — reis e autoridades — para que tenhamos vida tranquila e piedosa (2:1-2)
+• "Há um só Deus e um só Mediador entre Deus e os homens: Cristo Jesus, homem" (2:5)
+• Qualificações detalhadas para bispos e diáconos — o caráter antes da capacidade (cap. 3)
+• "O mistério da piedade é incontestável: Deus foi manifestado em carne, justificado no Espírito" (3:16)
+• Timóteo encorajado apesar da juventude: "Ninguém te despreze por causa da tua juventude; sê o exemplo" (4:12)
+• "Exercita-te na piedade, pois o exercício corporal para pouco é aproveitável, mas a piedade é proveitosa para tudo" (4:7-8)
+• "A raiz de todos os males é o amor ao dinheiro, o qual, almejando alguns, se desviaram da fé" (6:10)
+• "A piedade com contentamento é grande ganho; porque nada trouxemos para este mundo, e nada podemos levar" (6:6-7)
+• "Combate o bom combate da fé, apossa-te da vida eterna" (6:12)
+
+💡 VERSÍCULO CHAVE: "A piedade com contentamento é grande ganho." (6:6)`,
+
+'2 Timoteo':`📖 MENSAGEM CENTRAL: A carta de despedida de Paulo — persevere na fé, pregue a Palavra, suporte o sofrimento. O legado deve continuar.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Paulo está na prisão pela segunda vez — desta vez sem esperança de sair; a morte está próxima (1:8)
+• "Não me envergonho, pois sei em quem tenho crido e estou certo de que ele é poderoso para guardar o que me foi confiado" (1:12)
+• "Guarda o bom depósito que te foi confiado pelo Espírito Santo que habita em nós" (1:14)
+• Muitos abandonaram Paulo na prisão; somente Onésíforo o procurou diligentemente em Roma (1:15-16)
+• "Sofre como bom soldado de Cristo Jesus" (2:3)
+• As quatro analogias do ministério fiel: soldado, atleta, lavrador, obreiro (cap. 2)
+• "Estuda para te apresentar aprovado a Deus, como obreiro que não tem de que se envergonhar, que maneja bem a Palavra da verdade" (2:15)
+• "Foge das paixões da juventude; segue, porém, a justiça, a fé, o amor, a paz" (2:22)
+• A profecia dos últimos tempos: "Nos últimos dias sobrevirão tempos difíceis. Porque os homens serão amantes de si mesmos, avarentos, presunçosos..." (3:1-5)
+• "Toda a Escritura é inspirada por Deus e útil para o ensino, a repreensão, a correção e a instrução na justiça" (3:16)
+• "Prega a Palavra, insta a tempo e fora de tempo... pois virá tempo em que os homens não suportarão a sã doutrina" (4:2-3)
+• As últimas palavras de Paulo à Timóteo — e à toda a Igreja: "Combati o bom combate, terminei a corrida, guardei a fé. Já me está reservada a coroa da justiça" (4:7-8)
+• "O Senhor me livrará de toda obra maligna e me preservará para o seu reino celestial" (4:18)
+
+💡 VERSÍCULO CHAVE: "Combati o bom combate, terminei a corrida, guardei a fé." (4:7)`,
+
+'Tito':`📖 MENSAGEM CENTRAL: A sã doutrina produz boa conduta — e a graça de Deus nos ensina a renunciar à impiedade e viver com sensatez neste século.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Tito estava liderando igrejas em Creta — uma ilha com reputação difícil; até um dos seus próprios poetas o dizia (1:12)
+• As qualificações dos anciãos/bispos: irrepreensível, marido de uma só mulher, filhos crentes, não altivo nem iracundo (1:6-9)
+• Os falsos mestres são "bocas que devem ser tapadas" — perturbam casas inteiras ensinando por ganância (1:10-11)
+• Instrução pastoral para grupos específicos: idosos, idosas, jovens e escravos (cap. 2)
+• O grande texto da graça transformadora: "A graça de Deus se manifestou, trazendo salvação a todos os homens, ensinando-nos a renunciar à impiedade e às concupiscências mundanas, e a viver sensata, justa e piedosamente neste século" (2:11-12)
+• "Aguardando a bem-aventurada esperança e o aparecimento da glória do nosso grande Deus e Salvador Jesus Cristo" (2:13)
+• Obediência às autoridades e disposição para toda boa obra (3:1)
+• "Não falar mal de ninguém, não ser contencioso, mas sim clemente, mostrando toda a mansidão" (3:2)
+• O grande texto da salvação pela misericórdia: "Ele nos salvou não por obras de justiça que houvéssemos feito, mas segundo a sua misericórdia, pelo banho regenerador e renovador do Espírito Santo" (3:5)
+• Evitar debates inúteis, controvérsias e questões genealógicas — não são proveitosas (3:9)
+
+💡 VERSÍCULO CHAVE: "A graça de Deus se manifestou, trazendo salvação a todos os homens, ensinando-nos a renunciar à impiedade... e a viver sensata, justa e piedosamente." (2:11-12)`,
+
+'Filemom':`📖 MENSAGEM CENTRAL: O Evangelho desfaz hierarquias sociais — um escravo se torna irmão, e a reconciliação é pedida em nome do amor, não da lei.
+
+🔑 EVENTOS MARCANTES:
+• A carta mais curta de Paulo — apenas 25 versículos; ele a escreveu com a própria mão (v.19)
+• Onésimo, escravo fugitivo de Filemom, encontrou Paulo na prisão — e se converteu ao Evangelho (v.10-11)
+• Paulo chama Onésimo "meu filho, que gerei nas minhas prisões" e "as minhas próprias entranhas" (v.10,12)
+• O trocadilho irresistível: Onésimo significa "útil" — "antes te era inútil, mas agora é útil a ti e a mim" (v.11)
+• Paulo envia Onésimo de volta ao seu senhor — mas pede que Filemom o receba como irmão amado (v.16)
+• "Recebe-o como a mim mesmo" — Paulo coloca sua própria autoridade apostólica como garantia (v.17)
+• Paulo se oferece pessoalmente para pagar qualquer dívida de Onésimo: "Lança isso na minha conta" (v.18-19)
+• Paulo não ordena nem usa sua autoridade — pede em nome do amor e da confiança (v.8-9)
+• "Não quis fazer nada sem o teu consentimento, para que o teu benefício não fosse forçado, mas voluntário" (v.14)
+• A carta é uma aplicação prática concreta de Gálatas 3:28: "não há escravo nem livre em Cristo"
+• Paulo pede que Filemom prepare um quarto — ele espera ser libertado em resposta às orações (v.22)
+
+💡 VERSÍCULO CHAVE: "Não quis fazer nada sem o teu consentimento, para que o teu benefício não fosse por assim dizer forçado, mas voluntário." (v.14)`,
+
+'Hebreus':`📖 MENSAGEM CENTRAL: Jesus é superior a tudo no Antigo Testamento — e nele encontramos o Sumo Sacerdote perfeito e o sacrifício definitivo e final.
+
+🔑 ENSINAMENTOS MARCANTES:
+• "Havendo Deus falado muitas vezes e de muitos modos aos pais pelos profetas, nestes últimos dias nos falou pelo Filho" (1:1-2)
+• Cristo superior aos anjos — sustenta todas as coisas pela palavra do seu poder (1:3)
+• Cristo superior a Moisés — como o construtor é superior à casa que construiu (3:3)
+• O perigo de endurecer o coração como Israel no deserto: "Hoje, se ouvirdes a sua voz, não endureçais" (3:7-8)
+• "A Palavra de Deus é viva e eficaz, mais cortante do que qualquer espada de dois gumes... e julga os pensamentos e intenções do coração" (4:12)
+• "Não temos sumo sacerdote que não possa compadecer-se das nossas fraquezas, pois foi tentado em tudo, como nós, mas sem pecado" (4:15)
+• "Aproximemo-nos, portanto, com confiança do trono da graça, para que possamos obter misericórdia" (4:16)
+• A ordem de Melquisedeque — sacerdócio eterno e superior ao levítico (caps. 5–7)
+• O tabernáculo era sombra do celestial — Cristo entrou no verdadeiro santuário com o próprio sangue (caps. 8–9)
+• "Sem derramamento de sangue não há remissão" (9:22)
+• Cristo se ofereceu "de uma vez por todas" — acabou com a necessidade de repetição dos sacrifícios (9:26-28)
+• A nuvem de testemunhas — Capítulo 11: Abel, Noé, Abraão, Sara, Isaque, Jacó, José, Moisés, Raabe, Gideão, Davi...
+• "Estamos rodeados de tão grande nuvem de testemunhas... corramos com paciência a carreira que nos está proposta" (12:1)
+• "Olhando para Jesus, o autor e consumador da nossa fé, o qual, pelo gozo que lhe estava proposto, suportou a cruz, desprezando a vergonha" (12:2)
+• "Jesus Cristo é o mesmo ontem, hoje e eternamente" (13:8)
+
+💡 VERSÍCULO CHAVE: "Visto que temos tão grande nuvem de testemunhas... corramos com paciência a carreira que nos está proposta, olhando para Jesus, o autor e consumador da nossa fé." (12:1-2)`,
+
+'Tiago':`📖 MENSAGEM CENTRAL: A fé genuína produz ação — uma fé que não muda o comportamento é morta.
+
+🔑 ENSINAMENTOS MARCANTES:
+• "Contai como motivo de grande alegria, meus irmãos, quando passardes por várias provações, sabendo que a prova da vossa fé produz paciência" (1:2-3)
+• "Se alguém de vós necessita de sabedoria, peça-a a Deus, que a todos dá liberalmente, sem reprovar" (1:5)
+• "Todo bom donativo e todo dom perfeito vêm do alto, descendo do Pai das luzes, em quem não há mudança nem sombra de variação" (1:17)
+• "Sede cumpridores da Palavra e não somente ouvintes, enganando-vos a vós mesmos" (1:22)
+• A religião pura e imaculada é esta: visitar os órfãos e as viúvas na sua tribulação (1:27)
+• A parcialidade é pecado — dar lugar ao rico e humilhar o pobre contradiz o Evangelho (cap. 2)
+• "Que aproveita, irmãos meus, se alguém diz que tem fé mas não tem obras? Pode essa fé salvá-lo?" (2:14)
+• "Assim também a fé, se não tiver obras, é morta em si mesma" (2:17)
+• "Abraão creu em Deus... e foi chamado amigo de Deus" — a fé verdadeira se manifesta em obras (2:23)
+• O domínio da língua: "Quem não tropeça no falar é homem perfeito... a língua é um fogo que pode incendiar todo o curso da natureza" (3:2-6)
+• "Da mesma boca procedem bênção e maldição... irmãos meus, não convém que assim seja" (3:10)
+• "Resistí ao diabo e ele fugirá de vós; aproximai-vos de Deus e ele se aproximará de vós" (4:7-8)
+• A advertência contra os ricos que exploram trabalhadores — o salário retido clama (5:1-6)
+• A oração eficaz do justo: "Elias era homem semelhante a nós... orou para que não chovesse... e não choveu por 3 anos e 6 meses" (5:17)
+
+💡 VERSÍCULO CHAVE: "A fé, se não tiver obras, é morta em si mesma." (2:17)`,
+
+'1 Pedro':`📖 MENSAGEM CENTRAL: Sofrimento não é sinal de abandono — é participação no sofrimento de Cristo que leva à glória eterna.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Pedro escreve a "estrangeiros dispersos" — cristãos espalhados pelo Império Romano sob perseguição (1:1)
+• "Louvado seja o Deus que nos regenerou para uma esperança viva, mediante a ressurreição de Jesus Cristo dos mortos" (1:3)
+• A herança incorruptível e imarcescível, preservada nos céus para nós (1:4)
+• "O sofrimento é como o fogo que prova o ouro — a prova da vossa fé, muito mais preciosa do que o ouro" (1:7)
+• "Fostes remidos... não com coisas corruptíveis como prata ou ouro, mas com o precioso sangue de Cristo, como de cordeiro sem defeito" (1:18-19)
+• "Vós que antes não éreis povo, agora sois povo de Deus; antes não tínheis alcançado misericórdia, mas agora alcançastes misericórdia" (2:10)
+• "Amados, exorto-vos como estrangeiros e peregrinos que vos abstenhais das concupiscências carnais" (2:11)
+• "Porque Cristo também padeceu por vós, deixando-vos o exemplo, para que sigais os seus passos" (2:21)
+• "Levou ele mesmo em seu corpo os nossos pecados sobre o madeiro... por cujas chagas fostes sarados" (2:24)
+• "Sede prontos para responder a qualquer um que vos pedir razão da esperança que há em vós, com mansidão e temor" (3:15)
+• "Sede sóbrios e vigilantes; o diabo, vosso adversário, anda em derredor como leão que ruge, procurando alguém para devorar" (5:8)
+• "Lançai sobre ele toda a vossa ansiedade, pois ele tem cuidado de vós" (5:7)
+
+💡 VERSÍCULO CHAVE: "Lançai sobre ele toda a vossa ansiedade, pois ele tem cuidado de vós." (5:7)`,
+
+'2 Pedro':`📖 MENSAGEM CENTRAL: Proteja-se dos falsos mestres e permaneça firme no conhecimento de Cristo — sua volta é certa, apenas aguarda a paciência de Deus.
+
+🔑 ENSINAMENTOS MARCANTES:
+• Crescer na graça adicionando: à fé, virtude; à virtude, conhecimento; ao conhecimento, domínio próprio; à perseverança, piedade; à piedade, amor fraternal (1:5-7)
+• Pedro testifica: ele foi testemunha ocular da Transfiguração no monte — não seguiu fábulas habilmente inventadas (1:16-18)
+• "Homens santos de Deus falaram, sendo movidos pelo Espírito Santo" — a origem divina das Escrituras (1:21)
+• Os falsos mestres se infiltram secretamente, negam o Senhor, são dominados pela avareza (cap. 2)
+• "O cão voltou ao seu próprio vômito, e a porca lavada voltou a revolver-se na lama" (2:22) — sobre quem conheceu a verdade e a abandonou
+• "O Senhor não retarda a sua promessa... mas é longânimo para convosco, não querendo que nenhum pereça, senão que todos se arrependam" (3:9)
+• "O dia do Senhor virá como ladrão; nele os céus passarão com grande estrondo, e os elementos, ardendo, se dissolverão" (3:10)
+• "Visto que todas estas coisas hão de ser dissolvidas, deveis ser tais como os que vivem em santa conduta e piedade" (3:11)
+• "Esperamos novos céus e nova terra, nos quais habita a justiça" (3:13)
+• As cartas de Paulo "contêm algumas coisas difíceis de entender, que os incultos e inconstantes distorcem" (3:16)
+
+💡 VERSÍCULO CHAVE: "O Senhor não retarda a sua promessa... é longânimo para convosco, não querendo que nenhum pereça, senão que todos se arrependam." (3:9)`,
+
+'1 Joao':`📖 MENSAGEM CENTRAL: Três testes da vida cristã autêntica: crença correta sobre Jesus, obediência a Deus, e amor genuíno aos irmãos. "Deus é amor."
+
+🔑 ENSINAMENTOS MARCANTES:
+• "O que era desde o princípio, o que temos ouvido, o que temos visto com os nossos olhos... anunciamos a vós" — testemunha ocular (1:1)
+• "Deus é luz, e não há nele treva alguma" (1:5)
+• "Se dissermos que não temos pecado, enganamo-nos a nós mesmos e a verdade não está em nós" (1:8)
+• "Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar os pecados e nos purificar" (1:9)
+• Jesus Cristo como nosso Advogado diante do Pai — a propiciação pelos nossos pecados (2:1-2)
+• "Aquele que diz que permanece nele deve também andar como ele andou" (2:6)
+• "O mundo passa, e a sua concupiscência; mas aquele que faz a vontade de Deus permanece eternamente" (2:17)
+• "Vede que grande amor o Pai nos tem dado, que fôssemos chamados filhos de Deus; e somos!" (3:1)
+• "Todo aquele que odeia a seu irmão é homicida; e sabeis que nenhum homicida tem a vida eterna" (3:15)
+• "Nisto conhecemos o amor: que ele deu a sua vida por nós; e nós devemos dar a vida pelos irmãos" (3:16)
+• "Não amemos de palavra nem de língua, mas em ação e em verdade" (3:18)
+• "Provai os espíritos, se são de Deus, porque muitos falsos profetas têm saído pelo mundo" (4:1)
+• "Deus é amor; e quem permanece no amor permanece em Deus, e Deus nele" (4:16)
+• "O perfeito amor lança fora o temor; ora, o temor envolve tormento" (4:18)
+• "Aquele que não ama a seu irmão, ao qual vê, como pode amar a Deus, ao qual não vê?" (4:20)
+• "Esta é a vitória que vence o mundo: a nossa fé" (5:4)
+
+💡 VERSÍCULO CHAVE: "Deus é amor; e quem permanece no amor permanece em Deus, e Deus nele." (4:16)`,
+
+'2 Joao':`📖 MENSAGEM CENTRAL: O amor cristão caminha segundo os mandamentos — e discerne o erro doutrinário sem receber os que o ensinam em casa.
+
+🔑 EVENTOS MARCANTES:
+• A carta mais curta da Bíblia — apenas 13 versículos
+• João escreve à "senhora eleita e a seus filhos" — provavelmente uma congregação local
+• João se alegra imensamente porque encontrou filhos da destinatária andando na verdade (v.4)
+• "O amor é andar segundo os seus mandamentos" — amor e obediência são completamente inseparáveis (v.6)
+• A advertência central: "muitos enganadores saíram pelo mundo" que não confessam Jesus Cristo vindo em carne — "este é o enganador e o anticristo" (v.7)
+• "Guardai-vos, para que não percais o que trabalhastes, mas recebais a plena recompensa" (v.8)
+• "Todo aquele que não permanece na doutrina de Cristo não tem a Deus; aquele que permanece nessa doutrina, esse tem o Pai e o Filho" (v.9)
+• Não receber em casa nem sequer saudar quem nega a doutrina de Cristo — não é hostilidade, é proteção (v.10-11)
+• João prefere falar pessoalmente a escrever mais sobre o assunto (v.12)
+
+💡 VERSÍCULO CHAVE: "Todo aquele que não permanece na doutrina de Cristo não tem a Deus; aquele que permanece nessa doutrina, esse tem o Pai e o Filho." (v.9)`,
+
+'3 Joao':`📖 MENSAGEM CENTRAL: A hospitalidade fiel é serviço ao Senhor — e o autoritarismo na Igreja deve ser confrontado com clareza.
+
+🔑 EVENTOS MARCANTES:
+• Uma das cartas mais curtas do NT — 15 versículos
+• João escreve ao amado Gaio, elogiando seu caráter e sua hospitalidade (v.1-2)
+• "Amado, desejo que sejas prosperado em tudo e que tenhas saúde, assim como prospera a tua alma" (v.2)
+• João regozija acima de tudo ao ouvir que seus filhos andam na verdade (v.4)
+• Gaio elogiado por hospedar missionários itinerantes que saíram em nome de Cristo sem aceitar nada dos gentios (v.7)
+• "Cooperar com a verdade" — apoiar o ministério é participar da obra (v.8)
+• O contraste com Diótrefes: quer ser o primeiro da igreja, faz falsas acusações, não recebe os irmãos, e expulsa quem os recebe (v.9-10)
+• João anuncia que irá pessoalmente confrontar Diótrefes quando chegar (v.10)
+• "Não imites o mal, mas o bem. Aquele que faz o bem é de Deus; aquele que faz o mal não viu a Deus" (v.11)
+• Demétrio recebe triplo elogio: de todos, da própria verdade e do próprio João (v.12)
+
+💡 VERSÍCULO CHAVE: "Não imites o mal, mas o bem. Aquele que faz o bem é de Deus; o que faz o mal não viu a Deus." (v.11)`,
+
+'Judas':`📖 MENSAGEM CENTRAL: Batalhe pela fé entregue de uma vez por todas — falsos mestres infiltraram a Igreja pervertendo a graça de Deus em libertinagem.
+
+🔑 EVENTOS MARCANTES:
+• Judas queria escrever sobre a salvação comum — mas precisou mudar o plano por causa dos intrusos (v.3)
+• "Batalhai earnestemente pela fé que uma vez por todas foi entregue aos santos" (v.3)
+• Os falsos mestres são descritos como "homens infiltrados" — pedras ocultas nas festas de amor (v.4)
+• Três exemplos do AT de julgamento sobre os rebeldes: a geração do deserto, os anjos caídos, Sodoma e Gomorra (v.5-7)
+• Os falsos mestres falam mal das autoridades espirituais — coisas que nem o arcanjo Miguel ousou fazer (v.8-9)
+• Três exemplos de rebeldia: Caim (inveja homicida), Balaão (ganância religiosa), Coré (rebelião contra autoridade divina) (v.11)
+• As metáforas vívidas dos falsos mestres: nuvens sem chuva levadas pelo vento, árvores sem fruto arrancadas pela raiz, ondas bravas do mar, estrelas errantes (v.12-13)
+• A profecia de Enoque — o mais antigo profeta registrado na Bíblia (v.14)
+• O caminho da proteção: edificar-se na fé, orar no Espírito Santo, conservar-se no amor de Deus, aguardar a misericórdia de Cristo (v.20-21)
+• "Arrebatai ao fogo a alguns; e de outros tende misericórdia com temor" (v.22-23)
+• A Doxologia final — uma das mais belas da Bíblia: "Ora, àquele que é poderoso para vos guardar sem tropeço e apresentar-vos irrepreensíveis perante a sua glória com exultação, ao único Deus, nosso Salvador... seja glória e majestade, domínio e poder, agora e em todos os séculos. Amém." (v.24-25)
+
+💡 VERSÍCULO CHAVE: "Àquele que é poderoso para vos guardar sem tropeço... a ele seja glória e majestade, domínio e poder, agora e por todos os séculos." (v.24-25)`,
+
+'Apocalipse':`📖 MENSAGEM CENTRAL: Jesus é o Senhor da história — o Cordeiro que já venceu governa o presente; o mal será destruído; Deus fará novas todas as coisas.
+
+🔑 EVENTOS MARCANTES:
+• João recebe a revelação na ilha de Patmos, exilado, no dia do Senhor (1:9-10)
+• A visão do Cristo glorificado: olhos como chamas, pés como bronze polido, voz como som de muitas águas, espada saindo da boca — João cai como morto a seus pés (cap. 1)
+• As 7 cartas para as 7 igrejas — diagnóstico e prescrição para cada uma: Éfeso (perdeu o primeiro amor), Esmirna (perseguida, fiel), Pérgamo (compromisso com ídolos), Tiatira (tolera Jezabel), Sardes (morta), Filadélfia (fiel, porta aberta), Laodiceia (morna — "vomitarei da minha boca") (caps. 2–3)
+• "Eis que estou à porta e bato; se alguém ouvir a minha voz e abrir a porta, entrarei" (3:20)
+• O trono no céu: 24 anciãos prostrados, 4 seres viventes, o mar de vidro, "Santo, Santo, Santo" (cap. 4)
+• O livro selado com 7 selos — ninguém digno para abrir; João chora (cap. 5)
+• O Leão de Judá aparece como Cordeiro imolado — o paradoxo central do livro (5:5-6)
+• "Digno és de receber o livro... porque foste morto e com o teu sangue compraste para Deus homens de toda tribo, língua, povo e nação" (5:9)
+• Os 7 selos, as 7 trombetas e as 7 taças — julgamentos progressivos sobre a terra (caps. 6–16)
+• A multidão inumerável de toda nação: "Estes são os que vêm da grande tribulação e lavaram as suas vestes no sangue do Cordeiro" (7:14)
+• A mulher vestida de sol, o dragão vermelho, a batalha cósmica (cap. 12)
+• As duas bestas — o sistema político e o sistema religioso do mal (cap. 13)
+• Babilônia, a grande meretriz — o sistema do mundo que embriaga as nações (caps. 17–18)
+• A vinda do Rei dos Reis em cavalo branco: "Fiel e Verdadeiro" — os exércitos do céu seguem (cap. 19)
+• A besta e o falso profeta lançados vivos no lago de fogo (cap. 19)
+• Satanás acorrentado 1.000 anos; depois solto brevemente e lançado no lago de fogo (cap. 20)
+• O julgamento do grande trono branco — os livros são abertos; o livro da Vida (cap. 20)
+• A Nova Jerusalém desce do céu adornada como noiva — ruas de ouro, portas de pérola, o rio da Vida (caps. 21–22)
+• "Eis que faço novas todas as coisas" (21:5)
+• "Não haverá mais morte, nem pranto, nem clamor, nem dor; as coisas anteriores já passaram" (21:4)
+• "Vem, Senhor Jesus!" — a oração e o encerramento final de toda a Bíblia (22:20)
+
+💡 VERSÍCULO CHAVE: "Eis que faço novas todas as coisas." (21:5) | "Vem, Senhor Jesus!" (22:20)`
+};;
 
 function getResumo(livro){return RESUMOS[livro]||null;}
 
