@@ -291,7 +291,44 @@ function rFases(){document.getElementById('fases-list').innerHTML=FASES.map(f=>{
 
 function toggleF(id){if(openF.has(id))openF.delete(id);else openF.add(id);rFases();}
 
-function rProg(){const td=lidos.size;const tp=P(td,TOTAL);const circ=2*Math.PI*42;const off=circ*(1-tp/100);const t=todayN();const cpp=Math.ceil(TOTAL/plan.days);const avg=t>1?Math.round(td/(t-1)):td;const fc=FASES.filter(f=>{const{d,t}=fDone(f);return d===t&&t>0;}).length;document.getElementById('prog-content').innerHTML='<div class="card" style="display:flex;align-items:center;gap:20px;padding:18px 20px;margin-bottom:10px"><svg width="88" height="88" viewBox="0 0 88 88"><circle cx="44" cy="44" r="42" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="5"/><circle cx="44" cy="44" r="42" fill="none" stroke="#c9a96e" stroke-width="5" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 44 44)"/><text x="44" y="49" text-anchor="middle" fill="#c9a96e" font-size="16" font-weight="500" font-family="sans-serif">'+tp+'%</text></svg><div><div style="font-size:28px;font-weight:500;color:var(--gold)">'+td+'</div><div style="font-size:12px;color:var(--muted)">capitulos lidos</div><div style="font-size:11px;color:var(--muted2);margin-top:3px">'+(TOTAL-td)+' restantes</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class="stat-card"><div class="stat-n">'+t+'</div><div class="stat-l">dia atual de '+plan.days+'</div></div><div class="stat-card"><div class="stat-n">'+fc+'</div><div class="stat-l">fases completas</div></div><div class="stat-card"><div class="stat-n">'+cpp+'</div><div class="stat-l">caps/dia no plano</div></div><div class="stat-card"><div class="stat-n" style="color:var(--success)">'+avg+'</div><div class="stat-l">media real/dia</div></div></div><div class="sec-lbl" style="margin-bottom:8px">por fase</div>'+FASES.map(f=>{const{d,t}=fDone(f);const p=P(d,t);return'<div style="padding:11px 14px;border:0.5px solid var(--border);border-radius:12px;background:var(--bg2);margin-bottom:7px"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><div><span style="font-size:10px;color:var(--muted2);letter-spacing:.5px">Fase '+f.id+' - </span><span style="font-size:13px;font-weight:500">'+f.n+'</span></div><span style="font-size:12px;color:var(--gold);font-weight:500">'+p+'%</span></div><div class="thin-bg"><div class="thin-fill" style="width:'+p+'%"></div></div><div style="font-size:11px;color:var(--muted2);margin-top:4px">'+d+' de '+t+' caps</div></div>';}).join('')+'<div style="margin-top:8px"><button onclick="resetPlan()" style="width:100%;background:transparent;border:0.5px solid var(--border);border-radius:10px;padding:10px;color:var(--muted2);font-size:12px;cursor:pointer;font-family:inherit">Reiniciar plano</button></div>';}
+function rProg(){const td=lidos.size;const tp=P(td,TOTAL);const circ=2*Math.PI*42;const off=circ*(1-tp/100);const t=todayN();const cpp=Math.ceil(TOTAL/plan.days);const avg=t>1?Math.round(td/(t-1)):td;
+const remaining=TOTAL-td;
+let projCard='';
+if(avg>0&&td>0){
+  const daysLeft=Math.ceil(remaining/avg);
+  const projDate=new Date();
+  projDate.setDate(projDate.getDate()+daysLeft);
+  const opts={day:'2-digit',month:'short',year:'numeric'};
+  const projStr=projDate.toLocaleDateString('pt-BR',opts);
+  const planDate=new Date(plan.start);
+  planDate.setDate(planDate.getDate()+plan.days);
+  const planStr=planDate.toLocaleDateString('pt-BR',opts);
+  const diffDays=Math.round((planDate-projDate)/86400000);
+  const diffLabel=diffDays>0?diffDays+' dias antes do prazo':diffDays===0?'No prazo':Math.abs(diffDays)+' dias apos o prazo';
+  const diffColor=diffDays>=0?'var(--success)':'#e06060';
+  projCard='<div style="padding:14px 16px;border:0.5px solid var(--border);border-radius:12px;background:var(--bg2);margin-bottom:10px">'
+    +'<div class="sec-lbl" style="margin-bottom:10px">projecao pela media atual</div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
+    +'<div style="font-size:12px;color:var(--muted)">Conclusao projetada</div>'
+    +'<div style="font-size:15px;font-weight:600;color:var(--gold)">'+projStr+'</div>'
+    +'</div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
+    +'<div style="font-size:12px;color:var(--muted)">Prazo original do plano</div>'
+    +'<div style="font-size:13px;color:var(--muted)">'+planStr+'</div>'
+    +'</div>'
+    +'<div style="height:0.5px;background:var(--border);margin:8px 0"></div>'
+    +'<div style="display:flex;justify-content:space-between;align-items:center">'
+    +'<div style="font-size:12px;color:var(--muted)">Ritmo atual</div>'
+    +'<div style="font-size:13px;font-weight:600;color:'+diffColor+'">'+diffLabel+'</div>'
+    +'</div>'
+    +'<div style="margin-top:8px" class="thin-bg"><div class="thin-fill" style="width:'+Math.min(tp,100)+'%"></div></div>'
+    +'<div style="display:flex;justify-content:space-between;margin-top:4px">'
+    +'<div style="font-size:10px;color:var(--muted2)">'+remaining+' caps restantes</div>'
+    +'<div style="font-size:10px;color:var(--muted2)">'+daysLeft+' dias no ritmo atual</div>'
+    +'</div>'
+    +'</div>';
+}
+const fc=FASES.filter(f=>{const{d,t}=fDone(f);return d===t&&t>0;}).length;document.getElementById('prog-content').innerHTML='<div class="card" style="display:flex;align-items:center;gap:20px;padding:18px 20px;margin-bottom:10px"><svg width="88" height="88" viewBox="0 0 88 88"><circle cx="44" cy="44" r="42" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="5"/><circle cx="44" cy="44" r="42" fill="none" stroke="#c9a96e" stroke-width="5" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 44 44)"/><text x="44" y="49" text-anchor="middle" fill="#c9a96e" font-size="16" font-weight="500" font-family="sans-serif">'+tp+'%</text></svg><div><div style="font-size:28px;font-weight:500;color:var(--gold)">'+td+'</div><div style="font-size:12px;color:var(--muted)">capitulos lidos</div><div style="font-size:11px;color:var(--muted2);margin-top:3px">'+(TOTAL-td)+' restantes</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class="stat-card"><div class="stat-n">'+t+'</div><div class="stat-l">dia atual de '+plan.days+'</div></div><div class="stat-card"><div class="stat-n">'+fc+'</div><div class="stat-l">fases completas</div></div><div class="stat-card"><div class="stat-n">'+cpp+'</div><div class="stat-l">caps/dia no plano</div></div><div class="stat-card"><div class="stat-n" style="color:var(--success)">'+avg+'</div><div class="stat-l">media real/dia</div></div></div>'+projCard+'<div class="sec-lbl" style="margin-bottom:8px">por fase</div>'+FASES.map(f=>{const{d,t}=fDone(f);const p=P(d,t);return'<div style="padding:11px 14px;border:0.5px solid var(--border);border-radius:12px;background:var(--bg2);margin-bottom:7px"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><div><span style="font-size:10px;color:var(--muted2);letter-spacing:.5px">Fase '+f.id+' - </span><span style="font-size:13px;font-weight:500">'+f.n+'</span></div><span style="font-size:12px;color:var(--gold);font-weight:500">'+p+'%</span></div><div class="thin-bg"><div class="thin-fill" style="width:'+p+'%"></div></div><div style="font-size:11px;color:var(--muted2);margin-top:4px">'+d+' de '+t+' caps</div></div>';}).join('')+'<div style="margin-top:8px"><button onclick="resetPlan()" style="width:100%;background:transparent;border:0.5px solid var(--border);border-radius:10px;padding:10px;color:var(--muted2);font-size:12px;cursor:pointer;font-family:inherit">Reiniciar plano</button></div>';}
 
 function resetPlan(){if(confirm('Apaga o plano (nao apaga as leituras). Confirmar?')){localStorage.removeItem('enc_plan');plan=null;dayplan=[];document.getElementById('bnav').style.display='none';['home','fases','progress'].forEach(s=>document.getElementById('scr-'+s).classList.remove('active'));document.getElementById('scr-setup').classList.add('active');rSetup();}}
 
