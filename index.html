@@ -3,713 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0d0d14">
+  <meta name="theme-color" content="#0c0c10">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Encorpei">
   <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icon-192.png">
   <title>Encorpei Leitura</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    :root {
-      --bg: #0d0d14; --bg2: #13131f; --bg3: #1a1a2a;
-      --card: #1e1e2e; --border: #2a2a42;
-      --red: #e63946; --red-dim: rgba(230,57,70,0.12);
-      --text: #f0f0f5; --muted: #6060a0; --muted2: #9090c0;
-      --success: #22d3a5;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-    html,body { height:100%; background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; overflow:hidden; }
-    #app { height:100dvh; display:flex; flex-direction:column; position:relative; }
-
-    /* SCREENS */
-    .screen { display:none; flex:1; overflow-y:auto; padding-bottom:80px; -webkit-overflow-scrolling:touch; }
-    .screen.active { display:flex; flex-direction:column; }
-
-    /* BOTTOM NAV */
-    .bottom-nav { position:fixed; bottom:0; left:0; right:0; height:68px; background:var(--bg2); border-top:1px solid var(--border); display:flex; align-items:center; z-index:100; padding-bottom:env(safe-area-inset-bottom); }
-    .nav-btn { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:8px; cursor:pointer; border:none; background:none; color:var(--muted); font-size:10px; font-family:'DM Sans',sans-serif; transition:color 0.2s; }
-    .nav-btn.active { color:var(--red); }
-    .nav-btn svg { width:22px; height:22px; }
-
-    /* SETUP */
-    #screen-setup { justify-content:flex-start; padding:0 20px 40px; min-height:100dvh; overflow-y:auto; padding-bottom:40px; }
-    .setup-hero { text-align:center; padding:48px 0 32px; }
-    .setup-pin { font-size:48px; margin-bottom:8px; }
-    .setup-logo { font-family:'Bebas Neue',sans-serif; font-size:52px; color:var(--red); letter-spacing:3px; line-height:1; }
-    .setup-tagline { color:var(--muted2); font-size:14px; margin-top:6px; }
-    .setup-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:24px; margin-bottom:16px; }
-    .setup-card-title { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; color:var(--muted2); margin-bottom:16px; }
-    .fase-setup-item { display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--border); }
-    .fase-setup-item:last-child { border-bottom:none; }
-    .fase-setup-num { font-family:'Bebas Neue',sans-serif; font-size:22px; color:var(--red); width:28px; flex-shrink:0; }
-    .fase-setup-info { flex:1; }
-    .fase-setup-name { font-size:14px; font-weight:600; }
-    .fase-setup-sub { font-size:11px; color:var(--muted); margin-top:1px; }
-    .fase-setup-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-    .days-section { margin-bottom:16px; }
-    .days-label { font-size:14px; color:var(--muted2); margin-bottom:10px; text-align:center; }
-    .days-display { font-family:'Bebas Neue',sans-serif; font-size:80px; color:var(--text); text-align:center; line-height:1; }
-    .days-display span { font-size:20px; color:var(--muted); }
-    .days-slider { width:100%; accent-color:var(--red); margin:12px 0 8px; height:6px; }
-    .days-presets { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
-    .preset-btn { flex:1; min-width:70px; padding:8px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--muted2); font-size:12px; font-weight:600; cursor:pointer; text-align:center; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
-    .preset-btn:active, .preset-btn.sel { background:var(--red-dim); border-color:var(--red); color:var(--red); }
-    .days-hint { font-size:12px; color:var(--muted); text-align:center; margin-top:8px; }
-    .btn-primary { width:100%; background:var(--red); color:#fff; border:none; border-radius:16px; padding:18px; font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:2px; cursor:pointer; transition:opacity 0.2s; margin-top:8px; }
-    .btn-primary:active { opacity:0.8; }
-
-    /* HOME */
-    .home-header { padding:24px 20px 0; }
-    .home-greeting { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }
-    .home-day { font-family:'Bebas Neue',sans-serif; font-size:44px; letter-spacing:1px; line-height:1.1; }
-    .home-day em { color:var(--red); font-style:normal; }
-    .home-progress-bar { height:4px; background:var(--border); border-radius:100px; margin:14px 0 6px; overflow:hidden; }
-    .home-progress-fill { height:100%; background:var(--red); border-radius:100px; transition:width 0.5s ease; }
-    .home-progress-text { font-size:12px; color:var(--muted); display:flex; justify-content:space-between; }
-    .section-title { font-family:'Bebas Neue',sans-serif; font-size:18px; letter-spacing:1px; color:var(--muted); padding:18px 20px 10px; }
-    
-    .day-nav { display:flex; align-items:center; gap:10px; padding:0 20px 0; margin-top:16px; }
-    .day-nav-btn { width:36px; height:36px; border-radius:50%; border:1px solid var(--border); background:var(--bg3); color:var(--muted2); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .day-nav-label { flex:1; text-align:center; font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:1px; }
-    .day-all-done { margin:0 16px 12px; background:linear-gradient(135deg,rgba(34,211,165,0.12),rgba(34,211,165,0.05)); border:1px solid rgba(34,211,165,0.3); border-radius:16px; padding:20px; text-align:center; }
-    .day-all-done-icon { font-size:36px; margin-bottom:8px; }
-    .day-all-done-text { font-size:15px; font-weight:600; color:var(--success); }
-    .day-all-done-sub { font-size:12px; color:var(--muted); margin-top:4px; }
-
-    .reading-card { margin:0 16px 10px; background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
-    .reading-item { display:flex; align-items:center; gap:12px; padding:13px 16px; border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.15s; }
-    .reading-item:last-child { border-bottom:none; }
-    .reading-item:active { background:var(--bg3); }
-    .reading-check { width:26px; height:26px; border-radius:50%; border:2px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.25s; }
-    .reading-check.done { background:var(--success); border-color:var(--success); }
-    .reading-check svg { width:14px; height:14px; opacity:0; transition:opacity 0.2s; }
-    .reading-check.done svg { opacity:1; }
-    .reading-info { flex:1; min-width:0; }
-    .reading-book { font-size:15px; font-weight:600; }
-    .reading-detail { font-size:12px; color:var(--muted); margin-top:2px; }
-    .reading-tag { font-size:10px; font-weight:700; padding:3px 8px; border-radius:100px; flex-shrink:0; }
-
-    /* FASES */
-    .fase-card { margin:0 16px 10px; background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; cursor:pointer; transition:transform 0.15s; }
-    .fase-card:active { transform:scale(0.98); }
-    .fase-card-header { display:flex; align-items:center; gap:14px; padding:16px; }
-    .fase-icon { width:46px; height:46px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
-    .fase-info { flex:1; min-width:0; }
-    .fase-name { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.5px; line-height:1.1; }
-    .fase-sub { font-size:11px; color:var(--muted); margin-top:2px; }
-    .fase-pct { font-family:'Bebas Neue',sans-serif; font-size:24px; flex-shrink:0; }
-    .fase-progress-bar { height:3px; background:var(--border); }
-    .fase-progress-fill { height:100%; transition:width 0.5s; }
-    .fase-books { padding:0 16px 16px; display:none; }
-    .fase-books.open { display:block; }
-    .book-row { display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); cursor:pointer; }
-    .book-row:last-child { border-bottom:none; }
-    .book-row:active { opacity:0.7; }
-    .book-row-name { flex:1; font-size:14px; font-weight:500; }
-    .book-row-pct { font-size:12px; font-weight:600; }
-    .book-row-bar { width:60px; height:4px; background:var(--border); border-radius:100px; overflow:hidden; }
-    .book-row-fill { height:100%; border-radius:100px; transition:width 0.5s; }
-
-    /* BOOK DETAIL */
-    #screen-book { position:fixed; inset:0; z-index:50; transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.32,0.72,0,1); background:var(--bg); padding-bottom:20px; }
-    #screen-book.open { transform:translateX(0); }
-    .back-btn { display:flex; align-items:center; gap:6px; color:var(--muted2); font-size:14px; cursor:pointer; background:none; border:none; font-family:'DM Sans',sans-serif; padding:0; }
-    .back-btn svg { width:18px; height:18px; }
-    .book-header { padding:env(safe-area-inset-top,24px) 20px 0; padding-top:max(env(safe-area-inset-top),24px); }
-    .book-title-row { margin-top:16px; }
-    .book-fase-tag { font-size:11px; font-weight:700; padding:4px 10px; border-radius:100px; display:inline-block; margin-bottom:8px; }
-    .book-title { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:1px; line-height:1; }
-    .book-progress-row { display:flex; align-items:center; gap:10px; margin-top:10px; margin-bottom:4px; }
-    .book-caps-text { font-size:13px; color:var(--muted); }
-    .book-progress-bar-wrap { flex:1; height:4px; background:var(--border); border-radius:100px; overflow:hidden; }
-    .book-progress-bar-fill { height:100%; border-radius:100px; transition:width 0.5s; }
-    .book-pct-text { font-size:13px; font-weight:700; }
-    .caps-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(52px,1fr)); gap:8px; padding:16px 16px 120px; }
-    .cap-btn { aspect-ratio:1; border-radius:12px; border:2px solid var(--border); background:var(--bg2); color:var(--muted2); font-size:14px; font-weight:600; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
-    .cap-btn.done { border-color:transparent; color:#000; }
-    .cap-btn:active { transform:scale(0.88); }
-    .youtube-banner { position:fixed; bottom:0; left:0; right:0; padding:16px; background:var(--bg2); border-top:1px solid var(--border); display:none; }
-    .youtube-banner.show { display:block; }
-    .youtube-btn { display:flex; align-items:center; justify-content:center; gap:10px; padding:14px; background:#ff0000; border-radius:14px; color:#fff; font-weight:700; font-size:15px; text-decoration:none; border:none; width:100%; cursor:pointer; font-family:'DM Sans',sans-serif; }
-    .youtube-btn svg { width:22px; height:22px; fill:#fff; }
-
-    /* PROGRESS */
-    .progress-header { padding:24px 20px 0; }
-    .progress-title { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:1px; }
-    .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:16px 16px 8px; }
-    .stat-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px; }
-    .stat-val { font-family:'Bebas Neue',sans-serif; font-size:40px; color:var(--red); line-height:1; }
-    .stat-label { font-size:12px; color:var(--muted); margin-top:4px; }
-    .stat-card.full { grid-column:span 2; }
-    .big-ring { display:flex; flex-direction:column; align-items:center; padding:8px 0 4px; }
-    .ring-svg { width:120px; height:120px; }
-    .ring-bg { fill:none; stroke:var(--border); stroke-width:8; }
-    .ring-fill { fill:none; stroke:var(--red); stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset 0.8s ease; transform:rotate(-90deg); transform-origin:60px 60px; }
-    .ring-label { font-family:'Bebas Neue',sans-serif; font-size:36px; }
-    .ring-sub { font-size:12px; color:var(--muted); margin-top:2px; }
-
-    /* TOAST */
-    .toast { position:fixed; top:20px; left:50%; transform:translateX(-50%) translateY(-80px); background:var(--success); color:#000; font-weight:700; font-size:13px; padding:10px 20px; border-radius:100px; z-index:400; transition:transform 0.3s ease; white-space:nowrap; pointer-events:none; }
-    .toast.show { transform:translateX(-50%) translateY(0); }
-
-    /* MODAL */
-    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.75); display:flex; align-items:flex-end; z-index:200; backdrop-filter:blur(6px); opacity:0; transition:opacity 0.3s; pointer-events:none; }
-    .modal-overlay.show { opacity:1; pointer-events:all; }
-    .modal-sheet { background:var(--card); border-top-left-radius:24px; border-top-right-radius:24px; padding:20px 20px 36px; width:100%; transform:translateY(100%); transition:transform 0.35s ease; }
-    .modal-overlay.show .modal-sheet { transform:translateY(0); }
-    .modal-handle { width:40px; height:4px; background:var(--border); border-radius:100px; margin:0 auto 20px; }
-    .modal-title { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:1px; margin-bottom:4px; }
-    .modal-sub { font-size:14px; color:var(--muted); margin-bottom:20px; }
-    .modal-yt-btn { display:flex; align-items:center; gap:12px; padding:14px 16px; background:#1a0000; border:1px solid #ff3333; border-radius:14px; width:100%; color:#ff4444; font-weight:600; font-size:15px; text-decoration:none; cursor:pointer; font-family:'DM Sans',sans-serif; border-style:solid; margin-bottom:10px; }
-    .modal-close-btn { display:flex; align-items:center; justify-content:center; padding:14px; background:var(--bg3); border:1px solid var(--border); border-radius:14px; width:100%; color:var(--muted2); font-size:15px; cursor:pointer; font-family:'DM Sans',sans-serif; }
-
-    .empty-day { text-align:center; padding:40px 24px; color:var(--muted); }
-    .empty-day div { font-size:48px; margin-bottom:12px; }
+    :root{--bg:#0c0c10;--bg2:#13131e;--bg3:#1a1a28;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--gold:#c9a96e;--gold-dim:rgba(201,169,110,0.1);--gold-border:rgba(201,169,110,0.25);--text:#f0f0f5;--muted:rgba(240,240,245,0.35);--muted2:rgba(240,240,245,0.22);--success:#7abfa0;}
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+    html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow:hidden;}
+    #app{height:100dvh;display:flex;flex-direction:column;}
+    .scr{display:none;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:80px;}
+    .scr.active{display:flex;flex-direction:column;}
+    .scr::-webkit-scrollbar{width:0;}
+    #bnav{position:fixed;bottom:0;left:0;right:0;height:68px;background:var(--bg);border-top:0.5px solid var(--border);display:flex;align-items:center;z-index:100;padding-bottom:env(safe-area-inset-bottom);}
+    .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:var(--muted2);font-size:10px;cursor:pointer;padding:8px;font-family:'DM Sans',sans-serif;transition:color .15s;letter-spacing:.3px;}
+    .nb svg{width:20px;height:20px;stroke-width:1.5;}
+    .nb.on{color:var(--gold);}
+    #scr-book{position:fixed;inset:0;z-index:50;background:var(--bg);transform:translateX(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);overflow-y:auto;padding-bottom:120px;}
+    #scr-book.open{transform:translateX(0);}
+    .sec-lbl{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:10px;}
+    .card{background:var(--bg2);border:0.5px solid var(--border);border-radius:14px;padding:16px;}
+    .thin-bg{background:rgba(255,255,255,0.08);border-radius:100px;height:2px;overflow:hidden;}
+    .thin-fill{height:100%;background:var(--gold);border-radius:100px;transition:width .4s;}
+    .cap-btn{width:42px;height:42px;border-radius:50%;border:0.5px solid rgba(255,255,255,0.13);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;transition:all .18s;}
+    .cap-btn.on{background:var(--gold);border-color:var(--gold);color:#1a1200;font-weight:600;}
+    .cap-btn:active{transform:scale(.86);}
+    .check{width:22px;height:22px;border-radius:50%;border:0.5px solid rgba(255,255,255,0.18);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;}
+    .check.on{background:var(--gold);border-color:var(--gold);}
+    .check svg{width:11px;height:11px;stroke:#1a1200;stroke-width:2.5;opacity:0;transition:opacity .15s;}
+    .check.on svg{opacity:1;}
+    .back-btn{display:flex;align-items:center;gap:5px;background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0;letter-spacing:.3px;}
+    .back-btn svg{width:16px;height:16px;stroke-width:1.5;}
+    .row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:0.5px solid var(--border);cursor:pointer;}
+    .row:last-child{border-bottom:none;}
+    .row:active{opacity:.65;}
+    .pri-btn{width:100%;background:var(--gold);color:#1a1200;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
+    .pri-btn:active{opacity:.82;}
+    .yt-btn-el{display:flex;align-items:center;gap:12px;padding:14px;border:0.5px solid var(--gold-border);border-radius:13px;background:var(--gold-dim);color:var(--gold);font-size:13px;font-weight:500;text-decoration:none;font-family:'DM Sans',sans-serif;}
+    .yt-btn-el:active{opacity:.8;}
+    .yt-ico{width:34px;height:34px;border-radius:8px;background:rgba(201,169,110,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .yt-ico svg{width:16px;height:16px;fill:var(--gold);}
+    .stat-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:14px 16px;}
+    .stat-n{font-size:30px;font-weight:500;color:var(--gold);line-height:1;}
+    .stat-l{font-size:11px;color:var(--muted2);margin-top:4px;letter-spacing:.3px;}
+    .slider{width:100%;-webkit-appearance:none;height:2px;background:rgba(255,255,255,0.1);border-radius:100px;outline:none;margin:12px 0;}
+    .slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--bg);}
+    .preset{flex:1;background:rgba(255,255,255,0.04);border:0.5px solid var(--border2);border-radius:8px;color:var(--muted);font-size:12px;padding:7px 4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;}
+    .preset.on{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold);}
+    .daynav{width:32px;height:32px;border-radius:50%;border:0.5px solid var(--border2);background:transparent;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .fase-card-el{background:var(--bg2);border:0.5px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;margin-bottom:8px;}
+    .fase-hdr{padding:14px;display:flex;align-items:center;gap:12px;}
+    .phase-num{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--gold);flex-shrink:0;}
+    .books-list{display:none;padding:2px 14px 12px;}
+    .books-list.open{display:block;}
+    .reading-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:0.5px solid var(--border);cursor:pointer;}
+    .reading-row:last-child{border-bottom:none;}
+    .reading-row:active{opacity:.65;}
+    .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);background:var(--gold);color:#1a1200;font-weight:600;font-size:13px;padding:10px 20px;border-radius:100px;z-index:400;transition:transform .3s ease;white-space:nowrap;pointer-events:none;}
+    .toast.show{transform:translateX(-50%) translateY(0);}
   </style>
 </head>
 <body>
 <div id="app">
-  <div id="screen-setup" class="screen active"></div>
-  <div id="screen-home" class="screen"></div>
-  <div id="screen-fases" class="screen"></div>
-  <div id="screen-progress" class="screen"></div>
-  <div id="screen-book" class="screen"></div>
-  <nav class="bottom-nav" id="bottom-nav" style="display:none">
-    <button class="nav-btn active" onclick="showScreen('home')" id="nav-home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Hoje
-    </button>
-    <button class="nav-btn" onclick="showScreen('fases')" id="nav-fases">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Fases
-    </button>
-    <button class="nav-btn" onclick="showScreen('progress')" id="nav-progress">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Progresso
-    </button>
-  </nav>
-  <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
-    <div class="modal-sheet" onclick="event.stopPropagation()">
-      <div class="modal-handle"></div>
-      <div id="modal-content"></div>
+
+  <div class="scr active" id="scr-setup" style="overflow-y:auto;padding:0 20px 24px;">
+    <div style="text-align:center;padding:40px 0 16px">
+      <div class="sec-lbl" style="margin-bottom:10px">Plano de Leitura</div>
+      <div style="font-size:40px;font-weight:500;letter-spacing:-1px">Encorpei</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px">Bíblia Completa · 7 Fases</div>
+    </div>
+    <div class="card" style="margin-bottom:12px">
+      <div class="sec-lbl">7 fases do plano</div>
+      <div id="setup-phases"></div>
+    </div>
+    <div class="card">
+      <div class="sec-lbl">Em quantos dias?</div>
+      <div style="text-align:center;margin:4px 0">
+        <span id="days-val" style="font-size:52px;font-weight:500;color:var(--gold);line-height:1">365</span>
+        <span style="font-size:14px;color:var(--muted)"> dias</span>
+      </div>
+      <input id="days-slider" class="slider" type="range" min="90" max="730" value="365">
+      <div style="display:flex;gap:6px;margin-bottom:10px">
+        <button class="preset" onclick="SD(90)">3 meses</button>
+        <button class="preset" onclick="SD(180)">6 meses</button>
+        <button class="preset on" onclick="SD(365)">1 ano</button>
+        <button class="preset" onclick="SD(730)">2 anos</button>
+      </div>
+      <div id="days-hint" style="font-size:11px;color:var(--muted2);text-align:center;margin-bottom:14px">aprox. 4 capitulos por dia</div>
+      <button class="pri-btn" onclick="startPlan()">Começar meu plano</button>
     </div>
   </div>
+
+  <div class="scr" id="scr-home">
+    <div style="padding:24px 20px 0">
+      <div class="sec-lbl">progresso total</div>
+      <div style="font-size:30px;font-weight:500;margin-top:1px">Dia <span id="home-dn" style="color:var(--gold)">1</span><span style="font-size:16px;font-weight:400;color:var(--muted2)"> de <span id="home-td">365</span></span></div>
+      <div style="margin:10px 0 3px" class="thin-bg"><div class="thin-fill" id="home-pb" style="width:0%"></div></div>
+      <div style="display:flex;justify-content:space-between"><span style="font-size:11px;color:var(--muted)" id="home-ct">0 de 1189</span><span style="font-size:11px;color:var(--gold)" id="home-pct">0%</span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;padding:14px 20px 0">
+      <button class="daynav" onclick="chDay(-1)">&#8249;</button>
+      <div style="flex:1;text-align:center;font-size:11px;letter-spacing:1px;color:var(--muted)" id="home-dl">HOJE</div>
+      <button class="daynav" onclick="chDay(1)">&#8250;</button>
+    </div>
+    <div style="padding:14px 20px 8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2)" id="home-sl">leituras do dia</div>
+    <div style="margin:0 16px;background:var(--bg2);border:0.5px solid var(--border);border-radius:14px;overflow:hidden" id="home-readings"></div>
+    <div id="home-done" style="display:none;margin:10px 16px 0;padding:16px;border:0.5px solid var(--gold-border);border-radius:12px;text-align:center">
+      <div style="font-size:13px;color:var(--gold);font-weight:500">Dia concluido</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Continue assim amanha</div>
+    </div>
+  </div>
+
+  <div class="scr" id="scr-fases">
+    <div style="padding:24px 20px 14px">
+      <div class="sec-lbl">plano de leitura</div>
+      <div style="font-size:28px;font-weight:500">As 7 Fases</div>
+    </div>
+    <div style="padding:0 16px" id="fases-list"></div>
+  </div>
+
+  <div class="scr" id="scr-progress">
+    <div style="padding:24px 20px 14px">
+      <div class="sec-lbl">visao geral</div>
+      <div style="font-size:28px;font-weight:500">Progresso</div>
+    </div>
+    <div id="prog-content" style="padding:0 16px"></div>
+  </div>
+
+  <nav id="bnav" style="display:none">
+    <button class="nb on" id="nb-home" onclick="go('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>Hoje
+    </button>
+    <button class="nb" id="nb-fases" onclick="go('fases')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Fases
+    </button>
+    <button class="nb" id="nb-progress" onclick="go('progress')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Progresso
+    </button>
+  </nav>
+
+  <div id="scr-book">
+    <div style="padding:max(env(safe-area-inset-top),20px) 20px 0">
+      <button class="back-btn" onclick="closeBook()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15,18 9,12 15,6"/></svg>Voltar
+      </button>
+      <div id="book-phase" style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-top:14px"></div>
+      <div id="book-title" style="font-size:38px;font-weight:500;letter-spacing:-1px;line-height:1;margin-top:2px"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:10px;margin-bottom:3px">
+        <div id="book-cd" style="font-size:11px;color:var(--muted);min-width:60px">0 caps</div>
+        <div style="flex:1" class="thin-bg"><div class="thin-fill" id="book-pb" style="width:0%"></div></div>
+        <div id="book-pct" style="font-size:11px;color:var(--gold);font-weight:500;min-width:28px;text-align:right">0%</div>
+      </div>
+    </div>
+    <div id="caps-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:8px;padding:16px"></div>
+    <div id="yt-section" style="display:none;padding:0 16px 20px">
+      <div style="height:0.5px;background:var(--border);margin-bottom:16px"></div>
+      <div class="sec-lbl" style="margin-bottom:10px">Revisar a leitura</div>
+      <a id="yt-link" class="yt-btn-el" href="#" target="_blank">
+        <div class="yt-ico">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="#0c0c10"/></svg>
+        </div>
+        <div>
+          <div id="yt-book-name" style="font-size:13px;font-weight:500">Ver no YouTube</div>
+          <div style="font-size:11px;color:rgba(201,169,110,0.55);margin-top:1px">Resumo e explicacao do livro</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 </div>
 
 <script>
-const SUPABASE_URL = 'https://xubmmswoeamnynybfdxz.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_9p8C7tTp3SFirzxfyJWdhQ_f8P2VdRN';
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const SB_URL='https://xubmmswoeamnynybfdxz.supabase.co';
+const SB_KEY='sb_publishable_9p8C7tTp3SFirzxfyJWdhQ_f8P2VdRN';
+const sb=window.supabase.createClient(SB_URL,SB_KEY);
 
-// ─── DATA ────────────────────────────────────────────────────────────────────
-const FASES = [
-  { id:1, nome:'Os Evangelhos', subtitulo:'Mateus, Marcos, Lucas e João', cor:'#e63946', bg:'rgba(230,57,70,0.12)', icone:'✝️',
-    livros:[{nome:'Mateus',caps:28},{nome:'Marcos',caps:16},{nome:'Lucas',caps:24},{nome:'João',caps:21}]},
-  { id:2, nome:'O Início da Igreja', subtitulo:'Atos dos Apóstolos', cor:'#f4a261', bg:'rgba(244,162,97,0.12)', icone:'🕊️',
-    livros:[{nome:'Atos',caps:28}]},
-  { id:3, nome:'A Origem', subtitulo:'Gênesis até Ester • 17 livros', cor:'#2a9d8f', bg:'rgba(42,157,143,0.12)', icone:'🌍',
-    livros:[{nome:'Gênesis',caps:50},{nome:'Êxodo',caps:40},{nome:'Levítico',caps:27},{nome:'Números',caps:36},{nome:'Deuteronômio',caps:34},{nome:'Josué',caps:24},{nome:'Juízes',caps:21},{nome:'Rute',caps:4},{nome:'1 Samuel',caps:31},{nome:'2 Samuel',caps:24},{nome:'1 Reis',caps:22},{nome:'2 Reis',caps:25},{nome:'1 Crônicas',caps:29},{nome:'2 Crônicas',caps:36},{nome:'Esdras',caps:10},{nome:'Neemias',caps:13},{nome:'Ester',caps:10}]},
-  { id:4, nome:'As Cartas', subtitulo:'Romanos até Judas • 21 livros', cor:'#8338ec', bg:'rgba(131,56,236,0.12)', icone:'✉️',
-    livros:[{nome:'Romanos',caps:16},{nome:'1 Coríntios',caps:16},{nome:'2 Coríntios',caps:13},{nome:'Gálatas',caps:6},{nome:'Efésios',caps:6},{nome:'Filipenses',caps:4},{nome:'Colossenses',caps:4},{nome:'1 Tessalonicenses',caps:5},{nome:'2 Tessalonicenses',caps:3},{nome:'1 Timóteo',caps:6},{nome:'2 Timóteo',caps:4},{nome:'Tito',caps:3},{nome:'Filemom',caps:1},{nome:'Hebreus',caps:13},{nome:'Tiago',caps:5},{nome:'1 Pedro',caps:5},{nome:'2 Pedro',caps:3},{nome:'1 João',caps:5},{nome:'2 João',caps:1},{nome:'3 João',caps:1},{nome:'Judas',caps:1}]},
-  { id:5, nome:'Os Profetas', subtitulo:'Isaías até Malaquias • 17 livros', cor:'#e9c46a', bg:'rgba(233,196,106,0.12)', icone:'🔥',
-    livros:[{nome:'Isaías',caps:66},{nome:'Jeremias',caps:52},{nome:'Lamentações',caps:5},{nome:'Ezequiel',caps:48},{nome:'Daniel',caps:12},{nome:'Oseias',caps:14},{nome:'Joel',caps:3},{nome:'Amós',caps:9},{nome:'Obadias',caps:1},{nome:'Jonas',caps:4},{nome:'Miquéias',caps:7},{nome:'Naum',caps:3},{nome:'Habacuque',caps:3},{nome:'Sofonias',caps:3},{nome:'Ageu',caps:2},{nome:'Zacarias',caps:14},{nome:'Malaquias',caps:4}]},
-  { id:6, nome:'Reflexões', subtitulo:'Jó, Salmos, Provérbios, Eclesiastes e Cânticos', cor:'#06d6a0', bg:'rgba(6,214,160,0.12)', icone:'🎵',
-    livros:[{nome:'Jó',caps:42},{nome:'Salmos',caps:150},{nome:'Provérbios',caps:31},{nome:'Eclesiastes',caps:12},{nome:'Cânticos',caps:8}]},
-  { id:7, nome:'O Grand Finale', subtitulo:'Apocalipse', cor:'#ff006e', bg:'rgba(255,0,110,0.12)', icone:'👑',
-    livros:[{nome:'Apocalipse',caps:22}]},
-];
+const YT={'Mateus':'evangelho+mateus+resumo+explicado+biblia','Marcos':'evangelho+marcos+resumo+explicado+biblia','Lucas':'evangelho+lucas+resumo+explicado+biblia','Joao':'evangelho+joao+resumo+explicado+biblia','João':'evangelho+joao+resumo+explicado+biblia','Atos':'atos+apostolos+resumo+explicado+biblia','Genesis':'genesis+resumo+explicado+biblia+criacao','Gênesis':'genesis+resumo+explicado+biblia+criacao','Exodo':'exodo+resumo+explicado+moises+biblia','Êxodo':'exodo+resumo+explicado+moises+biblia','Levitico':'levitico+resumo+explicado+biblia','Levítico':'levitico+resumo+explicado+biblia','Numeros':'numeros+resumo+explicado+biblia+deserto','Números':'numeros+resumo+explicado+biblia+deserto','Deuteronomio':'deuteronomio+resumo+explicado+biblia','Deuteronômio':'deuteronomio+resumo+explicado+biblia','Josue':'josue+resumo+explicado+biblia+terra+prometida','Josué':'josue+resumo+explicado+biblia+terra+prometida','Juizes':'juizes+resumo+explicado+biblia','Juízes':'juizes+resumo+explicado+biblia','Rute':'rute+resumo+explicado+biblia+historia','1 Samuel':'1+samuel+resumo+explicado+biblia+davi+saul','2 Samuel':'2+samuel+resumo+explicado+biblia+davi','1 Reis':'1+reis+resumo+explicado+biblia+salomao','2 Reis':'2+reis+resumo+explicado+biblia','1 Cronicas':'1+cronicas+resumo+explicado+biblia','1 Crônicas':'1+cronicas+resumo+explicado+biblia','2 Cronicas':'2+cronicas+resumo+explicado+biblia','2 Crônicas':'2+cronicas+resumo+explicado+biblia','Esdras':'esdras+resumo+explicado+biblia+retorno','Neemias':'neemias+resumo+explicado+biblia+reconstrucao','Ester':'ester+resumo+explicado+biblia+historia','Jo':'jo+sofrimento+resumo+explicado+biblia','Jó':'jo+sofrimento+resumo+explicado+biblia','Salmos':'salmos+resumo+explicado+biblia+louvor','Proverbios':'proverbios+resumo+explicado+biblia+sabedoria','Provérbios':'proverbios+resumo+explicado+biblia+sabedoria','Eclesiastes':'eclesiastes+resumo+explicado+biblia+vaidade','Canticos':'canticos+salomao+resumo+explicado+biblia','Cânticos':'canticos+salomao+resumo+explicado+biblia','Isaias':'isaias+resumo+explicado+biblia+profeta','Isaías':'isaias+resumo+explicado+biblia+profeta','Jeremias':'jeremias+resumo+explicado+biblia+profeta','Lamentacoes':'lamentacoes+jeremias+resumo+explicado+biblia','Lamentações':'lamentacoes+jeremias+resumo+explicado+biblia','Ezequiel':'ezequiel+resumo+explicado+biblia+visoes','Daniel':'daniel+resumo+explicado+biblia+leoes','Oseias':'oseias+resumo+explicado+biblia+profeta','Joel':'joel+resumo+explicado+biblia+dia+senhor','Amos':'amos+resumo+explicado+biblia+profeta','Amós':'amos+resumo+explicado+biblia+profeta','Obadias':'obadias+resumo+explicado+biblia','Jonas':'jonas+resumo+explicado+biblia+baleia','Miqueias':'miqueias+resumo+explicado+biblia+profeta','Miquéias':'miqueias+resumo+explicado+biblia+profeta','Naum':'naum+resumo+explicado+biblia+ninive','Habacuque':'habacuque+resumo+explicado+biblia','Sofonias':'sofonias+resumo+explicado+biblia','Ageu':'ageu+resumo+explicado+biblia+templo','Zacarias':'zacarias+resumo+explicado+biblia+profecias','Malaquias':'malaquias+resumo+explicado+biblia+ultimo+profeta','Romanos':'romanos+resumo+explicado+biblia+paulo','1 Corintios':'1+corintios+resumo+explicado+biblia+paulo','1 Coríntios':'1+corintios+resumo+explicado+biblia+paulo','2 Corintios':'2+corintios+resumo+explicado+biblia+paulo','2 Coríntios':'2+corintios+resumo+explicado+biblia+paulo','Galatas':'galatas+resumo+explicado+biblia+graca','Gálatas':'galatas+resumo+explicado+biblia+graca','Efesios':'efesios+resumo+explicado+biblia+armadura','Efésios':'efesios+resumo+explicado+biblia+armadura','Filipenses':'filipenses+resumo+explicado+biblia+alegria','Colossenses':'colossenses+resumo+explicado+biblia+cristo','1 Tessalonicenses':'1+tessalonicenses+resumo+explicado+biblia+volta+jesus','2 Tessalonicenses':'2+tessalonicenses+resumo+explicado+biblia','1 Timoteo':'1+timoteo+resumo+explicado+biblia+lideranca','1 Timóteo':'1+timoteo+resumo+explicado+biblia+lideranca','2 Timoteo':'2+timoteo+resumo+explicado+biblia','2 Timóteo':'2+timoteo+resumo+explicado+biblia','Tito':'tito+resumo+explicado+biblia','Filemom':'filemom+resumo+explicado+biblia','Hebreus':'hebreus+resumo+explicado+biblia+fe','Tiago':'tiago+resumo+explicado+biblia+fe+obras','1 Pedro':'1+pedro+resumo+explicado+biblia+sofrimento','2 Pedro':'2+pedro+resumo+explicado+biblia','1 Joao':'1+joao+resumo+explicado+biblia+amor','1 João':'1+joao+resumo+explicado+biblia+amor','2 Joao':'2+joao+resumo+explicado+biblia','2 João':'2+joao+resumo+explicado+biblia','3 Joao':'3+joao+resumo+explicado+biblia','3 João':'3+joao+resumo+explicado+biblia','Judas':'judas+resumo+explicado+biblia+apostasia','Apocalipse':'apocalipse+resumo+explicado+biblia+fim+dos+tempos'};
 
-// Flat list of all chapters in order
-const ALL_CHAPTERS = [];
-FASES.forEach(f => f.livros.forEach(l => {
-  for(let c=1;c<=l.caps;c++) ALL_CHAPTERS.push({faseId:f.id,livro:l.nome,capitulo:c});
-}));
-const TOTAL_CAPS = ALL_CHAPTERS.length; // 1189
+function ytUrl(l){const q=YT[l]||(l.toLowerCase().replace(/ /g,'+')+'+biblia+explicado+resumo');return'https://www.youtube.com/results?search_query='+q;}
 
-// ─── STATE ───────────────────────────────────────────────────────────────────
-let deviceId = localStorage.getItem('enc_device_id');
-if(!deviceId){ deviceId = 'dev_'+Math.random().toString(36).slice(2)+Date.now().toString(36); localStorage.setItem('enc_device_id',deviceId); }
-let plan = null; // {totalDias, dataInicio}
-let lidosSet = new Set(); // "Livro|cap"
-let currentScreen = 'setup';
-let viewingBook = null; // {fase, livro}
-let viewingDay = null; // number
-let dayPlan = []; // array of arrays of chapters per day
+const FASES=[{id:1,n:'Os Evangelhos',s:'Mateus, Marcos, Lucas e Joao',l:[{n:'Mateus',c:28},{n:'Marcos',c:16},{n:'Lucas',c:24},{n:'Joao',c:21}]},{id:2,n:'O Inicio da Igreja',s:'Atos dos Apostolos',l:[{n:'Atos',c:28}]},{id:3,n:'A Origem',s:'Genesis ate Ester - 17 livros',l:[{n:'Genesis',c:50},{n:'Exodo',c:40},{n:'Levitico',c:27},{n:'Numeros',c:36},{n:'Deuteronomio',c:34},{n:'Josue',c:24},{n:'Juizes',c:21},{n:'Rute',c:4},{n:'1 Samuel',c:31},{n:'2 Samuel',c:24},{n:'1 Reis',c:22},{n:'2 Reis',c:25},{n:'1 Cronicas',c:29},{n:'2 Cronicas',c:36},{n:'Esdras',c:10},{n:'Neemias',c:13},{n:'Ester',c:10}]},{id:4,n:'As Cartas',s:'Romanos ate Judas - 21 livros',l:[{n:'Romanos',c:16},{n:'1 Corintios',c:16},{n:'2 Corintios',c:13},{n:'Galatas',c:6},{n:'Efesios',c:6},{n:'Filipenses',c:4},{n:'Colossenses',c:4},{n:'1 Tessalonicenses',c:5},{n:'2 Tessalonicenses',c:3},{n:'1 Timoteo',c:6},{n:'2 Timoteo',c:4},{n:'Tito',c:3},{n:'Filemom',c:1},{n:'Hebreus',c:13},{n:'Tiago',c:5},{n:'1 Pedro',c:5},{n:'2 Pedro',c:3},{n:'1 Joao',c:5},{n:'2 Joao',c:1},{n:'3 Joao',c:1},{n:'Judas',c:1}]},{id:5,n:'Os Profetas',s:'Isaias ate Malaquias - 17 livros',l:[{n:'Isaias',c:66},{n:'Jeremias',c:52},{n:'Lamentacoes',c:5},{n:'Ezequiel',c:48},{n:'Daniel',c:12},{n:'Oseias',c:14},{n:'Joel',c:3},{n:'Amos',c:9},{n:'Obadias',c:1},{n:'Jonas',c:4},{n:'Miqueias',c:7},{n:'Naum',c:3},{n:'Habacuque',c:3},{n:'Sofonias',c:3},{n:'Ageu',c:2},{n:'Zacarias',c:14},{n:'Malaquias',c:4}]},{id:6,n:'Reflexoes',s:'Jo, Salmos, Proverbios, Eclesiastes, Canticos',l:[{n:'Jo',c:42},{n:'Salmos',c:150},{n:'Proverbios',c:31},{n:'Eclesiastes',c:12},{n:'Canticos',c:8}]},{id:7,n:'O Grand Finale',s:'Apocalipse',l:[{n:'Apocalipse',c:22}]}];
 
-// ─── PLAN HELPERS ────────────────────────────────────────────────────────────
-function buildDayPlan(totalDias) {
-  const capsPerDay = Math.ceil(TOTAL_CAPS / totalDias);
-  const days = [];
-  let idx = 0;
-  for(let d=0;d<totalDias;d++){
-    const dayChaps = [];
-    while(dayChaps.length < capsPerDay && idx < TOTAL_CAPS){
-      dayChaps.push(ALL_CHAPTERS[idx++]);
-    }
-    if(dayChaps.length) days.push(dayChaps);
-  }
-  // remaining chapters go to last day
-  while(idx < TOTAL_CAPS){ days[days.length-1].push(ALL_CHAPTERS[idx++]); }
-  return days;
-}
+const ALL=[];FASES.forEach(f=>f.l.forEach(l=>{for(let c=1;c<=l.c;c++)ALL.push({fId:f.id,bk:l.n,cp:c});}));
+const TOTAL=ALL.length;
 
-function todayDayNumber() {
-  if(!plan) return 1;
-  const start = new Date(plan.dataInicio);
-  const now = new Date();
-  const diff = Math.floor((now - start)/(1000*60*60*24));
-  return Math.min(Math.max(diff+1, 1), plan.totalDias);
-}
+let devId=localStorage.getItem('enc_did');
+if(!devId){devId='dev_'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('enc_did',devId);}
+let plan=null,lidos=new Set(),vday=1,curScr='setup',curBook=null,openF=new Set(),dayplan=[];
 
-function isLido(livro, cap){ return lidosSet.has(livro+'|'+cap); }
+function K(b,c){return b+'|'+c;}
+function bkDone(b,tc){let d=0;for(let c=1;c<=tc;c++)if(lidos.has(K(b,c)))d++;return d;}
+function fDone(f){let d=0,t=0;f.l.forEach(l=>{t+=l.c;d+=bkDone(l.n,l.c);});return{d,t};}
+function P(d,t){return t?Math.round(d/t*100):0;}
+function todayN(){const s=new Date(plan.start),n=new Date();return Math.min(Math.max(Math.floor((n-s)/86400000)+1,1),plan.days);}
+function buildPlan(nd){const cpp=Math.ceil(TOTAL/nd);const days=[];let i=0;for(let d=0;d<nd;d++){const dc=[];while(dc.length<cpp&&i<TOTAL)dc.push(ALL[i++]);if(dc.length)days.push(dc);}while(i<TOTAL)days[days.length-1].push(ALL[i++]);return days;}
 
-function chapKey(livro,cap){ return livro+'|'+cap; }
+async function loadLidos(){const{data,error}=await sb.from('leituras').select('livro,capitulo').eq('device_id',devId);if(!error)lidos=new Set(data.map(r=>r.livro+'|'+r.capitulo));}
+async function syncDb(livro,cap,on){if(on){await sb.from('leituras').upsert({device_id:devId,livro,capitulo:cap,lido:true},{onConflict:'device_id,livro,capitulo'});}else{await sb.from('leituras').delete().eq('device_id',devId).eq('livro',livro).eq('capitulo',cap);}}
 
-function getBookProgress(livro, totalCaps){
-  let done=0;
-  for(let c=1;c<=totalCaps;c++) if(isLido(livro,c)) done++;
-  return done;
-}
+function go(name){['home','fases','progress'].forEach(s=>{document.getElementById('scr-'+s).classList.toggle('active',s===name);document.getElementById('nb-'+s).classList.toggle('on',s===name);});curScr=name;if(name==='home')rHome();if(name==='fases')rFases();if(name==='progress')rProg();}
+function openBook(fId,bk){curBook={fId,bk};const el=document.getElementById('scr-book');el.classList.add('open');el.scrollTop=0;rBook();}
+function closeBook(){document.getElementById('scr-book').classList.remove('open');if(curScr==='home')rHome();if(curScr==='fases')rFases();}
 
-function getFaseProgress(fase){
-  let done=0, total=0;
-  fase.livros.forEach(l=>{ total+=l.caps; done+=getBookProgress(l.nome,l.caps); });
-  return {done,total};
-}
+function SD(v){plan=plan||{days:365,start:new Date().toISOString().split('T')[0]};plan.days=v;document.getElementById('days-val').textContent=v;document.getElementById('days-slider').value=v;const cpp=Math.ceil(TOTAL/v);document.getElementById('days-hint').textContent='aprox. '+cpp+' capitulos por dia';document.querySelectorAll('.preset').forEach(b=>{const m={'3 meses':90,'6 meses':180,'1 ano':365,'2 anos':730};b.classList.toggle('on',m[b.textContent]===v);});}
 
-function getTotalProgress(){
-  return {done:lidosSet.size, total:TOTAL_CAPS};
-}
+async function startPlan(){plan={days:parseInt(document.getElementById('days-slider').value),start:new Date().toISOString().split('T')[0]};localStorage.setItem('enc_plan',JSON.stringify(plan));dayplan=buildPlan(plan.days);vday=todayN();document.getElementById('scr-setup').classList.remove('active');document.getElementById('bnav').style.display='flex';go('home');toast('Plano criado!');}
 
-function chapsPerDay(){ return dayPlan[0]?.length || 0; }
+function chDay(d){vday=Math.min(Math.max(vday+d,1),plan.days);rHome();}
 
-// ─── SUPABASE ────────────────────────────────────────────────────────────────
-async function loadLidos(){
-  const {data,error} = await sb.from('leituras').select('livro,capitulo').eq('device_id',deviceId);
-  if(error){ console.error(error); return; }
-  lidosSet = new Set(data.map(r=>r.livro+'|'+r.capitulo));
-}
+function rHome(){if(!plan||!dayplan.length)return;const t=todayN();const dc=dayplan[vday-1]||[];const byBook={};dc.forEach(c=>{if(!byBook[c.bk])byBook[c.bk]={bk:c.bk,fId:c.fId,caps:[]};byBook[c.bk].caps.push(c.cp);});const dd=dc.filter(c=>lidos.has(K(c.bk,c.cp))).length;const alldd=dc.length>0&&dd===dc.length;const td=lidos.size;const tp=P(td,TOTAL);document.getElementById('home-dn').textContent=vday;document.getElementById('home-td').textContent=plan.days;document.getElementById('home-pb').style.width=tp+'%';document.getElementById('home-ct').textContent=td+' de '+TOTAL+' caps';document.getElementById('home-pct').textContent=tp+'%';document.getElementById('home-dl').textContent=vday===t?'HOJE':'DIA '+vday;document.getElementById('home-done').style.display=alldd?'block':'none';document.getElementById('home-sl').textContent='leituras do dia - '+dd+'/'+dc.length;const cont=document.getElementById('home-readings');const rows=Object.values(byBook);if(!rows.length){cont.innerHTML='<div style="padding:18px 16px;font-size:12px;color:var(--muted2);text-align:center">Nenhuma leitura</div>';return;}cont.innerHTML=rows.map(g=>{const da=g.caps.every(c=>lidos.has(K(g.bk,c)));const dn=g.caps.filter(c=>lidos.has(K(g.bk,c))).length;const f=FASES.find(f=>f.id===g.fId);const safe=g.bk.replace(/'/g,"\\'");return'<div class="reading-row" onclick="openBook('+g.fId+',\''+safe+'\')">'+'<div class="check '+(da?'on':'')+'"><svg viewBox="0 0 24 24" fill="none"><polyline points="20,6 9,17 4,12"/></svg></div>'+'<div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:500">'+g.bk+'</div><div style="font-size:11px;color:var(--muted);margin-top:1px">Caps '+g.caps[0]+(g.caps.length>1?'-'+g.caps[g.caps.length-1]:'')+' - '+dn+'/'+g.caps.length+' lidos</div></div>'+'<div style="font-size:10px;letter-spacing:.5px;color:var(--muted2)">F'+f.id+'</div></div>';}).join('');const last=cont.querySelector('.reading-row:last-child');if(last)last.style.borderBottom='none';}
 
-async function toggleChapter(livro, cap){
-  const key = chapKey(livro,cap);
-  const done = lidosSet.has(key);
-  if(done){
-    lidosSet.delete(key);
-    await sb.from('leituras').delete().eq('device_id',deviceId).eq('livro',livro).eq('capitulo',cap);
-  } else {
-    lidosSet.add(key);
-    await sb.from('leituras').upsert({device_id:deviceId,livro,capitulo:cap,lido:true},{onConflict:'device_id,livro,capitulo'});
-  }
-  return !done; // returns new state
-}
+function rFases(){document.getElementById('fases-list').innerHTML=FASES.map(f=>{const{d,t}=fDone(f);const p=P(d,t);const op=openF.has(f.id);return'<div class="fase-card-el"><div class="fase-hdr" onclick="toggleF('+f.id+')">'+'<div class="phase-num">'+f.id+'</div><div style="flex:1;min-width:0"><div style="font-size:14px;font-weight:500">'+f.n+'</div><div style="font-size:11px;color:var(--muted);margin-top:2px">'+f.s+'</div></div><div style="font-size:13px;font-weight:500;color:var(--gold)">'+p+'%</div></div>'+'<div style="height:1px;background:var(--border)"><div style="height:1px;background:var(--gold);width:'+p+'%"></div></div>'+'<div class="books-list'+(op?' open':'')+'">'+f.l.map(l=>{const ld=bkDone(l.n,l.c);const lp=P(ld,l.c);const safe=l.n.replace(/'/g,"\\'");return'<div class="row" onclick="event.stopPropagation();openBook('+f.id+',\''+safe+'\')">'+'<div style="flex:1;font-size:13px">'+l.n+'</div><div style="width:48px;height:1px;background:rgba(255,255,255,0.08);border-radius:100px;overflow:hidden;margin-right:8px"><div style="height:100%;width:'+lp+'%;background:var(--gold)"></div></div><div style="font-size:11px;color:var(--muted);min-width:32px;text-align:right">'+ld+'/'+l.c+'</div></div>';}).join('')+'</div></div>';}).join('');}
 
-// ─── NAVIGATION ──────────────────────────────────────────────────────────────
-function showScreen(name){
-  ['home','fases','progress'].forEach(s=>{
-    document.getElementById('screen-'+s).classList.toggle('active', s===name);
-    const nb = document.getElementById('nav-'+s);
-    if(nb) nb.classList.toggle('active', s===name);
-  });
-  currentScreen = name;
-  if(name==='home') renderHome();
-  if(name==='fases') renderFases();
-  if(name==='progress') renderProgress();
-}
+function toggleF(id){if(openF.has(id))openF.delete(id);else openF.add(id);rFases();}
 
-function openBook(faseId, livroNome){
-  viewingBook = {faseId, livroNome};
-  renderBookDetail();
-  document.getElementById('screen-book').classList.add('open');
-}
+function rProg(){const td=lidos.size;const tp=P(td,TOTAL);const circ=2*Math.PI*42;const off=circ*(1-tp/100);const t=todayN();const cpp=Math.ceil(TOTAL/plan.days);const avg=t>1?Math.round(td/(t-1)):td;const fc=FASES.filter(f=>{const{d,t}=fDone(f);return d===t&&t>0;}).length;document.getElementById('prog-content').innerHTML='<div class="card" style="display:flex;align-items:center;gap:20px;padding:18px 20px;margin-bottom:10px"><svg width="88" height="88" viewBox="0 0 88 88"><circle cx="44" cy="44" r="42" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="5"/><circle cx="44" cy="44" r="42" fill="none" stroke="#c9a96e" stroke-width="5" stroke-linecap="round" stroke-dasharray="'+circ.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 44 44)"/><text x="44" y="49" text-anchor="middle" fill="#c9a96e" font-size="16" font-weight="500" font-family="sans-serif">'+tp+'%</text></svg><div><div style="font-size:28px;font-weight:500;color:var(--gold)">'+td+'</div><div style="font-size:12px;color:var(--muted)">capitulos lidos</div><div style="font-size:11px;color:var(--muted2);margin-top:3px">'+(TOTAL-td)+' restantes</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div class="stat-card"><div class="stat-n">'+t+'</div><div class="stat-l">dia atual de '+plan.days+'</div></div><div class="stat-card"><div class="stat-n">'+fc+'</div><div class="stat-l">fases completas</div></div><div class="stat-card"><div class="stat-n">'+cpp+'</div><div class="stat-l">caps/dia no plano</div></div><div class="stat-card"><div class="stat-n" style="color:var(--success)">'+avg+'</div><div class="stat-l">media real/dia</div></div></div><div class="sec-lbl" style="margin-bottom:8px">por fase</div>'+FASES.map(f=>{const{d,t}=fDone(f);const p=P(d,t);return'<div style="padding:11px 14px;border:0.5px solid var(--border);border-radius:12px;background:var(--bg2);margin-bottom:7px"><div style="display:flex;justify-content:space-between;margin-bottom:7px"><div><span style="font-size:10px;color:var(--muted2);letter-spacing:.5px">Fase '+f.id+' - </span><span style="font-size:13px;font-weight:500">'+f.n+'</span></div><span style="font-size:12px;color:var(--gold);font-weight:500">'+p+'%</span></div><div class="thin-bg"><div class="thin-fill" style="width:'+p+'%"></div></div><div style="font-size:11px;color:var(--muted2);margin-top:4px">'+d+' de '+t+' caps</div></div>';}).join('')+'<div style="margin-top:8px"><button onclick="resetPlan()" style="width:100%;background:transparent;border:0.5px solid var(--border);border-radius:10px;padding:10px;color:var(--muted2);font-size:12px;cursor:pointer;font-family:inherit">Reiniciar plano</button></div>';}
 
-function closeBook(){
-  document.getElementById('screen-book').classList.remove('open');
-  setTimeout(()=>{
-    if(currentScreen==='home') renderHome();
-    else if(currentScreen==='fases') renderFases();
-  }, 350);
-}
+function resetPlan(){if(confirm('Apaga o plano (nao apaga as leituras). Confirmar?')){localStorage.removeItem('enc_plan');plan=null;dayplan=[];document.getElementById('bnav').style.display='none';['home','fases','progress'].forEach(s=>document.getElementById('scr-'+s).classList.remove('active'));document.getElementById('scr-setup').classList.add('active');rSetup();}}
 
-// ─── RENDER: SETUP ───────────────────────────────────────────────────────────
-function renderSetup(){
-  const el = document.getElementById('screen-setup');
-  let selectedDays = 365;
-  el.innerHTML = `
-    <div class="setup-hero">
-      <div class="setup-pin">📍</div>
-      <div class="setup-logo">ENCORPEI</div>
-      <div class="setup-tagline">Leitura Bíblica Completa</div>
-    </div>
-    <div class="setup-card">
-      <div class="setup-card-title">7 FASES DO PLANO</div>
-      ${FASES.map(f=>`
-        <div class="fase-setup-item">
-          <div class="fase-setup-num">${f.id}</div>
-          <div class="fase-setup-dot" style="background:${f.cor}"></div>
-          <div class="fase-setup-info">
-            <div class="fase-setup-name">${f.nome}</div>
-            <div class="fase-setup-sub">${f.subtitulo}</div>
-          </div>
-        </div>`).join('')}
-    </div>
-    <div class="setup-card">
-      <div class="setup-card-title">QUANTOS DIAS PARA LER A BÍBLIA?</div>
-      <div class="days-section">
-        <div class="days-display"><span id="days-val">365</span> <span>dias</span></div>
-        <input type="range" class="days-slider" id="days-slider" min="90" max="730" value="365" oninput="updateDays(this.value)">
-        <div class="days-presets">
-          <div class="preset-btn" onclick="setDays(90)">3 meses</div>
-          <div class="preset-btn sel" onclick="setDays(180)">6 meses</div>
-          <div class="preset-btn" onclick="setDays(365)">1 ano</div>
-          <div class="preset-btn" onclick="setDays(730)">2 anos</div>
-        </div>
-        <div class="days-hint" id="days-hint">≈ 4 capítulos por dia • 1.189 capítulos no total</div>
-      </div>
-      <button class="btn-primary" onclick="startPlan()">COMEÇAR MEU PLANO 🚀</button>
-    </div>
-  `;
-  
-  window.updateDays = function(v){
-    v = parseInt(v);
-    document.getElementById('days-val').textContent = v;
-    document.getElementById('days-slider').value = v;
-    const cpp = Math.ceil(TOTAL_CAPS/v);
-    document.getElementById('days-hint').textContent = `≈ ${cpp} capítulo${cpp>1?'s':''} por dia • ${TOTAL_CAPS} capítulos no total`;
-    document.querySelectorAll('.preset-btn').forEach(b=>b.classList.remove('sel'));
-    selectedDays = v;
-  };
-  window.setDays = function(v){
-    selectedDays = v;
-    updateDays(v);
-    document.querySelectorAll('.preset-btn').forEach(b=>{
-      const txt = b.textContent;
-      if((v===90&&txt.includes('3'))||(v===180&&txt.includes('6'))||(v===365&&txt.includes('1 a'))||(v===730&&txt.includes('2'))) b.classList.add('sel');
-    });
-  };
-  window.startPlan = async function(){
-    plan = {totalDias: selectedDays, dataInicio: new Date().toISOString().split('T')[0]};
-    localStorage.setItem('enc_plan', JSON.stringify(plan));
-    dayPlan = buildDayPlan(plan.totalDias);
-    viewingDay = todayDayNumber();
-    document.getElementById('screen-setup').classList.remove('active');
-    document.getElementById('bottom-nav').style.display='flex';
-    showScreen('home');
-    showToast('Plano criado! Bora ler! 📖');
-  };
-}
+function rBook(){if(!curBook)return;const f=FASES.find(f=>f.id===curBook.fId);const l=f.l.find(l=>l.n===curBook.bk);if(!l)return;const done=bkDone(l.n,l.c);const p=P(done,l.c);const allDone=done===l.c;document.getElementById('book-phase').textContent='Fase '+f.id+' - '+f.n;document.getElementById('book-title').textContent=l.n;document.getElementById('book-cd').textContent=done+' de '+l.c+' caps';document.getElementById('book-pb').style.width=p+'%';document.getElementById('book-pct').textContent=p+'%';const yts=document.getElementById('yt-section');yts.style.display=allDone?'block':'none';if(allDone){document.getElementById('yt-link').href=ytUrl(l.n);document.getElementById('yt-book-name').textContent='Ver "'+l.n+'" no YouTube';}const grid=document.getElementById('caps-grid');grid.innerHTML=Array.from({length:l.c},(_,i)=>{const c=i+1;const on=lidos.has(K(l.n,c));return'<button class="cap-btn'+(on?' on':'')+'" id="cb-'+c+'" onclick="toggleCap(\''+l.n.replace(/'/g,"\\'")+'\','+c+','+l.c+')">'+c+'</button>';}).join('');}
 
-// ─── RENDER: HOME ────────────────────────────────────────────────────────────
-function renderHome(){
-  const el = document.getElementById('screen-home');
-  if(!plan || !dayPlan.length){ el.innerHTML=''; return; }
-  const today = todayDayNumber();
-  if(viewingDay===null) viewingDay = today;
-  const {done,total} = getTotalProgress();
-  const pct = Math.round(done/total*100);
-  const dayChaps = dayPlan[viewingDay-1] || [];
-  const dayDone = dayChaps.filter(c=>isLido(c.livro,c.capitulo)).length;
-  const allDayDone = dayChaps.length>0 && dayDone===dayChaps.length;
+function toggleCap(bk,cap,tc){const k=K(bk,cap);const on=!lidos.has(k);if(on)lidos.add(k);else lidos.delete(k);const btn=document.getElementById('cb-'+cap);if(btn)btn.className='cap-btn'+(on?' on':'');syncDb(bk,cap,on);const done=bkDone(bk,tc);const p=P(done,tc);const allDone=done===tc;document.getElementById('book-cd').textContent=done+' de '+tc+' caps';document.getElementById('book-pb').style.width=p+'%';document.getElementById('book-pct').textContent=p+'%';const yts=document.getElementById('yt-section');yts.style.display=allDone?'block':'none';if(allDone){document.getElementById('yt-link').href=ytUrl(bk);document.getElementById('yt-book-name').textContent='Ver "'+bk+'" no YouTube';toast(bk+' concluido!');}}
 
-  // Group by book for display
-  const byBook = {};
-  dayChaps.forEach(c=>{
-    if(!byBook[c.livro]) byBook[c.livro]={livro:c.livro,faseId:c.faseId,caps:[]};
-    byBook[c.livro].caps.push(c.capitulo);
-  });
+function rSetup(){document.getElementById('setup-phases').innerHTML=FASES.map(f=>'<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:0.5px solid var(--border)'+(f.id===7?';border-bottom:none':'')+'">'+'<div style="font-size:10px;color:var(--muted2);width:12px;flex-shrink:0;font-weight:500">'+f.id+'</div>'+'<div><div style="font-size:13px;font-weight:500">'+f.n+'</div><div style="font-size:11px;color:var(--muted)">'+f.s+'</div></div></div>').join('');}
 
-  el.innerHTML = `
-    <div class="home-header">
-      <div class="home-greeting">Seu progresso total</div>
-      <div class="home-day">DIA <em>${viewingDay}</em> DE ${plan.totalDias}</div>
-      <div class="home-progress-bar"><div class="home-progress-fill" style="width:${pct}%"></div></div>
-      <div class="home-progress-text"><span>${done} de ${total} capítulos</span><span>${pct}%</span></div>
-    </div>
-    <div class="day-nav">
-      <button class="day-nav-btn" onclick="changeDay(-1)">‹</button>
-      <div class="day-nav-label">${viewingDay===today?'📅 HOJE':'DIA '+viewingDay}</div>
-      <button class="day-nav-btn" onclick="changeDay(1)">›</button>
-    </div>
-    ${allDayDone ? `
-      <div style="padding:0 16px; margin-top:12px">
-        <div class="day-all-done">
-          <div class="day-all-done-icon">✅</div>
-          <div class="day-all-done-text">Dia ${viewingDay} concluído!</div>
-          <div class="day-all-done-sub">Parabéns! Continue assim 💪</div>
-        </div>
-      </div>` : ''}
-    <div class="section-title">LEITURAS DO DIA · ${dayDone}/${dayChaps.length}</div>
-    ${Object.values(byBook).length===0 ? '<div class="empty-day"><div>🎉</div><p>Nenhuma leitura neste dia</p></div>' : ''}
-    ${Object.values(byBook).map(group=>{
-      const fase = FASES.find(f=>f.id===group.faseId);
-      const allDone = group.caps.every(c=>isLido(group.livro,c));
-      const someDone = group.caps.some(c=>isLido(group.livro,c));
-      return `
-      <div class="reading-card">
-        <div class="reading-item" onclick="openBook(${group.faseId},'${group.livro.replace(/'/g,"\\'")}')">
-          <div class="reading-check ${allDone?'done':''}" style="${allDone?'':''}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
-          </div>
-          <div class="reading-info">
-            <div class="reading-book">${group.livro}</div>
-            <div class="reading-detail">Caps ${group.caps[0]}${group.caps.length>1?'–'+group.caps[group.caps.length-1]:''} · ${group.caps.filter(c=>isLido(group.livro,c)).length}/${group.caps.length} lidos</div>
-          </div>
-          <div class="reading-tag" style="background:${fase.bg};color:${fase.cor}">FASE ${fase.id}</div>
-        </div>
-      </div>`;
-    }).join('')}
-    <div style="height:20px"></div>
-  `;
+let toastT;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2500);}
 
-  window.changeDay = function(d){
-    viewingDay = Math.min(Math.max((viewingDay||today)+d, 1), plan.totalDias);
-    renderHome();
-  };
-}
+document.getElementById('days-slider').oninput=function(){SD(parseInt(this.value));};
 
-// ─── RENDER: FASES ───────────────────────────────────────────────────────────
-function renderFases(){
-  const el = document.getElementById('screen-fases');
-  el.innerHTML = `<div class="section-title" style="padding-top:24px">AS 7 FASES</div>` +
-    FASES.map(f=>{
-      const {done,total} = getFaseProgress(f);
-      const pct = total?Math.round(done/total*100):0;
-      return `
-      <div class="fase-card" onclick="toggleFaseExpand(${f.id})">
-        <div class="fase-card-header">
-          <div class="fase-icon" style="background:${f.bg}">${f.icone}</div>
-          <div class="fase-info">
-            <div class="fase-name">FASE ${f.id} · ${f.nome}</div>
-            <div class="fase-sub">${f.subtitulo}</div>
-          </div>
-          <div class="fase-pct" style="color:${f.cor}">${pct}%</div>
-        </div>
-        <div class="fase-progress-bar"><div class="fase-progress-fill" style="width:${pct}%;background:${f.cor}"></div></div>
-        <div class="fase-books" id="fase-books-${f.id}">
-          ${f.livros.map(l=>{
-            const ldone = getBookProgress(l.nome,l.caps);
-            const lpct = Math.round(ldone/l.caps*100);
-            return `<div class="book-row" onclick="event.stopPropagation();openBook(${f.id},'${l.nome.replace(/'/g,"\\'")}')">
-              <div class="book-row-name">${l.nome}</div>
-              <div class="book-row-bar"><div class="book-row-fill" style="width:${lpct}%;background:${f.cor}"></div></div>
-              <div class="book-row-pct" style="color:${f.cor}">${ldone}/${l.caps}</div>
-            </div>`;
-          }).join('')}
-        </div>
-      </div>`;
-    }).join('') + '<div style="height:20px"></div>';
+async function init(){rSetup();const sv=localStorage.getItem('enc_plan');if(sv){plan=JSON.parse(sv);dayplan=buildPlan(plan.days);vday=todayN();}await loadLidos();if(plan){document.getElementById('scr-setup').classList.remove('active');document.getElementById('bnav').style.display='flex';go('home');}}
 
-  window.toggleFaseExpand = function(id){
-    const el = document.getElementById('fase-books-'+id);
-    el.classList.toggle('open');
-  };
-}
-
-// ─── RENDER: BOOK DETAIL ─────────────────────────────────────────────────────
-function renderBookDetail(){
-  if(!viewingBook) return;
-  const fase = FASES.find(f=>f.id===viewingBook.faseId);
-  const livroData = fase.livros.find(l=>l.nome===viewingBook.livroNome);
-  if(!livroData) return;
-  const done = getBookProgress(livroData.nome, livroData.caps);
-  const pct = Math.round(done/livroData.caps*100);
-  const allDone = done===livroData.caps;
-
-  const el = document.getElementById('screen-book');
-  el.innerHTML = `
-    <div class="book-header">
-      <button class="back-btn" onclick="closeBook()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
-        Voltar
-      </button>
-      <div class="book-title-row">
-        <div class="book-fase-tag" style="background:${fase.bg};color:${fase.cor}">${fase.icone} FASE ${fase.id} · ${fase.nome}</div>
-        <div class="book-title">${livroData.nome}</div>
-        <div class="book-progress-row">
-          <div class="book-caps-text">${done} de ${livroData.caps} caps</div>
-          <div class="book-progress-bar-wrap"><div class="book-progress-bar-fill" id="book-pbar" style="width:${pct}%;background:${fase.cor}"></div></div>
-          <div class="book-pct-text" style="color:${fase.cor}">${pct}%</div>
-        </div>
-      </div>
-    </div>
-    <div class="caps-grid" id="caps-grid">
-      ${Array.from({length:livroData.caps},(_,i)=>{
-        const c=i+1;
-        const done=isLido(livroData.nome,c);
-        return `<button class="cap-btn ${done?'done':''}" style="${done?'background:'+fase.cor:'color:var(--muted2)'}" id="cap-${c}" onclick="toggleCap(${c})">${c}</button>`;
-      }).join('')}
-    </div>
-    ${allDone?'<div style="height:80px"></div>':''}
-  `;
-
-  // YouTube banner
-  const existingBanner = document.querySelector('.youtube-banner');
-  if(existingBanner) existingBanner.remove();
-  const banner = document.createElement('div');
-  banner.className = 'youtube-banner' + (allDone?' show':'');
-  banner.id = 'yt-banner';
-  banner.innerHTML = `
-    <a class="youtube-btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent('livro de '+livroData.nome+' bíblia explicado')}" target="_blank">
-      <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="#ff0000"/></svg>
-      Buscar vídeos sobre ${livroData.nome} no YouTube
-    </a>
-  `;
-  el.appendChild(banner);
-
-  window.toggleCap = async function(c){
-    const btn = document.getElementById('cap-'+c);
-    const nowDone = await toggleChapter(livroData.nome, c);
-    btn.className = 'cap-btn'+(nowDone?' done':'');
-    btn.style.background = nowDone ? fase.cor : '';
-    btn.style.color = nowDone ? '' : 'var(--muted2)';
-    // update progress
-    const newDone = getBookProgress(livroData.nome, livroData.caps);
-    const newPct = Math.round(newDone/livroData.caps*100);
-    document.getElementById('book-pbar').style.width=newPct+'%';
-    el.querySelector('.book-caps-text').textContent=newDone+' de '+livroData.caps+' caps';
-    el.querySelector('.book-pct-text').textContent=newPct+'%';
-    // show YouTube if all done
-    const ytBanner = document.getElementById('yt-banner');
-    const bookAllDone = newDone===livroData.caps;
-    ytBanner.classList.toggle('show', bookAllDone);
-    if(bookAllDone && nowDone) {
-      showToast('🎉 '+livroData.nome+' concluído!');
-      setTimeout(()=>openYTModal(livroData.nome), 1200);
-    }
-  };
-}
-
-function openYTModal(livroNome){
-  document.getElementById('modal-content').innerHTML = `
-    <div class="modal-title">🎉 Livro Concluído!</div>
-    <div class="modal-sub">Você terminou ${livroNome}! Que tal assistir um vídeo para aprofundar?</div>
-    <a class="modal-yt-btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent('livro de '+livroNome+' bíblia explicado')}" target="_blank" onclick="closeModal()">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff4444"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="#fff"/></svg>
-      Buscar "${livroNome}" no YouTube
-    </a>
-    <button class="modal-close-btn" onclick="closeModal()">Fechar</button>
-  `;
-  document.getElementById('modal-overlay').classList.add('show');
-}
-
-function closeModal(){
-  document.getElementById('modal-overlay').classList.remove('show');
-}
-
-// ─── RENDER: PROGRESS ────────────────────────────────────────────────────────
-function renderProgress(){
-  const el = document.getElementById('screen-progress');
-  if(!plan){ el.innerHTML=''; return; }
-  const {done,total} = getTotalProgress();
-  const pct = Math.round(done/total*100);
-  const circumference = 2*Math.PI*52;
-  const offset = circumference*(1-pct/100);
-  const today = todayDayNumber();
-  const daysDone = today-1;
-  const faseDone = FASES.filter(f=>{ const p=getFaseProgress(f); return p.done===p.total&&p.total>0; }).length;
-  const cppEstimate = plan ? Math.ceil(TOTAL_CAPS/plan.totalDias) : 0;
-
-  el.innerHTML = `
-    <div class="progress-header">
-      <div class="home-greeting" style="margin-top:24px">Visão Geral</div>
-      <div class="progress-title">SEU PROGRESSO</div>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card full" style="display:flex;align-items:center;gap:20px;padding:20px">
-        <div class="big-ring">
-          <svg class="ring-svg" viewBox="0 0 120 120">
-            <circle class="ring-bg" cx="60" cy="60" r="52"/>
-            <circle class="ring-fill" cx="60" cy="60" r="52" stroke="${FASES[0].cor}" stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"/>
-            <text x="60" y="66" text-anchor="middle" class="ring-label" fill="var(--text)" font-family="Bebas Neue,sans-serif" font-size="28">${pct}%</text>
-          </svg>
-        </div>
-        <div>
-          <div class="stat-val">${done}</div>
-          <div class="stat-label">capítulos lidos de ${total}</div>
-          <div style="margin-top:8px;font-size:13px;color:var(--muted2)">${TOTAL_CAPS-done} restantes</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val">${today}</div>
-        <div class="stat-label">dia atual de ${plan.totalDias}</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val">${faseDone}</div>
-        <div class="stat-label">fases completas de 7</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val">${cppEstimate}</div>
-        <div class="stat-label">capítulos por dia no plano</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-val" style="color:var(--success)">${Math.round(done/Math.max(daysDone,1))}</div>
-        <div class="stat-label">média real de caps/dia</div>
-      </div>
-    </div>
-    <div class="section-title">PROGRESSO POR FASE</div>
-    ${FASES.map(f=>{
-      const p=getFaseProgress(f);
-      const fp=p.total?Math.round(p.done/p.total*100):0;
-      return `<div style="margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div><span style="font-size:16px;margin-right:6px">${f.icone}</span><strong style="font-size:14px">Fase ${f.id} · ${f.nome}</strong></div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:${f.cor}">${fp}%</div>
-        </div>
-        <div style="height:4px;background:var(--border);border-radius:100px;overflow:hidden">
-          <div style="height:100%;width:${fp}%;background:${f.cor};border-radius:100px;transition:width 0.5s"></div>
-        </div>
-        <div style="font-size:11px;color:var(--muted);margin-top:6px">${p.done} de ${p.total} capítulos</div>
-      </div>`;
-    }).join('')}
-    <div style="text-align:center;padding:16px 24px 8px">
-      <button onclick="resetPlan()" style="background:none;border:1px solid var(--border);color:var(--muted);border-radius:12px;padding:10px 20px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif">⚙️ Reiniciar plano</button>
-    </div>
-    <div style="height:20px"></div>
-  `;
-
-  window.resetPlan = function(){
-    if(confirm('Isso vai apagar seu plano (não apaga as leituras marcadas). Confirmar?')){
-      localStorage.removeItem('enc_plan');
-      plan=null; dayPlan=[]; viewingDay=null;
-      document.getElementById('bottom-nav').style.display='none';
-      ['home','fases','progress'].forEach(s=>document.getElementById('screen-'+s).classList.remove('active'));
-      document.getElementById('screen-setup').classList.add('active');
-      renderSetup();
-    }
-  };
-}
-
-// ─── TOAST ───────────────────────────────────────────────────────────────────
-let toastTimer;
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2500);
-}
-
-// ─── INIT ────────────────────────────────────────────────────────────────────
-async function init(){
-  renderSetup();
-  const savedPlan = localStorage.getItem('enc_plan');
-  if(savedPlan){
-    plan = JSON.parse(savedPlan);
-    dayPlan = buildDayPlan(plan.totalDias);
-    viewingDay = todayDayNumber();
-  }
-  await loadLidos();
-  if(plan){
-    document.getElementById('screen-setup').classList.remove('active');
-    document.getElementById('bottom-nav').style.display='flex';
-    showScreen('home');
-  }
-}
-
-// Service Worker
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').catch(()=>{});
-}
-
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 init();
 </script>
 </body>
