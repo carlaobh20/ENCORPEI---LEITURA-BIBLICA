@@ -414,12 +414,47 @@ const resumo=getResumo(l.n);
 if(allDone&&resumo){rs.style.display='block';rt.textContent=resumo;}else{rs.style.display='none';}
 const grid=document.getElementById('caps-grid');grid.innerHTML=Array.from({length:l.c},(_,i)=>{const c=i+1;const on=lidos.has(K(l.n,c));return'<button class="cap-btn'+(on?' on':'')+'" id="cb-'+c+'" onclick="toggleCap(\''+l.n.replace(/'/g,"\\'")+'\','+c+','+l.c+')">'+c+'</button>';}).join('');}
 
-function toggleCap(bk,cap,tc){const k=K(bk,cap);const on=!lidos.has(k);if(on)lidos.add(k);else lidos.delete(k);const btn=document.getElementById('cb-'+cap);if(btn)btn.className='cap-btn'+(on?' on':'');syncDb(bk,cap,on);const done=bkDone(bk,tc);const p=P(done,tc);const allDone=done===tc;document.getElementById('book-cd').textContent=done+' de '+tc+' caps';document.getElementById('book-pb').style.width=p+'%';document.getElementById('book-pct').textContent=p+'%';const yts=document.getElementById('yt-section');yts.style.display=allDone?'block':'none';if(allDone){document.getElementById('yt-link').href=ytUrl(bk);document.getElementById('yt-book-name').textContent='Ver "'+bk+'" no YouTube';toast(bk+' concluido!');
-const rs2=document.getElementById('resumo-section');
-const rt2=document.getElementById('resumo-text');
-const res=getResumo(bk);
-if(res){rs2.style.display='block';rt2.textContent=res;}
-}}
+function toggleCap(bk,cap,tc){
+  // Se o capitulo clicado nao esta lido, marca do 1 ate ele
+  // Se ja esta lido, desmarca somente ele
+  const k=K(bk,cap);
+  const jaDone=lidos.has(k);
+  const toSync=[];
+  if(!jaDone){
+    // Marca todos do 1 ate cap
+    for(let c=1;c<=cap;c++){
+      if(!lidos.has(K(bk,c))){
+        lidos.add(K(bk,c));
+        toSync.push({c,on:true});
+        const btn=document.getElementById('cb-'+c);
+        if(btn)btn.className='cap-btn on';
+      }
+    }
+  } else {
+    // Desmarca apenas este
+    lidos.delete(k);
+    toSync.push({c:cap,on:false});
+    const btn=document.getElementById('cb-'+cap);
+    if(btn)btn.className='cap-btn';
+  }
+  // Sync todos ao mesmo tempo em background
+  toSync.forEach(({c,on})=>syncDb(bk,c,on));
+  const done=bkDone(bk,tc);const p=P(done,tc);const allDone=done===tc;
+  document.getElementById('book-cd').textContent=done+' de '+tc+' caps';
+  document.getElementById('book-pb').style.width=p+'%';
+  document.getElementById('book-pct').textContent=p+'%';
+  const yts=document.getElementById('yt-section');
+  yts.style.display=allDone?'block':'none';
+  if(allDone){
+    document.getElementById('yt-link').href=ytUrl(bk);
+    document.getElementById('yt-book-name').textContent='Ver "'+bk+'" no YouTube';
+    toast(bk+' concluido!');
+    const rs2=document.getElementById('resumo-section');
+    const rt2=document.getElementById('resumo-text');
+    const res=getResumo(bk);
+    if(res){rs2.style.display='block';rt2.textContent=res;}
+  }
+}
 
 function rSetup(){document.getElementById('setup-phases').innerHTML=FASES.map(f=>'<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:0.5px solid var(--border)'+(f.id===7?';border-bottom:none':'')+'">'+'<div style="font-size:10px;color:var(--muted2);width:12px;flex-shrink:0;font-weight:500">'+f.id+'</div>'+'<div><div style="font-size:13px;font-weight:500">'+f.n+'</div><div style="font-size:11px;color:var(--muted)">'+f.s+'</div></div></div>').join('');}
 
